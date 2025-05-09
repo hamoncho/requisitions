@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('general_budget_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('code');
+            $table->string('name',255);
             $table->timestamps();
         });
     }

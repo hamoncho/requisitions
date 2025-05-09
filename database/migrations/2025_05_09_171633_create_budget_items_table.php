@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('budget_items', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('full_code');
+            $table->string('name',500);
+            $table->unsignedBigInteger('general_budget_items_id');
             $table->timestamps();
         });
     }

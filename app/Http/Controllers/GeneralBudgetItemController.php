@@ -8,12 +8,20 @@ use App\Models\GeneralBudgetItem;
 
 class GeneralBudgetItemController extends Controller
 {
+   /**
+    * Display a menu
+    */
+    public function menu(){
+        return view('generalbudgetitem.menu');
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $generalBudgetItem = GeneralBudgetItem::all();
+        return view('generalbudgetitem.index', compact('generalBudgetItem'));
     }
 
     /**
@@ -21,7 +29,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('generalbudgetitem.create');
     }
 
     /**
@@ -29,7 +37,12 @@ class GeneralBudgetItemController extends Controller
      */
     public function store(StoreGeneralBudgetItemRequest $request)
     {
-        //
+        $generalBudgetItem = new GeneralBudgetItem;
+        $generalBudgetItem->code = $request->code;
+        $generalBudgetItem->name = $request->name;
+        $generalBudgetItem->save();
+
+        return redirect()->route('general_budget_item.index');
     }
 
     /**
@@ -45,7 +58,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function edit(GeneralBudgetItem $generalBudgetItem)
     {
-        //
+        return view('generalbudgetitem.edit',compact('generalBudgetItem'));
     }
 
     /**
@@ -53,7 +66,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function update(UpdateGeneralBudgetItemRequest $request, GeneralBudgetItem $generalBudgetItem)
     {
-        //
+       //
     }
 
     /**

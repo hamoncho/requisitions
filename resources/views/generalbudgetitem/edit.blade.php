@@ -21,7 +21,7 @@
                             <a href="{{ route('general_budget_item.index') }}">{{ __('Back') }}</a>
                         </header>
 
-                        <form method="post" action="{{ route('general_budget_item.update') }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('general_budget_item.update',$generalBudgetItem) }}" class="mt-6 space-y-6">
                             @csrf
                             @method('put')
 

@@ -66,7 +66,8 @@ class GeneralBudgetItemController extends Controller
      */
     public function update(UpdateGeneralBudgetItemRequest $request, GeneralBudgetItem $generalBudgetItem)
     {
-       //
+       $generalBudgetItem->update($request->all());
+        return redirect()->route('general_budget_item.index');
     }
 
     /**
@@ -74,6 +75,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function destroy(GeneralBudgetItem $generalBudgetItem)
     {
-        //
+        $generalBudgetItem->delete();
+        return redirect()->route('general_budget_item.index');
     }
 }

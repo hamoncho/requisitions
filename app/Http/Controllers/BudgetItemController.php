@@ -13,7 +13,8 @@ class BudgetItemController extends Controller
      */
     public function index()
     {
-        //
+        $budgetItems = BudgetItem::all();
+        return view('budgetitem.index', compact('budgetItems'));
     }
 
     /**

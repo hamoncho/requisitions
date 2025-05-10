@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GeneralBudgetItemController;
+use App\Http\Controllers\BudgetItemController;
 use App\Http\Controllers\ProfileController;
 use App\Models\GeneralBudgetItem;
 use Illuminate\Support\Facades\Route;
@@ -36,6 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::put('/general_budget_item/update/{generalBudgetItem}', [GeneralBudgetItemController::class, 'update'])->name('general_budget_item.update');
     Route::delete('/general_budget_item/destroy/{generalBudgetItem}', [GeneralBudgetItemController::class, 'destroy'])->name('general_budget_item.destroy');
     //Route::get('/general_budget_item/menu', [GeneralBudgetItemController::class, 'menu'])->name('general_budget_item.menu');
+
+
+    Route::get('/budget_item', [BudgetItemController::class, 'index'])->name('budget_item.index');
+    Route::get('/budget_item/create', [BudgetItemController::class, 'create'])->name('budget_item.create');
+    Route::post('/budget_item/store',[BudgetItemController::class, 'store'])->name('budget_item.store');
+    Route::get('/budget_item/edit/{generalBudgetItem}', [BudgetItemController::class, 'edit'])->name('budget_item.edit');
+    Route::put('/budget_item/update/{generalBudgetItem}', [BudgetItemController::class, 'update'])->name('budget_item.update');
+    Route::delete('/budget_item/destroy/{generalBudgetItem}', [BudgetItemController::class, 'destroy'])->name('budget_item.destroy');
 
 });
 

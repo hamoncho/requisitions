@@ -42,9 +42,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/budget_item', [BudgetItemController::class, 'index'])->name('budget_item.index');
     Route::get('/budget_item/create', [BudgetItemController::class, 'create'])->name('budget_item.create');
     Route::post('/budget_item/store',[BudgetItemController::class, 'store'])->name('budget_item.store');
-    Route::get('/budget_item/edit/{generalBudgetItem}', [BudgetItemController::class, 'edit'])->name('budget_item.edit');
-    Route::put('/budget_item/update/{generalBudgetItem}', [BudgetItemController::class, 'update'])->name('budget_item.update');
-    Route::delete('/budget_item/destroy/{generalBudgetItem}', [BudgetItemController::class, 'destroy'])->name('budget_item.destroy');
+    Route::get('/budget_item/edit/{budgetItem}', [BudgetItemController::class, 'edit'])->name('budget_item.edit');
+    Route::put('/budget_item/update/{budgetItem}', [BudgetItemController::class, 'update'])->name('budget_item.update');
+    Route::delete('/budget_item/destroy/{budgetItem}', [BudgetItemController::class, 'destroy'])->name('budget_item.destroy');
 
 });
 

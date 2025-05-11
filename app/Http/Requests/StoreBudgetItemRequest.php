@@ -11,7 +11,7 @@ class StoreBudgetItemRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class StoreBudgetItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'full_code' => ['required', 'integer'],
+            'name' => ['required', 'string',  'max:500'],
+            'general_budget_item_id' => ['required', 'integer'],
         ];
     }
 }

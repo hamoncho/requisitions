@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\GeneralBudgetItemController;
 use App\Http\Controllers\BudgetItemController;
+use App\Http\Controllers\InvolvedController;
+use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ProfileController;
 use App\Models\GeneralBudgetItem;
+use App\Models\Involved;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +48,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/budget_item/edit/{budgetItem}', [BudgetItemController::class, 'edit'])->name('budget_item.edit');
     Route::put('/budget_item/update/{budgetItem}', [BudgetItemController::class, 'update'])->name('budget_item.update');
     Route::delete('/budget_item/destroy/{budgetItem}', [BudgetItemController::class, 'destroy'])->name('budget_item.destroy');
+
+    Route::get('/involved',[InvolvedController::class, 'index'])->name('involved.index');
+    Route::get('/involved/create', [InvolvedController::class, 'create'])->name('involved.create');
+    Route::post('/involved/store',[InvolvedController::class, 'store'])->name('involved.store');
+    Route::get('/involved/edit/{involved}', [InvolvedController::class, 'edit'])->name('involved.edit');
+    Route::put('/involved/update/{involved}', [InvolvedController::class, 'update'])->name('involved.update');
+    Route::delete('/involved/destroy/{involved}', [InvolvedController::class, 'destroy'])->name('involved.destroy');
+
+    Route::get('/objective',[ObjectiveController::class, 'index'])->name('objective.index');
+    Route::get('/objective/create',[ObjectiveController::class, 'create'])->name('objective.create');
+    Route::post('/objective/store', [ObjectiveController::class, 'store'])->name('objective.store');
+    Route::get('/objective/edit/{objective}', [ObjectiveController::class, 'edit'])->name('objective.edit');
+    Route::put('/objective/update/{objective}', [ObjectiveController::class, 'update'])->name('objective.update');
+    Route::delete('/objective/destroy/{objective}', [ObjectiveController::class, 'destroy'])->name('objective.destroy');
 
 });
 

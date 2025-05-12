@@ -37,7 +37,7 @@
             </a>
 
             <!-- Card alta -->
-            <a href="#" class="bg-white scale-95 hover:scale-100 shadow rounded-md overflow-hidden flex flex-col sm:row-span-1 md:row-span-2">
+            <a href="{{ route('objective.index') }}" class="bg-white scale-95 hover:scale-100 shadow rounded-md overflow-hidden flex flex-col sm:row-span-1 md:row-span-2">
                 <img class="h-3/4 p-4 object-contain"
                     src="{{ asset('/storage/img/cards/objective.png') }}" alt="Card">
                 <div class="px-4  content-center flex-1 bg-blue-950">

@@ -41,12 +41,18 @@
                                             {{ $item->full_code }}</td>
                                         <td class="whitespace-wrap text-gray-900">
                                             <details class="bg-gray-100">
-                                                <summary class="py-2 pl-2 cursor-pointer bg-blue-950 font-bold text-gray-200">
+                                                <summary
+                                                    class="py-2 pl-2 cursor-pointer bg-blue-950 font-bold text-gray-200">
                                                     {{ $item->name }}
                                                 </summary>
                                                 <ul class="pl-4">
-                                                    <li class="py-2 font-bold">
-                                                        {{ $item->generalBudgetItem->name }}
+                                                    <li class="py-2">
+                                                        <strong>Category: </strong>
+                                                        @if (is_null($item->generalBudgetItem))
+                                                            <p class="text-gray-500">No budget items found.</p>
+                                                        @else
+                                                            {{ $item->generalBudgetItem->name }}
+                                                        @endif
                                                     </li>
                                                     <li class="py-2 sm:hidden">
                                                         <a href="{{ route('budget_item.edit', $item) }}"

@@ -25,30 +25,32 @@
                                 <tr>
                                     <th
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Index + Name</th>
-                                    <th
-
+                                        Index + Name
+                                    </th>
                                     <th
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Description</th>
+                                        Description
+                                    </th>
                                     <th
                                         class="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Actions</th>
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($objectives as $item)
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-wrap text-gray-900">{{ $item->index . ' ' .$item->name }}</td>
-                                        <td class="px-6 py-4 whitespace-wrap text-gray-900">{{ $item->description }}</td>
+                                        <td class="px-6 py-4 whitespace-wrap text-gray-900">
+                                            {{ $item->index . ' ' . $item->name }}</td>
+                                        <td class="px-6 py-4 whitespace-wrap text-gray-900">{{ $item->description }}
+                                        </td>
                                         <td class="px-2 py-2 whitespace-wrap w-48">
                                             <a href="{{ route('objective.edit', $item) }}"
                                                 class="inline-flex items-center px-4 py-2 bg-blue-950 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-blue-900 focus:bg-blue-900 active:bg-blue-950 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                                 Edit
                                             </a>
 
-                                            <form method="POST"
-                                                action="{{ route('objective.destroy', $item) }}"
+                                            <form method="POST" action="{{ route('objective.destroy', $item) }}"
                                                 class="inline-block"
                                                 onsubmit="return confirm('Are you sure you want to delete this item?');">
                                                 @csrf

@@ -67,12 +67,12 @@
             </a>
 
             <!-- Card horizontal grande -->
-            <a href="#" class="bg-white scale-95 hover:scale-100 shadow rounded-md overflow-hidden flex flex-col sm:col-span-2">
+            <a href="{{ route('involved.index')}}" class="bg-white scale-95 hover:scale-100 shadow rounded-md overflow-hidden flex flex-col sm:col-span-2">
                 <img class="h-3/4 p-4 object-contain"
-                    src="{{ asset('/storage/img/cards/blueprint.png') }}" alt="Card">
+                    src="{{ asset('/storage/img/cards/united.png') }}" alt="Card">
                 <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('Projects')}}</h3>
-                    <p class="text-xs sm:text-sm text-gray-300">{{__('Manage Projects')}}</p>
+                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('Involved')}}</h3>
+                    <p class="text-xs sm:text-sm text-gray-300">{{__('Manage Involveds')}}</p>
                 </div>
             </a>
 
@@ -124,10 +124,10 @@
             <!-- Card normal -->
             <a href="#" class="bg-white scale-95 hover:scale-100 shadow rounded-md overflow-hidden flex flex-col">
                 <img class="h-3/4 py-4 object-contain"
-                    src="{{ asset('/storage/img/cards/contabilidad.png') }}" alt="Card">
+                    src="{{ asset('/storage/img/cards/blueprint.png') }}" alt="Card">
                 <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('Unknow')}}</h3>
-                    <p class="text-xs sm:text-sm text-gray-300">{{ __('Unknow')}}</p>
+                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('Project')}}</h3>
+                    <p class="text-xs sm:text-sm text-gray-300">{{ __('Manage Project')}}</p>
                 </div>
             </a>
         </div>

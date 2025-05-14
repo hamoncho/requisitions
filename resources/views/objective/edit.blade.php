@@ -11,17 +11,18 @@
                 <div class="p-6 text-gray-900">
                     <section>
                         <header class="flex justify-between">
-                        <div>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                {{ __('Edit Objective') }}
-                            </h2>
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Edit Objective') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                {{ __('Update the details of this objective.') }}
-                            </p>
-                        </div>
-                            <a href="{{ route('objective.index') }}" class="h-fit inline-flex items-center px-4 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-500 active:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                            {{ __('Back')}}
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Update the details of this objective.') }}
+                                </p>
+                            </div>
+                            <a href="{{ route('objective.index') }}"
+                                class="h-fit inline-flex items-center px-4 py-2 bg-gray-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-500 active:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                                {{ __('Back') }}
                             </a>
                         </header>
 
@@ -67,7 +68,7 @@
                                             </div>
                                         </li>
                                     @empty
-                                        <li>{{ __('No technologies available.') }}</li>
+                                        <li>{{ __('No Involveds available.') }}</li>
                                     @endforelse
                                 </ul>
                             </div>
@@ -76,16 +77,13 @@
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                             </div>
                         </form>
+
                         <div class="flex flex-row-reverse">
-                        <form method="POST" action="{{ route('objective.destroy', $objective) }}" class="inline-block"
-                            onsubmit="return confirm('Are you sure you want to delete this item?');">
-                            @csrf
-                            @method('DELETE')
-                            <button  type="submit"
-                                class="relative bottom-8 inline-flex items-center h-fit px-4 py-2 bg-red-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 focus:bg-red-500 active:bg-red-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                {{ __('Delete') }}
-                            </button>
-                        </form>
+                            <div class="block relative bottom-8">
+                                <x-delete-button>
+                                    {{ route('objective.destroy', $objective) }}
+                                </x-delete-button>
+                            </div>
                         </div>
                     </section>
                 </div>

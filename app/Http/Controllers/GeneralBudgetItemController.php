@@ -20,8 +20,8 @@ class GeneralBudgetItemController extends Controller
      */
     public function index()
     {
-        $generalBudgetItem = GeneralBudgetItem::all();
-        return view('generalbudgetitem.index', compact('generalBudgetItem'));
+        $generalBudgetItems = GeneralBudgetItem::all();
+        return view('generalbudgetitem.index', compact('generalBudgetItems'));
     }
 
     /**

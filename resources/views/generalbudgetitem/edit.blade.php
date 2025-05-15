@@ -10,18 +10,23 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Edit General Budget Items
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Edit General Budget Item') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                Edit Budget Item
-                            </p>
-                            <a href="{{ route('general_budget_item.index') }}">{{ __('Back') }}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Update the details of this general budget item.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('general_budget_item.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
-                        <form method="post" action="{{ route('general_budget_item.update',$generalBudgetItem) }}" class="mt-6 space-y-6">
+                        <form method="post" action="{{ route('general_budget_item.update', $generalBudgetItem) }}"
+                            class="mt-6 space-y-6">
                             @csrf
                             @method('put')
 
@@ -41,13 +46,16 @@
 
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-                                @if (session('status') === 'password-updated')
-                                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
-                                @endif
                             </div>
                         </form>
+
+                        <div class="flex flex-row-reverse">
+                            <div class="block relative bottom-8">
+                                <x-delete-button>
+                                    {{ route('general_budget_item.destroy', $generalBudgetItem) }}
+                                </x-delete-button>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>

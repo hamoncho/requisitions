@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Edit Budget Items
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Edit Budget Item') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                Edit Budget Item
-                            </p>
-                            <a href="{{ route('budget_item.index') }}">{{ __('Back') }}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Update the details of this budget item.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('budget_item.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('budget_item.update', $budgetItem) }}"
@@ -58,6 +62,14 @@
                                 @endif
                             </div>
                         </form>
+
+                        <div class="flex flex-row-reverse">
+                            <div class="block relative bottom-8">
+                                <x-delete-button>
+                                    {{ route('budget_item.destroy', $budgetItem) }}
+                                </x-delete-button>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>

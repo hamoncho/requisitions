@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Edit Involved
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Edit Involved') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                Edit Involved
-                            </p>
-                            <a href="{{ route('involved.index') }}">{{ __('Back') }}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Update the details of this Involved.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('involved.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('involved.update', $involved) }}" class="mt-6 space-y-6">
@@ -35,6 +39,14 @@
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
                             </div>
                         </form>
+
+                        <div class="flex flex-row-reverse">
+                            <div class="block relative bottom-8">
+                                <x-delete-button>
+                                    {{ route('involved.destroy', $involved) }}
+                                </x-delete-button>
+                            </div>
+                        </div>
                     </section>
                 </div>
             </div>

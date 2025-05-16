@@ -1,3 +1,5 @@
+# Programa para el manego de requisiciones en el tecnologico de uruapan.
+![imagen de la paguina web](docs/img/page-view.png)
 ## Configuración del Entorno de Desarrollo.
 
 Esta seccion contiene los pasos necesarios para configurar tu entorno de desarrollo y comenzar a trabajar en el proyecto.

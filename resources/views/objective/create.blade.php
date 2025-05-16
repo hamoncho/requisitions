@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Create Objective
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Create Objective') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                Create Objective
-                            </p>
-                            <a href="{{ route('objective.index') }}">{{ __('Back') }}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Create a objective.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('objective.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('objective.store') }}" class="mt-6 space-y-6">
@@ -44,21 +48,21 @@
 
                             <div>
                                 <h3 class="mb-4 font-semibold text-gray-700">Technology</h3>
-                                <ul
-                                    class="flex flex-wrap text-gray-900 p-2 border border-gray-200 rounded-lg">
+                                <ul class="flex flex-wrap text-gray-900 p-2 border border-gray-200 rounded-lg">
                                     @forelse ($involveds as $item)
-                                    <li class="flex-grow m-1 bg-white border border-gray-200 rounded-md">
-                                        <div class="flex items-center ps-3">
-                                            <input id="{{'involved_' . $item->id}}" name="involveds[]" type="checkbox" value="{{$item->id}}"
-                                                class="w-4 h-4 text-blue-950 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-950 focus:ring-1">
-                                            <label for="{{'involved_' . $item->id}}"
-                                                class="w-full cursor-pointer py-3 ms-2 text-gray-900">
-                                                {{$item->name}}
-                                            </label>
-                                        </div>
-                                    </li>
+                                        <li class="flex-grow m-1 bg-white border border-gray-200 rounded-md">
+                                            <div class="flex items-center ps-3">
+                                                <input id="{{ 'involved_' . $item->id }}" name="involveds[]"
+                                                    type="checkbox" value="{{ $item->id }}"
+                                                    class="w-4 h-4 text-blue-950 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-950 focus:ring-1">
+                                                <label for="{{ 'involved_' . $item->id }}"
+                                                    class="w-full cursor-pointer py-3 ms-2 text-gray-900">
+                                                    {{ $item->name }}
+                                                </label>
+                                            </div>
+                                        </li>
                                     @empty
-                                    <li>empty</li>
+                                        <li>empty</li>
                                     @endforelse
 
                                 </ul>

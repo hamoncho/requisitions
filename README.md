@@ -140,6 +140,8 @@ php artisan db:seed
 ```bash
 php artisan storage:link
 ```
+Descarga los archivos de la carpeta storage aqui: [google-drive](https://drive.google.com/drive/folders/1mAQ3NwbmqhafZVN2Hwtqab4GtB329NHw?usp=sharing)
+y colocalos en la carpeta `requisitions/storage/app/public/`.
 - **Iniciar el servidor de desarrrollo.**
 ```bash
 php artisan serve

@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Create Involved
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Create Involved') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                                Create Involved
-                            </p>
-                            <a href="{{ route('involved.index') }}">{{ __('Back') }}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Crate a new Involved.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('involved.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('involved.store') }}" class="mt-6 space-y-6">

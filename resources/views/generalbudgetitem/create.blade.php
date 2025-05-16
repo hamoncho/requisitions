@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Create Budget Items
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Create General Budget Item') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                            Create Budget Item
-                            </p>
-                            <a href="{{route('general_budget_item.index')}}">{{__('Back')}}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Create a General Budget Item.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('general_budget_item.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('general_budget_item.store') }}" class="mt-6 space-y-6">

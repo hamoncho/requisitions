@@ -31,14 +31,14 @@
                             <div>
                                 <x-input-label for="code" :value="__('Code')" />
                                 <x-text-input id="create_code" name="code" type="text"
-                                    class="mt-1 block w-full"/>
+                                    class="mt-1 block w-full" />
                                 <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
                             </div>
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="create_name" name="name"
-                                    type="text" class="mt-1 block w-full" />
+                                <x-text-input id="create_name" name="name" type="text"
+                                    class="mt-1 block w-full" />
                                 <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
                             </div>
 

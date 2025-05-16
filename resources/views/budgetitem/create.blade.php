@@ -10,15 +10,19 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     <section>
-                        <header>
-                            <h2 class="text-lg font-medium text-gray-900">
-                                Create Budget Items
-                            </h2>
+                        <header class="flex justify-between">
+                            <div>
+                                <h2 class="text-lg font-medium text-gray-900">
+                                    {{ __('Budget Item') }}
+                                </h2>
 
-                            <p class="mt-1 text-sm text-gray-600">
-                            Create Budget Item
-                            </p>
-                            <a href="{{route('budget_item.index')}}">{{__('Back')}}</a>
+                                <p class="mt-1 text-sm text-gray-600">
+                                    {{ __('Budget Item.') }}
+                                </p>
+                            </div>
+                            <x-secondary-link-button href="{{ route('budget_item.index') }}">
+                                {{ __('Back') }}
+                            </x-secondary-link-button>
                         </header>
 
                         <form method="post" action="{{ route('budget_item.store') }}" class="mt-6 space-y-6">
@@ -27,20 +31,19 @@
                             <div>
                                 <x-input-label for="full_code" :value="__('Code')" />
                                 <x-text-input id="full_code" name="full_code" type="text"
-                                    class="mt-1 block w-full"/>
+                                    class="mt-1 block w-full" />
                                 <x-input-error class="mt-2" :messages="$errors->get('full_code')" />
                             </div>
 
                             <select name="general_budget_item_id">
-                            @foreach ($generalBudgetitems as $item)
-                                <option value="{{ $item->id }}">{{ $item->name}}</option>
-                            @endforeach
+                                @foreach ($generalBudgetitems as $item)
+                                    <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
                             </select>
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name"
-                                    type="text" class="mt-1 block w-full" />
+                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 

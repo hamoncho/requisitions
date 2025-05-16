@@ -1,4 +1,4 @@
-# Programa para el manego de requisiciones en el tecnologico de uruapan.
+# Programa para el manejo de requisiciones en el tecnologico de uruapan.
 ![imagen de la paguina web](docs/img/page-view.png)
 ## Configuración del Entorno de Desarrollo.
 

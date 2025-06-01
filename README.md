@@ -277,7 +277,7 @@ npm run build.
 
 9. Habilitar el sitio web.
 ```bash
-sudo a2ensite laravel.conf
+sudo a2ensite requisitions.conf
 ```
 
 ```bash

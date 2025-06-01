@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
+            $table->string('index', 8);
+            $table->string('name', 255);
+            $table->string('formula', 255);
+            $table->unsignedBigInteger('objective_id');
             $table->timestamps();
         });
     }

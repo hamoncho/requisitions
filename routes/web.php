@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ActionController;
 use App\Http\Controllers\GeneralBudgetItemController;
 use App\Http\Controllers\BudgetItemController;
 use App\Http\Controllers\InvolvedController;
 use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Action;
 use App\Models\GeneralBudgetItem;
 use App\Models\Involved;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::put('/objective/update/{objective}', [ObjectiveController::class, 'update'])->name('objective.update');
     Route::delete('/objective/destroy/{objective}', [ObjectiveController::class, 'destroy'])->name('objective.destroy');
 
+    Route::get('/action', [ActionController::class, 'index'])->name('action.index');
 });
 
 require __DIR__.'/auth.php';

@@ -8,7 +8,7 @@
     :tableInfo="$actions"
     :columns="['index', 'name']"
     :routeCreate="route('action.create')"
-    routeEdit="action.index">
+    routeEdit="action.edit">
     {{__('List of items')}}
     </x-admin-table>
 </x-app-layout>

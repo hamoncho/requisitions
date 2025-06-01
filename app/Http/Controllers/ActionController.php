@@ -48,7 +48,8 @@ class ActionController extends Controller
      */
     public function edit(Action $action)
     {
-        //
+        $objectives = Objective::all();
+        return view('action.edit', compact('action','objectives'));
     }
 
     /**
@@ -56,7 +57,8 @@ class ActionController extends Controller
      */
     public function update(Request $request, Action $action)
     {
-        //
+        $action->update($request->all());
+        return redirect()->route('action.index');
     }
 
     /**

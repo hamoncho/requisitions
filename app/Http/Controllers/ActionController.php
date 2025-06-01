@@ -66,6 +66,7 @@ class ActionController extends Controller
      */
     public function destroy(Action $action)
     {
-        //
+        $action->delete();
+        return redirect()->route('action.index');
     }
 }

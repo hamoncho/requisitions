@@ -68,7 +68,7 @@
                         <div class="flex flex-row-reverse">
                             <div class="block relative bottom-8">
                                 <x-delete-button>
-                                    {{ route('action.index', $action) }}
+                                    {{ route('action.destroy', $action) }}
                                 </x-delete-button>
                             </div>
                         </div>

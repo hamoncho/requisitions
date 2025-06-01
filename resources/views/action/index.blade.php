@@ -7,7 +7,7 @@
     <x-admin-table
     :tableInfo="$actions"
     :columns="['index', 'name']"
-    :routeCreate="route('action.index')"
+    :routeCreate="route('action.create')"
     routeEdit="action.index">
     {{__('List of items')}}
     </x-admin-table>

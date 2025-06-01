@@ -6,9 +6,6 @@ use App\Http\Controllers\BudgetItemController;
 use App\Http\Controllers\InvolvedController;
 use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ProfileController;
-use App\Models\Action;
-use App\Models\GeneralBudgetItem;
-use App\Models\Involved;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -66,6 +63,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/objective/destroy/{objective}', [ObjectiveController::class, 'destroy'])->name('objective.destroy');
 
     Route::get('/action', [ActionController::class, 'index'])->name('action.index');
+    Route::get('/action/create', [ActionController::class,'create'])->name('action.create');
+    Route::post('/action/store', [ActionController::class, 'store'])->name('action.store');
 });
 
 require __DIR__.'/auth.php';

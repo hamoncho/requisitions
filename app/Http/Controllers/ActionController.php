@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Action;
+use App\Models\Objective;
 use Illuminate\Http\Request;
 
 class ActionController extends Controller
@@ -21,7 +22,8 @@ class ActionController extends Controller
      */
     public function create()
     {
-        //
+        $objectives = Objective::all();
+        return view('action.create', compact('objectives'));
     }
 
     /**
@@ -29,7 +31,8 @@ class ActionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Action::create($request->all());
+        return redirect()->route('action.index');
     }
 
     /**

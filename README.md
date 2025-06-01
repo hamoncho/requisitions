@@ -10,7 +10,7 @@ Esta seccion contiene los pasos necesarios para configurar tu entorno de desarro
 
 Para desarrollar en Laravel, es necesario contar con varias herramientas y programas:
 
-- **PHP (>= 8.3)**: Laravel requiere PHP 8 o superior.
+- **PHP (>= 8.1)**: Laravel requiere PHP 8 o superior.
 - **Composer**: El gestor de dependencias para PHP.
 - **MySQL/MariaDB**: Base de datos relacional para almacenar los datos del proyecto.
 - **Node.js & npm**: Para manejar las dependencias de frontend.

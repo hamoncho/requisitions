@@ -38,7 +38,7 @@ Para desarrollar en Laravel, es necesario contar con varias herramientas y progr
    - Para Windows:
      Descarga e instala Composer desde su [sitio oficial](https://getcomposer.org/).
 
-4. **MySQL/Mariadb**
+3. **MySQL/Mariadb**
    - Para Arch Linux:  
      ```bash
      sudo pacman -S mariadb
@@ -46,7 +46,7 @@ Para desarrollar en Laravel, es necesario contar con varias herramientas y progr
    - Para Windows: 
      Instala MySQL desde su [sitio oficial](https://dev.mysql.com/downloads/) o utiliza servicios como **Laragon** (Windows) o **MAMP** (Mac).
 
-6. **Node.js & npm**
+4. **Node.js & npm**
    - Para Arch Linux:  
      ```bash
      sudo pacman -S nodejs
@@ -54,7 +54,7 @@ Para desarrollar en Laravel, es necesario contar con varias herramientas y progr
    - Para Windows:  
      Descarga e instala Node.js desde su [sitio oficial](https://nodejs.org/en/).
 
-8. **Git**
+5. **Git**
    - Para Arch Linux:  
      ```bash
      sudo pacman -S git
@@ -62,7 +62,7 @@ Para desarrollar en Laravel, es necesario contar con varias herramientas y progr
    - Para Windows: 
      Instala Git desde su [sitio oficial](https://git-scm.com/).
 
-10. **Laravel Installer (opcional).**  
+6. **Laravel Installer (opcional).**  
       Para instalar el instalador global de Laravel, usa:
       ```bash
       composer global require laravel/installer

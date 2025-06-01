@@ -65,7 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/action', [ActionController::class, 'index'])->name('action.index');
     Route::get('/action/create', [ActionController::class,'create'])->name('action.create');
     Route::post('/action/store', [ActionController::class, 'store'])->name('action.store');
-    Route::get('action/edit/{action}', [ActionController::class, 'edit'])->name('action.edit');
+    Route::get('/action/edit/{action}', [ActionController::class, 'edit'])->name('action.edit');
     Route::put('/action/update/{action}', [ActionController::class, 'update'])->name('action.update');
 });
 

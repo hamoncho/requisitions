@@ -100,7 +100,7 @@
             </a>
 
             <!-- Card normal -->
-            <a href="#" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
+            <a href="{{route('action.index')}}" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
                 <img class="h-3/4 py-4 w-full object-contain" src="{{ asset('/storage/img/cards/actionable.png') }}"
                     alt="Card">
                 <div class="px-4 content-center flex-1 bg-blue-950">

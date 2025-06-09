@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('goals', function (Blueprint $table) {
             $table->id();
+            $table->integer('year');
+            $table->string('result', 255);
+            $table->unsignedBigInteger('action_id');
             $table->timestamps();
         });
     }

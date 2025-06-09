@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             InvolvedSeeder::class,
-            ObjectiveSeeder::class
+            ObjectiveSeeder::class,
+            ActionSeeder::class,
+            GoalSeeder::class
         ]);
     }
 }

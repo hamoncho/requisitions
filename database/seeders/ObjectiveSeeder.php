@@ -34,14 +34,20 @@ class ObjectiveSeeder extends Seeder
         ]);
 
         DB::table('involved_objective')->insert([
-            'involved_id'=>0,
-            'objective_id'=>0
-        ]);
-
-        DB::table('involved_objective')->insert([
             'involved_id'=>1,
             'objective_id'=>1
         ]);
+
+        DB::table('involved_objective')->insert([
+            'involved_id'=>2,
+            'objective_id'=>2
+        ]);
+
+        DB::table('involved_objective')->insert([
+            'involved_id'=>3,
+            'objective_id'=>3
+        ]);
+
 
     }
 }

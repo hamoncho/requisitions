@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActionController;
 use App\Http\Controllers\GeneralBudgetItemController;
 use App\Http\Controllers\BudgetItemController;
+use App\Http\Controllers\GoalController;
 use App\Http\Controllers\InvolvedController;
 use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ProfileController;
@@ -68,6 +69,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/action/edit/{action}', [ActionController::class, 'edit'])->name('action.edit');
     Route::put('/action/update/{action}', [ActionController::class, 'update'])->name('action.update');
     Route::delete('/action/destroy/{action}', [ActionController::class, 'destroy'])->name('action.destroy');
+
+    Route::get('/goal', [GoalController::class, 'index'])->name('goal.index');
 });
 
 require __DIR__.'/auth.php';

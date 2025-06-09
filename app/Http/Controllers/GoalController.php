@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Goal;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class GoalController extends Controller
      */
     public function create()
     {
-        //
+        $actions = Action::all();
+        return view('goal.create', compact('actions'));
     }
 
     /**
@@ -29,7 +31,8 @@ class GoalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Goal::create($request->all());
+        return redirect()->route('goal.index');
     }
 
     /**
@@ -45,7 +48,8 @@ class GoalController extends Controller
      */
     public function edit(Goal $goal)
     {
-        //
+        $actions = Action::all();
+        return view('goal.edit',compact('actions','goal'));
     }
 
     /**
@@ -53,7 +57,8 @@ class GoalController extends Controller
      */
     public function update(Request $request, Goal $goal)
     {
-        //
+        $goal->update($request->all());
+        return redirect()->route('goal.index');
     }
 
     /**
@@ -61,6 +66,7 @@ class GoalController extends Controller
      */
     public function destroy(Goal $goal)
     {
-        //
+        $goal->delete();
+        return redirect()->route('goal.index');
     }
 }

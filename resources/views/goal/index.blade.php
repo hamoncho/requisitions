@@ -7,8 +7,8 @@
     <x-admin-table
     :tableInfo="$goals"
     :columns="['year', 'result']"
-    :routeCreate="route('goal.index')"
-    routeEdit="goal.index">
+    :routeCreate="route('goal.create')"
+    routeEdit="goal.edit">
     {{__('List of items')}}
     </x-admin-table>
 </x-app-layout>

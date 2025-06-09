@@ -71,6 +71,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/action/destroy/{action}', [ActionController::class, 'destroy'])->name('action.destroy');
 
     Route::get('/goal', [GoalController::class, 'index'])->name('goal.index');
+    Route::get('/goal/create', [GoalController::class, 'create'])->name('goal.create');
+    Route::post('/goal/store', [GoalController::class, 'store'])->name('goal.store');
+    Route::get('/goal/edit/{goal}', [GoalController::class, 'edit'])->name('goal.edit');
+    Route::put('/goal/update/{goal}', [GoalController::class, 'update'])->name('goal.update');
+    Route::delete('/goal/destroy/{goal}', [GoalController::class, 'destroy'])->name('goal.destroy');
+
 });
 
 require __DIR__.'/auth.php';

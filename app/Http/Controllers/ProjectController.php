@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -12,7 +13,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $projects = Project::all();
+        return view('project.index', compact('projects'));
     }
 
     /**
@@ -20,7 +22,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        $actions = Action::all();
+        return view('project.create', compact('actions'));
     }
 
     /**
@@ -28,7 +31,8 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Project::create($request->all());
+        return redirect()->route('project.index');
     }
 
     /**
@@ -44,7 +48,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        $actions = Action::all();
+        return view('project.edit', compact('actions', 'project'));
     }
 
     /**
@@ -52,7 +57,8 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $project->update($request->all());
+        return redirect()->route('project.index');
     }
 
     /**
@@ -60,6 +66,7 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('project.index');
     }
 }

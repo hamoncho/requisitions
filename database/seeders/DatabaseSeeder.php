@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Project;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,7 +18,9 @@ class DatabaseSeeder extends Seeder
             InvolvedSeeder::class,
             ObjectiveSeeder::class,
             ActionSeeder::class,
-            GoalSeeder::class
+            GoalSeeder::class,
+            ProjectSeeder::class,
+            IndicatorSeeder::class
         ]);
     }
 }

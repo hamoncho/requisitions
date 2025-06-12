@@ -20,7 +20,8 @@ class DatabaseSeeder extends Seeder
             ActionSeeder::class,
             GoalSeeder::class,
             ProjectSeeder::class,
-            IndicatorSeeder::class
+            IndicatorSeeder::class,
+            ProcessSeeder::class
         ]);
     }
 }

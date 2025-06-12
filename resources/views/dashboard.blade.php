@@ -68,7 +68,7 @@
             </a>
 
             <!-- Card alta -->
-            <a href="#"
+            <a href="{{ route('process.index') }}"
                 class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col row-span-2">
                 <img class="h-3/4 p-4 object-contain" src="{{ asset('/storage/img/cards/iteration.png') }}"
                     alt="Card">

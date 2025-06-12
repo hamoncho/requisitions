@@ -7,6 +7,7 @@ use App\Http\Controllers\GoalController;
 use App\Http\Controllers\IndicatorController;
 use App\Http\Controllers\InvolvedController;
 use App\Http\Controllers\ObjectiveController;
+use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
@@ -92,6 +93,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/indicator/edit/{indicator}', [IndicatorController::class, 'edit'])->name('indicator.edit');
     Route::put('/indicator/update/{indicator}', [IndicatorController::class, 'update'])->name('indicator.update');
     Route::delete('/indicator/destroy/{indicator}', [IndicatorController::class, 'destroy'])->name('indicator.destroy');
+
+    Route::get('/process', [ProcessController::class, 'index'])->name('process.index');
+    Route::get('/process/create', [ProcessController::class, 'create'])->name('process.create');
+    Route::post('/process/store', [ProcessController::class, 'store'])->name('process.store');
+    Route::get('/process/edit/{process}', [ProcessController::class, 'edit'])->name('process.edit');
+    Route::put('/process/update/{process}', [ProcessController::class, 'update'])->name('process.update');
+    Route::delete('/process/destroy/{process}', [ProcessController::class, 'destroy'])->name('process.destroy');
+
 });
 
 require __DIR__.'/auth.php';

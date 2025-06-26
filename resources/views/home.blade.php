@@ -6,7 +6,7 @@
     </x-slot>
 
     <section class="bg-white">
-        <div class="py-4 px-4 mx-auto max-w-screen-xl">
+        <div class="pb-8 px-4 mx-auto max-w-screen-xl">
             <div class="bg-gray-50 border border-gray-200  rounded-lg p-8 md:p-12 mb-8">
                 <a href="#" class="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
                     <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 14">

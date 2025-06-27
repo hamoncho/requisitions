@@ -10,6 +10,7 @@ use App\Http\Controllers\ObjectiveController;
 use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\RequisitionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -109,6 +110,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/requisition/history', function(){
         return view('requisition.history');
     })->name('requisition.history');
+
+    Route::get('/requisition/create', [RequisitionController::class, 'create'])->name('requisition.create');
+    Route::get('/requisition/store', [RequisitionController::class, 'store'])->name('requisition.store');
 });
 
 require __DIR__.'/auth.php';

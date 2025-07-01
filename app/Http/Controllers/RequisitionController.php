@@ -37,7 +37,16 @@ class RequisitionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'processes_id' => 'required|exists:processes,id',
+        ]);
+
+        $requisition = Requisition::create([
+            'processes_id' => $request->processes_id,
+            'users_id' => auth()->id(),
+        ]);
+
+        return redirect()->route('requisition_items.index', $requisition);
     }
 
     /**

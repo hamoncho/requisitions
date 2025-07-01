@@ -15,4 +15,12 @@ class BudgetItem extends Model
     {
         return $this->belongsTo(GeneralBudgetItem::class);
     }
+
+    /**
+     * Get the requisition items for the budget item.
+     */
+    public function requisitionItems()
+    {
+        return $this->hasMany(RequisitionItem::class);
+    }
 }

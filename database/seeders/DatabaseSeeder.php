@@ -21,7 +21,8 @@ class DatabaseSeeder extends Seeder
             GoalSeeder::class,
             ProjectSeeder::class,
             IndicatorSeeder::class,
-            ProcessSeeder::class
+            ProcessSeeder::class,
+            UserSeeder::class
         ]);
     }
 }

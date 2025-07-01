@@ -11,6 +11,7 @@ use App\Http\Controllers\ProcessController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
+use App\Http\Controllers\RequisitionItemController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,7 +113,12 @@ Route::middleware('auth')->group(function () {
     })->name('requisition.history');
 
     Route::get('/requisition/create', [RequisitionController::class, 'create'])->name('requisition.create');
-    Route::get('/requisition/store', [RequisitionController::class, 'store'])->name('requisition.store');
+    Route::post('/requisition', [RequisitionController::class, 'store'])->name('requisition.store');
+    Route::get('/requisition/{requisition}/items', [RequisitionController::class, 'addItems'])->name('requisition.addItems');
+
+    // Rutas anidadas para Requisition Items
+    Route::resource('requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
+
 });
 
 require __DIR__.'/auth.php';

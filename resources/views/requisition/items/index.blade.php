@@ -23,7 +23,8 @@
                             {{ $requisition->indicator->project->description }}
                         </div>
                         <div>
-                            Jefe directo: Admin
+                            {{__('Created by: ')}}
+                            {{ $requisition->user->name }}
                         </div>
                     </div>
 

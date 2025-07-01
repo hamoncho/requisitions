@@ -64,4 +64,12 @@ class Requisition extends Model
     {
         return $this->belongsTo(Process::class, 'processes_id');
     }
+
+    /**
+     * Get the user that owns the requisition.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'users_id');
+    }
 }

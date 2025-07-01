@@ -17,6 +17,7 @@ class Requisition extends Model
     protected $fillable = [
         'processes_id',
         'users_id',
+        'indicators_id',
     ];
 
     /**
@@ -46,5 +47,21 @@ class Requisition extends Model
     public function requisitionItems()
     {
         return $this->hasMany(RequisitionItem::class, 'requisitions_id');
+    }
+
+    /**
+     * Get the indicator that owns the requisition.
+     */
+    public function indicator()
+    {
+        return $this->belongsTo(Indicator::class, 'indicators_id');
+    }
+
+    /**
+     * Get the process that owns the requisition.
+     */
+    public function process()
+    {
+        return $this->belongsTo(Process::class, 'processes_id');
     }
 }

@@ -12,6 +12,13 @@
                     <form method="POST" action="{{ route('requisition_items.store', $requisition) }}">
                         @csrf
 
+                        <!-- Name -->
+                        <div class="mb-4">
+                            <x-input-label for="name" :value="__('Name')" />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                        </div>
+
                         <!-- Budget Item -->
                         <div class="mb-4">
                             <x-input-label for="budget_item_id" :value="__('Budget Item')" />

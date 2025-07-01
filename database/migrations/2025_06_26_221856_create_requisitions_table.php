@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('requisitions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('processes_id');
+            $table->unsignedBigInteger('indicators_id');
             $table->unsignedBigInteger('users_id');
             $table->integer('folio')->unique()->nullable();
             $table->timestamps();

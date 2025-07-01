@@ -17,4 +17,12 @@ class Process extends Model
     {
         return $this->belongsToMany(Project::class);
     }
+
+    /**
+     * Get the requisitions for the process.
+     */
+    public function requisitions()
+    {
+        return $this->hasMany(Requisition::class, 'processes_id');
+    }
 }

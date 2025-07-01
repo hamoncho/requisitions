@@ -15,4 +15,12 @@ class Indicator extends Model
     {
         return $this->belongsTo(Project::class);
     }
+
+    /**
+     * Get the requisitions for the indicator.
+     */
+    public function requisitions()
+    {
+        return $this->hasMany(Requisition::class, 'indicators_id');
+    }
 }

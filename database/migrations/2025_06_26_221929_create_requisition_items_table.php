@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('requisitions_id');
             $table->unsignedBigInteger('budget_item_id');
+            $table->string('name');
             $table->integer('amount');
             $table->string('unit');
             $table->string('type_resource');

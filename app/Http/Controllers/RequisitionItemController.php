@@ -33,6 +33,7 @@ class RequisitionItemController extends Controller
     public function store(Request $request, Requisition $requisition)
     {
         $request->validate([
+            'name' => 'required|string|max:255',
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',
@@ -71,6 +72,7 @@ class RequisitionItemController extends Controller
     public function update(Request $request, Requisition $requisition, RequisitionItem $requisition_item)
     {
         $request->validate([
+            'name' => 'required|string|max:255',
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',

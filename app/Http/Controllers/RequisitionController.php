@@ -39,10 +39,12 @@ class RequisitionController extends Controller
     {
         $request->validate([
             'processes_id' => 'required|exists:processes,id',
+            'indicators_id' => 'required|exists:indicators,id',
         ]);
 
         $requisition = Requisition::create([
             'processes_id' => $request->processes_id,
+            'indicators_id' => $request->indicators_id,
             'users_id' => auth()->id(),
         ]);
 

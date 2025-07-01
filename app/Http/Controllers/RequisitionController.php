@@ -6,6 +6,7 @@ use App\Models\Indicator;
 use App\Models\Process;
 use App\Models\Project;
 use App\Models\Requisition;
+use App\Services\ApprovalService;
 use Illuminate\Http\Request;
 
 class RequisitionController extends Controller
@@ -15,7 +16,8 @@ class RequisitionController extends Controller
      */
     public function index()
     {
-        //
+        $requisitions = auth()->user()->requisitions()->latest()->get();
+        return view('requisition.index', compact('requisitions'));
     }
 
     /**
@@ -35,7 +37,7 @@ class RequisitionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, ApprovalService $approvalService)
     {
         $request->validate([
             'processes_id' => 'required|exists:processes,id',
@@ -48,6 +50,8 @@ class RequisitionController extends Controller
             'users_id' => auth()->id(),
         ]);
 
+        $approvalService->startApprovalProcess($requisition);
+
         return redirect()->route('requisition_items.index', $requisition);
     }
 
@@ -56,7 +60,8 @@ class RequisitionController extends Controller
      */
     public function show(Requisition $requisition)
     {
-        //
+        $requisition->load('approvals.approver');
+        return view('requisition.show', compact('requisition'));
     }
 
     /**
@@ -81,5 +86,19 @@ class RequisitionController extends Controller
     public function destroy(Requisition $requisition)
     {
         //
+    }
+
+    public function approve(Request $request, Requisition $requisition, ApprovalService $approvalService)
+    {
+        $approvalService->approve($requisition, auth()->user(), $request->input('comments'));
+
+        return back()->with('success', 'Requisition approved.');
+    }
+
+    public function reject(Request $request, Requisition $requisition, ApprovalService $approvalService)
+    {
+        $approvalService->reject($requisition, auth()->user(), $request->input('comments'));
+
+        return back()->with('success', 'Requisition rejected.');
     }
 }

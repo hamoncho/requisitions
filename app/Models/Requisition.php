@@ -18,6 +18,8 @@ class Requisition extends Model
         'processes_id',
         'users_id',
         'indicators_id',
+        'status',
+        'current_approver_id',
     ];
 
     /**
@@ -71,5 +73,23 @@ class Requisition extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'users_id');
+    }
+
+    /**
+     * Get all of the approvals for the Requisition.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function approvals()
+    {
+        return $this->hasMany(RequisitionApproval::class);
+    }
+
+    /**
+     * Get the current approver of the requisition.
+     */
+    public function currentApprover()
+    {
+        return $this->belongsTo(User::class, 'current_approver_id');
     }
 }

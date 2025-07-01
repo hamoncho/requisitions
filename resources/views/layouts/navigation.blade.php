@@ -44,6 +44,13 @@
                             {{ __('Profile') }}
                         </x-dropdown-link>
 
+                        @if (Auth::user()->role !== 'user')
+                            <x-dropdown-link :href="route('approvals.index')">
+                                {{ __('Aprove requisitions') }}
+                            </x-dropdown-link>
+                        @endif
+
+
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf

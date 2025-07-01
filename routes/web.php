@@ -12,6 +12,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\RequisitionItemController;
+use App\Http\Controllers\ApprovalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -112,13 +113,19 @@ Route::middleware('auth')->group(function () {
         return view('requisition.history');
     })->name('requisition.history');
 
+    Route::get('/requisition', [RequisitionController::class, 'index'])->name('requisition.index');
     Route::get('/requisition/create', [RequisitionController::class, 'create'])->name('requisition.create');
     Route::post('/requisition', [RequisitionController::class, 'store'])->name('requisition.store');
+    Route::get('/requisition/{requisition}', [RequisitionController::class, 'show'])->name('requisition.show');
     Route::get('/requisition/{requisition}/items', [RequisitionController::class, 'addItems'])->name('requisition.addItems');
 
     // Rutas anidadas para Requisition Items
     Route::resource('requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
 
+    Route::post('/requisition/{requisition}/approve', [RequisitionController::class, 'approve'])->name('requisition.approve');
+    Route::post('/requisition/{requisition}/reject', [RequisitionController::class, 'reject'])->name('requisition.reject');
+
+    Route::get('/approvals', [ApprovalController::class, 'index'])->name('approvals.index');
 });
 
 require __DIR__.'/auth.php';

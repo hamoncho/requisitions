@@ -51,4 +51,28 @@ class User extends Authenticatable
     {
         return $this->hasMany(Requisition::class, 'users_id');
     }
+
+    /**
+     * Get the user's supervisor.
+     */
+    public function supervisor()
+    {
+        return $this->belongsTo(User::class, 'supervisor_id');
+    }
+
+    /**
+     * Get the user's subordinates.
+     */
+    public function subordinates()
+    {
+        return $this->hasMany(User::class, 'supervisor_id');
+    }
+
+    /**
+     * Get the approvals for the user.
+     */
+    public function approvals()
+    {
+        return $this->hasMany(RequisitionApproval::class, 'approver_id');
+    }
 }

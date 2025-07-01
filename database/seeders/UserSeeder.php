@@ -14,20 +14,31 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Crear usuario Administrador
-        User::create([
-            'name' => 'Admin User',
-            'email' => 'admin@gmail.com',
-            'password' => Hash::make('1234qwer'),
-            'role' => 'admin',
+        // Nivel 1: Director
+        $director = User::create([
+            'name' => 'Director User',
+            'email' => 'director@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'director',
+            'supervisor_id' => null,
         ]);
 
-        // Crear usuario Normal
+        // Nivel 2: Manager, reporta al Director
+        $manager = User::create([
+            'name' => 'Manager User',
+            'email' => 'manager@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'manager',
+            'supervisor_id' => $director->id,
+        ]);
+
+        // Nivel 3: Empleado, reporta al Manager
         User::create([
-            'name' => 'Test User',
-            'email' => 'user@gmail.com',
-            'password' => Hash::make('1234qwer'),
+            'name' => 'Regular User',
+            'email' => 'user@example.com',
+            'password' => Hash::make('password'),
             'role' => 'user',
+            'supervisor_id' => $manager->id,
         ]);
     }
 }

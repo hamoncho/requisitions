@@ -50,7 +50,7 @@ class RequisitionController extends Controller
             'users_id' => auth()->id(),
         ]);
 
-        $approvalService->startApprovalProcess($requisition);
+        //$approvalService->startApprovalProcess($requisition);
 
         return redirect()->route('requisition_items.index', $requisition);
     }
@@ -86,6 +86,12 @@ class RequisitionController extends Controller
     public function destroy(Requisition $requisition)
     {
         //
+    }
+
+    public function startApprovalProcess(Requisition $requisition, ApprovalService $approvalService)
+    {
+        $approvalService->startApprovalProcess($requisition);
+        return redirect()->route('requisition_items.index', $requisition);
     }
 
     public function approve(Request $request, Requisition $requisition, ApprovalService $approvalService)

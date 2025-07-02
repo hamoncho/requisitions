@@ -40,12 +40,56 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $requisition->folio }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap">
-                                            {{ $requisition->status }}</td>
+                                            @switch($requisition->status)
+                                                @case('draft')
+                                                    <span
+                                                        class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                                                        {{ $requisition->status }}
+                                                    </span>
+                                                @break
+
+                                                @case('pending_approval')
+                                                    <span
+                                                        class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                                                        {{ $requisition->status }}
+                                                    </span>
+                                                @break
+
+                                                @case('approved')
+                                                    <span
+                                                        class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                                                        {{ $requisition->status }}
+                                                    </span>
+                                                @break
+
+                                                @case('rejected')
+                                                    <span
+                                                        class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                                                        {{ $requisition->status }}
+                                                    </span>
+                                                @break
+
+                                                @default
+                                                    <span
+                                                        class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
+                                                        {{ $requisition->status }}
+                                                    </span>
+                                            @endswitch
+
+                                        </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $requisition->currentApprover->name ?? '' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                             <a href="{{ route('requisition.show', $requisition) }}"
-                                                class="text-indigo-600 hover:text-indigo-900">{{ __('View') }}</a>
+                                                class="text-indigo-600 hover:text-indigo-900">
+                                                {{ __('View') }}
+                                            </a>
+                                            @if ($requisition->status == 'draft')
+                                                <a href="{{ route('requisition_items.index', $requisition) }}"
+                                                    class="text-indigo-600 hover:text-indigo-900 ml-2">
+                                                    {{ __('Continue') }}
+                                                </a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach

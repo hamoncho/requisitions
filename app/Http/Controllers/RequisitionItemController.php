@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BudgetItem;
+use App\Models\GeneralBudgetItem;
 use App\Models\Requisition;
 use App\Models\RequisitionItem;
 use Illuminate\Http\Request;
@@ -23,8 +24,8 @@ class RequisitionItemController extends Controller
      */
     public function create(Requisition $requisition)
     {
-        $budget_items = BudgetItem::all(); // Asumiendo que tienes un modelo BudgetItem
-        return view('requisition.items.create', compact('requisition', 'budget_items'));
+        $general_budget_items = GeneralBudgetItem::with('budgetItems')->get();
+        return view('requisition.items.create', compact('requisition', 'general_budget_items'));
     }
 
     /**
@@ -41,10 +42,18 @@ class RequisitionItemController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
-        $requisition->requisitionItems()->create($request->all());
+        $requisition->requisitionItems()->create([
+            'name' => $request->name,
+            'budget_item_id' => $request->budget_item_id,
+            'amount' => $request->amount,
+            'unit' => $request->unit,
+            'type_resource' => $request->type_resource,
+            'price' => $request->price,
+
+        ]);
 
         return redirect()->route('requisition_items.index', $requisition)
-                         ->with('success', 'Requisition item created successfully.');
+            ->with('success', 'Requisition item created successfully.');
     }
 
     /**
@@ -53,7 +62,7 @@ class RequisitionItemController extends Controller
     public function show(Requisition $requisition, RequisitionItem $item)
     {
         // No se usará directamente ya que la ruta resource tiene except(['show'])
-        // Pero si lo necesitaras, aquí estaría la lógica.
+        // Pero si es necesario.
         return view('requisition.items.show', compact('requisition', 'item'));
     }
 
@@ -62,8 +71,8 @@ class RequisitionItemController extends Controller
      */
     public function edit(Requisition $requisition, RequisitionItem $requisition_item)
     {
-        $budget_items = BudgetItem::all();
-        return view('requisition.items.edit', compact('requisition', 'requisition_item', 'budget_items'));
+        $general_budget_items = GeneralBudgetItem::with('budgetItems')->get();
+        return view('requisition.items.edit', compact('requisition', 'requisition_item', 'general_budget_items'));
     }
 
     /**
@@ -80,10 +89,18 @@ class RequisitionItemController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
-        $requisition_item->update($request->all());
+        $requisition_item->update([
+            'name' => $request->name,
+            'budget_item_id' => $request->budget_item_id,
+            'amount' => $request->amount,
+            'unit' => $request->unit,
+            'type_resource' => $request->type_resource,
+            'price' => $request->price,
+
+        ]);
 
         return redirect()->route('requisition_items.index', $requisition)
-                         ->with('success', 'Requisition item updated successfully.');
+            ->with('success', 'Requisition item updated successfully.');
     }
 
     /**
@@ -94,6 +111,6 @@ class RequisitionItemController extends Controller
         $requisition_item->delete();
 
         return redirect()->route('requisition_items.index', $requisition)
-                         ->with('success', 'Requisition item deleted successfully.');
+            ->with('success', 'Requisition item deleted successfully.');
     }
 }

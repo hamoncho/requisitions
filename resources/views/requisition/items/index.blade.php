@@ -88,7 +88,7 @@
                     @if ($requisitionItems->isEmpty())
                         <p>{{ __('No items found for this requisition.') }}</p>
                     @else
-                        <div class="overflow-x-auto">
+                        <div class="overflow-x-auto mt-2">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>

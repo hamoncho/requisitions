@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('amount');
             $table->string('unit');
-            $table->string('type_resource');
+            $table->string('type_resource')->nullable();
             $table->float('price');
             $table->timestamps();
         });

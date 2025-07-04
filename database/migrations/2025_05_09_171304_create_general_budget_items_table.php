@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('code');
             $table->string('name',255);
+            $table->string('description', 1024);
             $table->timestamps();
         });
     }

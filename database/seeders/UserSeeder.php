@@ -16,29 +16,47 @@ class UserSeeder extends Seeder
     {
         // Nivel 1: Director
         $director = User::create([
-            'name' => 'Director User',
+            'name' => 'Mtra. Selene Gómez Barragán',
             'email' => 'director@example.com',
             'password' => Hash::make('password'),
             'role' => 'director',
             'supervisor_id' => null,
         ]);
 
-        // Nivel 2: Manager, reporta al Director
-        $manager = User::create([
-            'name' => 'Manager User',
-            'email' => 'manager@example.com',
+        // Nivel 2: Subdireccion de Servicios Administrativos, reporta al Director
+        $subdireccionServiciosAdministrativos = User::create([
+            'name' => 'L.C Cuitlahuac Arévalo Vargas',
+            'email' => 'subdireccion@example.com',
             'password' => Hash::make('password'),
-            'role' => 'manager',
+            'role' => 'Directora de Planeación y Vinculación',
             'supervisor_id' => $director->id,
         ]);
 
-        // Nivel 3: Empleado, reporta al Manager
+        // Nivel 3: Manager, reporta al Director
+        $directoraPlaneacionVinculacion = User::create([
+            'name' => 'Lic. Ana Patricia Guizar Mendoza',
+            'email' => 'planning@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'planning',
+            'supervisor_id' => $subdireccionServiciosAdministrativos->id,
+        ]);
+
+        // Nivel 4: Manager, reporta al Director
+        $supervisor = User::create([
+            'name' => 'Kenia Judith Becerra Bautista',
+            'email' => 'supervisor@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'immediate_boss',
+            'supervisor_id' => $directoraPlaneacionVinculacion->id,
+        ]);
+
+        // Nivel 5: Empleado, reporta al Manager
         User::create([
-            'name' => 'Regular User',
+            'name' => 'User',
             'email' => 'user@example.com',
             'password' => Hash::make('password'),
             'role' => 'user',
-            'supervisor_id' => $manager->id,
+            'supervisor_id' => $supervisor->id,
         ]);
     }
 }

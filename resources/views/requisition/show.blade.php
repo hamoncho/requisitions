@@ -34,8 +34,7 @@
                                 Status:
                                 @switch($requisition->status)
                                     @case('draft')
-                                        <span
-                                            class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
+                                        <span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
                                             {{ $requisition->status }}
                                         </span>
                                     @break
@@ -48,8 +47,7 @@
                                     @break
 
                                     @case('approved')
-                                        <span
-                                            class="bg-green-100 text-green-800 text-sm font-medium me-2 px-3 py-1 rounded-dm">
+                                        <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-3 py-1 rounded-dm">
                                             {{ $requisition->status }}
                                         </span>
                                     @break
@@ -61,8 +59,7 @@
                                     @break
 
                                     @default
-                                        <span
-                                            class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-3 py-1 rounded-dm">
+                                        <span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-3 py-1 rounded-dm">
                                             {{ $requisition->status }}
                                         </span>
                                 @endswitch
@@ -108,7 +105,28 @@
                                                     {{ $item->budgetItem->name ?? 'N/A' }}</td>
                                                 <td class="px-6 py-4 whitespace-nowrap">{{ $item->amount }}</td>
                                                 <td class="px-6 py-4 whitespace-nowrap">{{ $item->unit }}</td>
-                                                <td class="px-6 py-4 whitespace-nowrap">{{ $item->type_resource }}</td>
+                                                @if (!isset($item->type_resource) && $requisition->status == 'approved' && Auth::user()->role == 'planning')
+                                                    <td class="px-6 py-4 whitespace-nowrap">
+                                                        <form id=""
+                                                            action="{{ route('requisition_items.type_resource.update', [$requisition, $item]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('PUT')
+                                                            <select id="type_resource" name="type_resource"
+                                                                onchange = "this.form.submit()">
+                                                                <option>Vacio</option>
+                                                                <option value="Estado">Estado</option>
+                                                                <option value="Federal">Federal</option>
+                                                                <option value="Propios">Propios</option>
+                                                                <option value="Projectos">Projectos</option>
+                                                            </select>
+                                                        </form>
+                                                    </td>
+                                                @else
+                                                    <td class="px-6 py-4 whitespace-nowrap">
+                                                        {{ $item->type_resource }}
+                                                    </td>
+                                                @endif
                                                 <td class="px-6 py-4 whitespace-nowrap">{{ $item->price }}</td>
                                             </tr>
                                         @endforeach
@@ -124,16 +142,25 @@
                             <table class="min-w-full divide-y divide-gray-200">
                                 <thead class="bg-gray-50">
                                     <tr>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Approver</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Comments</th>
-                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Approver</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Status</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Comments</th>
+                                        <th scope="col"
+                                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Date</th>
                                     </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-200">
                                     @foreach ($requisition->approvals as $approval)
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap">{{ $approval->approver->name }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap">{{ $approval->approver->name }}
+                                            </td>
                                             <td class="px-6 py-4 whitespace-nowrap">{{ $approval->status }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap">{{ $approval->comments }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap">{{ $approval->updated_at }}</td>
@@ -152,7 +179,8 @@
                                     @csrf
                                     <div class="mb-4">
                                         <x-input-label for="comments" :value="__('Comments')" />
-                                        <textarea name="comments" id="comments" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                                        <textarea name="comments" id="comments"
+                                            class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>
                                     <x-primary-button>
                                         {{ __('Approve') }}
@@ -164,7 +192,8 @@
                                     @csrf
                                     <div class="mb-4">
                                         <x-input-label for="comments" :value="__('Comments')" />
-                                        <textarea name="comments" id="comments" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
+                                        <textarea name="comments" id="comments"
+                                            class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>
                                     <x-danger-button>
                                         {{ __('Reject') }}

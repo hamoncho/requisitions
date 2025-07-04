@@ -123,6 +123,9 @@ Route::middleware('auth')->group(function () {
     // Rutas anidadas para Requisition Items
     Route::resource('requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
 
+    //Update type_resource
+    Route::put('/requisition/{requisition}/requisition_items/type_resource/{requisition_item}',[RequisitionItemController::class, 'updateTypeResource'])->name('requisition_items.type_resource.update');
+
     Route::post('/requisition/{requisition}/approve', [RequisitionController::class, 'approve'])->name('requisition.approve');
     Route::post('/requisition/{requisition}/reject', [RequisitionController::class, 'reject'])->name('requisition.reject');
 

@@ -38,7 +38,7 @@ class RequisitionItemController extends Controller
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',
-            'type_resource' => 'required|string|max:255',
+            //'type_resource' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ]);
 
@@ -47,7 +47,7 @@ class RequisitionItemController extends Controller
             'budget_item_id' => $request->budget_item_id,
             'amount' => $request->amount,
             'unit' => $request->unit,
-            'type_resource' => $request->type_resource,
+            //'type_resource' => $request->type_resource,
             'price' => $request->price,
 
         ]);
@@ -80,12 +80,12 @@ class RequisitionItemController extends Controller
      */
     public function update(Request $request, Requisition $requisition, RequisitionItem $requisition_item)
     {
+
         $request->validate([
             'name' => 'required|string|max:255',
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',
-            'type_resource' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ]);
 
@@ -94,12 +94,29 @@ class RequisitionItemController extends Controller
             'budget_item_id' => $request->budget_item_id,
             'amount' => $request->amount,
             'unit' => $request->unit,
-            'type_resource' => $request->type_resource,
             'price' => $request->price,
 
         ]);
 
         return redirect()->route('requisition_items.index', $requisition)
+            ->with('success', 'Requisition item updated successfully.');
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function updateTypeResource(Request $request, Requisition $requisition, RequisitionItem $requisition_item)
+    {
+
+        $request->validate([
+            'type_resource' => 'required',
+        ]);
+
+        $requisition_item->update([
+            'type_resource' => $request->type_resource,
+        ]);
+
+        return redirect()->route('requisition.show', $requisition)
             ->with('success', 'Requisition item updated successfully.');
     }
 

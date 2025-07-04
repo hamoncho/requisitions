@@ -56,13 +56,13 @@
                             <x-input-error :messages="$errors->get('unit')" class="mt-2" />
                         </div>
 
-                        <!-- Type Resource -->
+                        <!-- Type Resource
                         <div class="mb-4">
                             <x-input-label for="type_resource" :value="__('Type Resource')" />
                             <x-text-input id="type_resource" class="block mt-1 w-full" type="text" name="type_resource" :value="old('type_resource')" required />
                             <x-input-error :messages="$errors->get('type_resource')" class="mt-2" />
                         </div>
-
+                        -->
                         <!-- Price -->
                         <div class="mb-4">
                             <x-input-label for="price" :value="__('Price')" />

@@ -148,66 +148,75 @@
                     </div>
 
                     <section class="bg-white py-8  mx-auto max-w-screen-xl">
-                        <h3 class="mb-4 text-lg font-medium text-gray-900">{{ __('Approval History') }}</h3>
-                        <ol class="relative text-gray-500 ml-8 border-s border-gray-200">
-                            @foreach ($requisition->approvals as $approval)
-                                <li class="mb-10 ms-6">
-                                    @switch($approval->status)
-                                        @case('approved')
-                                            <span
-                                                class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -start-4 ring-4 ring-white">
-                                                <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
-                                                </svg>
-                                            </span>
-                                        @break
+                        <details>
+                            <summary class="mb-4 text-lg font-medium text-gray-900 cursor-pointer">
+                                {{ __('Approval History') }}
+                            </summary>
 
-                                        @case('rejected')
-                                            <span
-                                                class="absolute flex items-center justify-center w-8 h-8 bg-red-200 rounded-full -start-4 ring-4 ring-white">
-                                                <svg class="w-4 h-4 text-red-500" aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                </svg>
-                                            </span>
-                                        @break
-
-                                        @default
-                                            @if ($requisition->status == 'rejected')
+                            <ol class="relative text-gray-500 ml-8 border-s border-gray-200">
+                                @foreach ($requisition->approvals as $approval)
+                                    <li class="mb-10 ms-6">
+                                        @switch($approval->status)
+                                            @case('approved')
                                                 <span
-                                                    class="absolute flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full -start-4 ring-4 ring-white">
-                                                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                    class="absolute flex items-center justify-center w-8 h-8 bg-green-200 rounded-full -start-4 ring-4 ring-white">
+                                                    <svg class="w-3.5 h-3.5 text-green-500" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                                                         <path stroke="currentColor" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-width="2"
-                                                            d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                            d="M1 5.917 5.724 10.5 15 1.5" />
                                                     </svg>
                                                 </span>
-                                            @else
+                                            @break
+
+                                            @case('rejected')
                                                 <span
-                                                    class="absolute flex items-center justify-center w-8 h-8 bg-yellow-200 rounded-full -start-4 ring-4 ring-white">
-                                                    <svg class="w-4 h-4 text-yellow-500" aria-hidden="true"
-                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                    class="absolute flex items-center justify-center w-8 h-8 bg-red-200 rounded-full -start-4 ring-4 ring-white">
+                                                    <svg class="w-4 h-4 text-red-500" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                         <path stroke="currentColor" stroke-linecap="round"
                                                             stroke-linejoin="round" stroke-width="2"
-                                                            d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                                     </svg>
                                                 </span>
-                                            @endif
-                                    @endswitch
-                                    <h3 class="font-medium leading-tight">
-                                        {{ $approval->approver->name }}
-                                    </h3>
-                                    <p class="text-sm">{{ $approval->comments }}</p>
-                                    <p class="text-sm text-gray-400">
-                                        {{ $approval->updated_at->format('d/m/Y H:i') }}
-                                    </p>
-                                </li>
-                            @endforeach
-                        </ol>
+                                            @break
+
+                                            @default
+                                                @if ($requisition->status == 'rejected')
+                                                    <span
+                                                        class="absolute flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full -start-4 ring-4 ring-white">
+                                                        <svg class="w-4 h-4 text-gray-500" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        </svg>
+                                                    </span>
+                                                @else
+                                                    <span
+                                                        class="absolute flex items-center justify-center w-8 h-8 bg-yellow-200 rounded-full -start-4 ring-4 ring-white">
+                                                        <svg class="w-4 h-4 text-yellow-500" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 20 20">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="M10 6v4l3.276 3.276M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                        </svg>
+                                                    </span>
+                                                @endif
+                                        @endswitch
+                                        <h3 class="font-medium leading-tight">
+                                            {{ $approval->approver->name }}
+                                        </h3>
+                                        <p class="text-sm">{{ $approval->comments }}</p>
+                                        <p class="text-sm text-gray-400">
+                                            {{ $approval->updated_at->format('d/m/Y H:i') }}
+                                        </p>
+                                    </li>
+                                @endforeach
+                            </ol>
+                        </details>
                     </section>
 
                     @if ($requisition->status === 'pending_approval' && $requisition->current_approver_id === auth()->id())

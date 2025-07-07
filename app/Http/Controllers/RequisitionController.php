@@ -8,6 +8,7 @@ use App\Models\Project;
 use App\Models\Requisition;
 use App\Services\ApprovalService;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class RequisitionController extends Controller
 {
@@ -106,5 +107,11 @@ class RequisitionController extends Controller
         $approvalService->reject($requisition, auth()->user(), $request->input('comments'));
 
         return back()->with('success', 'Requisition rejected.');
+    }
+
+    public function pdf()
+    {
+        $pdf = Pdf::loadView('pdf.requisition');
+        return $pdf->download('requisition.pdf');
     }
 }

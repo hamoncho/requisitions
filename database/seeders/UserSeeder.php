@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
             'name' => 'L.C Cuitlahuac Arévalo Vargas',
             'email' => 'subdireccion@example.com',
             'password' => Hash::make('password'),
-            'role' => 'Directora de Planeación y Vinculación',
+            'role' => 'subdirectorate',
             'supervisor_id' => $director->id,
             'directive_id' => $director->id,
         ]);
@@ -60,6 +60,16 @@ class UserSeeder extends Seeder
             'email' => 'user@example.com',
             'password' => Hash::make('password'),
             'role' => 'user',
+            'supervisor_id' => $supervisor->id,
+            'directive_id' => $director->id,
+        ]);
+
+        // Create admin user
+        User::create([
+            'name' => 'admin',
+            'email' => 'admin@example.com',
+            'password' => Hash::make('password'),
+            'role' => 'admin',
             'supervisor_id' => $supervisor->id,
             'directive_id' => $director->id,
         ]);

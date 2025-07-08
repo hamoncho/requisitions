@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Requisition;
 use App\Models\User;
+use Illuminate\Console\View\Components\Warn;
 
 class ApprovalService
 {
@@ -12,6 +13,7 @@ class ApprovalService
         $currentUser = $requisition->user;
         $approvers = $this->getApprovers($currentUser);
 
+        //dd($approvers);
         if (empty($approvers)) {
             $requisition->update(['status' => 'approved']);
             return;
@@ -65,13 +67,10 @@ class ApprovalService
     protected function getApprovers(User $user)
     {
         $approvers = [];
-        $current = $user;
-
-        while ($current->supervisor) {
-            $approvers[] = $current->supervisor;
-            $current = $current->supervisor;
-        }
-
+        $supervisor = $user->supervisor;
+        $planning = User::where('role', 'planning')->first();
+        $directive = $user->directive;
+        $approvers = [$supervisor, $planning, $directive];
         return $approvers;
     }
 

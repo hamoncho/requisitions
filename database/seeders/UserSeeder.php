@@ -19,8 +19,9 @@ class UserSeeder extends Seeder
             'name' => 'Mtra. Selene Gómez Barragán',
             'email' => 'director@example.com',
             'password' => Hash::make('password'),
-            'role' => 'director',
-            'supervisor_id' => null,
+            'role' => 'directive',
+            'supervisor_id' => 1,
+            'directive_id' => 1,
         ]);
 
         // Nivel 2: Subdireccion de Servicios Administrativos, reporta al Director
@@ -30,6 +31,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'Directora de Planeación y Vinculación',
             'supervisor_id' => $director->id,
+            'directive_id' => $director->id,
         ]);
 
         // Nivel 3: Manager, reporta al Director
@@ -39,6 +41,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'planning',
             'supervisor_id' => $subdireccionServiciosAdministrativos->id,
+            'directive_id' => $director->id,
         ]);
 
         // Nivel 4: Manager, reporta al Director
@@ -48,6 +51,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'immediate_boss',
             'supervisor_id' => $directoraPlaneacionVinculacion->id,
+            'directive_id' => $director->id,
         ]);
 
         // Nivel 5: Empleado, reporta al Manager
@@ -57,6 +61,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
             'role' => 'user',
             'supervisor_id' => $supervisor->id,
+            'directive_id' => $director->id,
         ]);
     }
 }

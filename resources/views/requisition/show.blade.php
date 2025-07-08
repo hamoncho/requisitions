@@ -148,10 +148,9 @@
                     </div>
 
                     <section class="bg-white py-8  mx-auto max-w-screen-xl">
-                        <details>
-                            <summary class="mb-4 text-lg font-medium text-gray-900 cursor-pointer">
+                            <h3 class="mb-4 text-lg font-medium text-gray-900">
                                 {{ __('Approval History') }}
-                            </summary>
+                            </h3>
 
                             <ol class="relative text-gray-500 ml-8 border-s border-gray-200">
                                 @foreach ($requisition->approvals as $approval)
@@ -210,13 +209,14 @@
                                             {{ $approval->approver->name }}
                                         </h3>
                                         <p class="text-sm">{{ $approval->comments }}</p>
+                                        @if($approval->status == 'approved' || $approval->status == 'rejected')
                                         <p class="text-sm text-gray-400">
                                             {{ $approval->updated_at->format('d/m/Y H:i') }}
                                         </p>
+                                        @endif
                                     </li>
                                 @endforeach
                             </ol>
-                        </details>
                     </section>
 
                     @if ($requisition->status === 'pending_approval' && $requisition->current_approver_id === auth()->id())

@@ -18,8 +18,8 @@ class RequisitionSeeder extends Seeder
         $process = Process::where('index','PROC101')->first();
         $user = User::where('role','user')->first();
         Requisition::create([
-            'processes_id' => $process->projects[0]->id,
-            'indicators_id' => $process->projects[0]->indicators[0]->id,
+            'processes_id' => $process->id,
+            'indicators_id' => $process->projects->first()->indicators->first()->id,
             'users_id' => $user->id,
             'folio' => 100
         ]);

@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             IndicatorSeeder::class,
             ProcessSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            RequisitionSeeder::class,
+            RequisitionItemSeeder::class,
         ]);
     }
 }

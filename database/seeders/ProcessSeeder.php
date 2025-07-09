@@ -63,6 +63,7 @@ class ProcessSeeder extends Seeder
         $project_2_3_1 = Project::where('index', '2.3.1')->first();
 
         $project_et_2_1 = Project::where('index', 'ET.2.1')->first();
+        $project_et_2_2 = Project::where('index', 'ET.2.2')->first();
 
         $project_3_1_1 = Project::where('index', '3.1.1')->first();
         $project_3_1_2 = Project::where('index', '3.1.2')->first();

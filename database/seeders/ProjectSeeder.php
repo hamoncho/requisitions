@@ -167,6 +167,12 @@ class ProjectSeeder extends Seeder
             'action_id' => $action_et_2->id
         ]);
 
+        Project::create([
+            'index' => 'ET.2.2',
+            'description' => 'Atención y ampliación de cobertura de grupos vulnerables y en regiones de alta marginación',
+            'action_id' => $action_et_2->id
+        ]);
+
         //for action_3_1
         Project::create([
             'index' => '3.1.1',

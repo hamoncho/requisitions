@@ -83,7 +83,7 @@
                                                 class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 {{ __('Description') }}</th>
                                             <th scope="col"
-                                                class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                class="w-18 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                 {{ __('Amount') }}</th>
                                             <th scope="col"
                                                 class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">

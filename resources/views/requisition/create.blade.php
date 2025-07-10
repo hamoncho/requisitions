@@ -124,7 +124,7 @@
             }
 
             // Mostrar indicador de carga
-            loadingElement.classList.remove('hidden');
+            //loadingElement.classList.remove('hidden');
 
             try {
                 // Obtener proyectos desde la API
@@ -144,7 +144,7 @@
                 projects.forEach(project => {
                     const option = document.createElement('option');
                     option.value = project.id;
-                    option.textContent = project.description;
+                    option.textContent = project.index + ": " + project.description;
                     projectsSelect.appendChild(option);
                 });
 
@@ -155,7 +155,8 @@
                 indicatorsSelect.disabled = true;
 
                 if (projects.length > 0) {
-                    showNotification('Proyectos cargados correctamente');
+                    projectsSelect.value = projects[0].id;
+                    await loadIndicators(projects[0].id);
                 }
             } catch (error) {
                 handleApiError(error);
@@ -193,14 +194,14 @@
                 indicators.forEach(indicator => {
                     const option = document.createElement('option');
                     option.value = indicator.id;
-                    option.textContent = indicator.description;
+                    option.textContent = indicator.index + ": " + indicator.description;
                     indicatorsSelect.appendChild(option);
                 });
 
                 indicatorsSelect.disabled = indicators.length === 0;
 
                 if (indicators.length > 0) {
-                    showNotification('Indicadores cargados correctamente');
+                    indicatorsSelect.value = indicators[0].id;
                 }
             } catch (error) {
                 handleApiError(error);

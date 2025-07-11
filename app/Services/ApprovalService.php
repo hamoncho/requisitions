@@ -77,7 +77,7 @@ class ApprovalService
 
     protected function getApproval(Requisition $requisition, User $approver)
     {
-        return $requisition->approvals()->where('approver_id', $approver->id)->first();
+        return $requisition->approvals()->where('approver_id', $approver->id)->where('status','pending')->first();
     }
 
     protected function updateRequisitionStatus(Requisition $requisition)

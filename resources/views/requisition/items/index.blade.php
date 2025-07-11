@@ -15,21 +15,22 @@
                                 {{ $requisition->process->index }}
                             </li>
 
-                            <li class="px-2 sm:px-6 py-1">
+                            <li class="px-2 sm:px-6 py-1 leading-none">
+                                <b class="font-bold">{{ __('Project') }}: </b>
+                                {{ $requisition->indicator->project->description }}
+                            </li>
+
+                            <li class="px-2 sm:px-6 py-1 leading-none">
                                 <b class="font-bold">{{ __('Indicator') }}: </b>
                                 {{ $requisition->indicator->description }}
                             </li>
 
-                            <li class="px-2 sm:px-6 pb-1">
-                                <b class="font-bold">{{ __('Project') }}: </b>
-                                {{ $requisition->indicator->project->description }}
-                            </li>
                             <li class="px-2 sm:px-6 pb-2">
                                 <b class="font-bold">{{ __('Created by: ') }} </b>
                                 {{ $requisition->user->name }}
                             </li>
                         </ul>
-                        <div class="sm:ml-6 ml-0 mb-2  flex sm:flex-col justify-between">
+                        <div class="sm:ml-6 ml-0 mb-2 min-w-fit flex md:flex-col justify-between">
                             <div>
                                 Status:
                                 @switch($requisition->status)
@@ -96,7 +97,7 @@
                                             class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('Description') }}</th>
                                         <th scope="col"
-                                            class="w-18 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="w-20 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('Amount') }}</th>
                                         <th scope="col"
                                             class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -124,7 +125,7 @@
                                             <td class="px-2 py-2 whitespace-nowrap">{{ $item->type_resource }}</td>
                                             <td class="px-2 py-2 whitespace-nowrap">${{ number_format($item->price, 2) }}</td>
                                             @if ($requisition->status == 'draft')
-                                                <td class="px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
+                                                <td class="w-24 px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
                                                     <a href="{{ route('requisition_items.edit', [$requisition, $item]) }}"
                                                         class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
                                                     <form

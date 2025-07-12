@@ -131,7 +131,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/approvals', [ApprovalController::class, 'index'])->name('approvals.index');
 
-    Route::get('/pdf/requisition',[RequisitionController::class, 'pdf'])->name('pdf.requisition');
+    Route::get('/pdf/requisition/{requisition}',[RequisitionController::class, 'pdf'])->name('pdf.requisition');
 });
 
 require __DIR__.'/auth.php';

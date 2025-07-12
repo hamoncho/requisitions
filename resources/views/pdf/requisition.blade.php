@@ -1,198 +1,262 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabla Moderna</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+
+    <title>Requisition</title>
     <style>
-        * {
-            margin: 0;
+        body {
+            font-family: sans-serif;
+            font-size: 12px;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
         }
 
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
 
         .container {
-            width: 100%;
-            max-width: 1000px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
+        }
+
+        .info-list {
+            display: inline-block;
+            width: 780px;
+            list-style: none;
+            background-color: #f3f4f6;
+            border-radius: 0.375rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list-header {
+            padding: 0.25rem 0.5rem;
+            font-size: 12px;
+            font-weight: 700;
+            background-color: #172554;
+            color: #f3f4f6;
+            border-top-left-radius: 0.375rem;
+            border-top-right-radius: 0.375rem;
+        }
+
+        .info-list-item {
+            padding: 0.25rem 0.5rem;
+            line-height: 1;
+        }
+
+        .status-container {
+            display: inline-block;
+            right: 0;
+            position: absolute;
+            min-width: fit-content;
+        }
+
+        .status-badge {
+            font-size: 12px;
+            margin-right: 0.5rem;
+            font-weight: 700;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+        }
+
+        .status-draft {
+            background-color: #f3f4f6;
+            color: #1f2937;
+        }
+
+        .status-pending {
+            background-color: #fef9c3;
+            color: #854d0e;
+        }
+
+        .status-approved {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .status-rejected {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .status-default {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .items-container {
+            margin-top: 0px;
+        }
+
+        .items-header {
+            font-size: 12px;
+            color: #111827;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin-top: 0.5rem;
+        }
+
+        .table {
+            min-width: 100%;
+            border-collapse: collapse;
         }
 
         .table-header {
-            padding: 24px 32px;
-            background: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
+            background-color: #f9fafb;
         }
 
-        .table-title {
-            font-size: 1.8rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .table-subtitle {
-            color: #7f8c8d;
-            margin-top: 8px;
-        }
-
-        .table-responsive {
-            overflow-x: auto;
-            padding: 20px;
-        }
-
-        .modern-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            min-width: 600px;
-        }
-
-        .modern-table thead th {
-            background-color: #6c5ce7;
-            color: white;
-            font-weight: 600;
+        .table-header th {
+            padding: 0.25rem 0.5rem;
             text-align: left;
-            padding: 18px 24px;
-        }
-
-        .modern-table th:first-child {
-            border-radius: 12px 0 0 0;
-        }
-
-        .modern-table th:last-child {
-            border-radius: 0 12px 0 0;
-        }
-
-        .modern-table tbody tr {
-            transition: all 0.2s ease;
-            background: white;
-        }
-
-        .modern-table tbody tr:nth-child(even) {
-            background-color: #f9f9ff;
-        }
-
-        .modern-table tbody tr:hover {
-            background-color: #f0f4ff;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 10px rgba(108, 92, 231, 0.1);
-        }
-
-        .modern-table td {
-            padding: 16px 24px;
-            color: #2d3436;
-            border-bottom: 1px solid #f1f2f6;
-        }
-
-        .status {
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 12px;
             font-weight: 500;
-            display: inline-block;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .status.completed {
-            background: rgba(46, 204, 113, 0.15);
-            color: #27ae60;
+        .table-body {
+            background-color: #ffffff;
         }
 
-        .status.pending {
-            background: rgba(241, 196, 15, 0.15);
-            color: #f39c12;
+        .table-body td {
+            font-size: 12px;
+            white-space: nowrap;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        .status.processing {
-            background: rgba(52, 152, 219, 0.15);
-            color: #2980b9;
+        .table-footer-row td {
+            font-weight: 700;
+            text-align: right;
+            padding: 0.5rem 0.5rem;
         }
 
-        .highlight {
-            font-weight: 600;
-            color: #6c5ce7;
-        }
-
-        @media (max-width: 768px) {
-            .table-header {
-                padding: 20px;
-            }
-
-            .modern-table th,
-            .modern-table td {
-                padding: 14px 16px;
-            }
+        .table-total-cell {
+            background-color: #e5e7eb;
+            white-space: nowrap;
+            padding: 0.5rem 0.5rem;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <div class="table-header">
-            <h1 class="table-title">Reporte de Proyectos</h1>
-            <p class="table-subtitle">Estado actual de los proyectos activos</p>
-        </div>
+        <ul class="info-list">
+            <li class="info-list-header">
+                {{ $requisition->process->index }}
+            </li>
 
-        <div class="table-responsive">
-            <table class="modern-table">
-                <thead>
-                    <tr>
-                        <th>Proyecto</th>
-                        <th>Líder</th>
-                        <th>Fecha</th>
-                        <th>Presupuesto</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Rediseño Web</td>
-                        <td>María Rodríguez</td>
-                        <td>15/08/2023</td>
-                        <td class="highlight">$24,800</td>
-                        <td><span class="status completed">Completado</span></td>
-                    </tr>
-                    <tr>
-                        <td>App Móvil</td>
-                        <td>Carlos Mendoza</td>
-                        <td>22/09/2023</td>
-                        <td class="highlight">$42,500</td>
-                        <td><span class="status processing">Procesando</span></td>
-                    </tr>
-                    <tr>
-                        <td>E-commerce</td>
-                        <td>Ana López</td>
-                        <td>05/10/2023</td>
-                        <td class="highlight">$68,300</td>
-                        <td><span class="status pending">Pendiente</span></td>
-                    </tr>
-                    <tr>
-                        <td>Inteligencia Artificial</td>
-                        <td>David Torres</td>
-                        <td>12/11/2023</td>
-                        <td class="highlight">$125,000</td>
-                        <td><span class="status processing">Procesando</span></td>
-                    </tr>
-                    <tr>
-                        <td>Cloud Migration</td>
-                        <td>Laura Jiménez</td>
-                        <td>18/12/2023</td>
-                        <td class="highlight">$89,500</td>
-                        <td><span class="status completed">Completado</span></td>
-                    </tr>
-                </tbody>
-            </table>
+            <li class="info-list-item">
+                <b>{{ __('Project') }}: </b>
+                {{ $requisition->indicator->project->description }}
+            </li>
+
+            <li class="info-list-item">
+                <b>{{ __('Indicator') }}: </b>
+                {{ $requisition->indicator->description }}
+            </li>
+
+            <li class="info-list-item">
+                <b>{{ __('Created by: ') }} </b>
+                {{ $requisition->user->name }}
+            </li>
+        </ul>
+        <div class="status-container">
+            <div>
+                Status:
+                @switch($requisition->status)
+                    @case('draft')
+                        <span class="status-badge status-draft">
+                            {{ $requisition->status }}
+                        </span>
+                    @break
+
+                    @case('pending_approval')
+                        <span class="status-badge status-pending">
+                            {{ $requisition->status }}
+                        </span>
+                    @break
+
+                    @case('approved')
+                        <span class="status-badge status-approved">
+                            {{ $requisition->status }}
+                        </span>
+                    @break
+
+                    @case('rejected')
+                        <span class="status-badge status-rejected">
+                            {{ $requisition->status }}
+                        </span>
+                    @break
+
+                    @default
+                        <span class="status-badge status-default">
+                            {{ $requisition->status }}
+                        </span>
+                @endswitch
+            </div>
         </div>
     </div>
+
+    <div class="items-container">
+        @if ($requisition->requisitionItems->isEmpty())
+            <p>{{ __('No items found for this requisition.') }}</p>
+        @else
+            <div class="table-container">
+                <table class="table">
+                    <thead class="table-header">
+                        <tr>
+                            <th>{{ __('Budget Item') }}</th>
+                            <th>{{ __('Description') }}</th>
+                            <th>{{ __('Amount') }}</th>
+                            <th>{{ __('Unit') }}</th>
+                            <th>{{ __('Resource Type') }}</th>
+                            <th>{{ __('Price') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-body">
+                        @foreach ($requisition->requisitionItems as $item)
+                            <tr>
+                                <td>
+                                    {{ $item->budgetItem->full_code ?? 'N/A' }}
+                                </td>
+
+                                <td>
+                                    {{ $item->name }}
+                                </td>
+
+                                <td>
+                                    {{ $item->amount }}
+                                </td>
+
+                                <td>
+                                    {{ $item->unit }}
+                                </td>
+
+                                <td>
+                                    {{ $item->type_resource }}
+                                </td>
+
+                                <td>
+                                    ${{ number_format($item->price, 2) }}
+                                </td>
+                            </tr>
+                        @endforeach
+                        <tr class="table-footer-row">
+                            <td colspan="5">Total:</td>
+                            <td class="table-total-cell">
+                                ${{ number_format($requisition->requisitionItems->sum('price'), 2) }}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        @endif
+    </div>
 </body>
+
 </html>

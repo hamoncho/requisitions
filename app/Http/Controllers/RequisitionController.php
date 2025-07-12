@@ -109,9 +109,12 @@ class RequisitionController extends Controller
         return back()->with('success', 'Requisition rejected.');
     }
 
-    public function pdf()
+    public function pdf(Requisition $requisition)
     {
-        $pdf = Pdf::loadView('pdf.requisition');
+        $requisition->load('approvals.approver');
+        $pdf = Pdf::setPaper('letter','landscape')->loadView('pdf.requisition', compact('requisition'));
+
+        //return view('pdf.requisition',compact('requisition'));
         return $pdf->download('requisition.pdf');
     }
 }

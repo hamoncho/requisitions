@@ -43,27 +43,27 @@
                   </div>
                   <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                       <div>
-                          <h2 class="mb-6 text-sm font-semibold uppercase text-white">{{__('Resources')}}</h2>
+                          <h2 class="mb-6 text-sm font-semibold uppercase text-white">{{__('app.footer_resources')}}</h2>
                           <ul class="text-gray-400 font-medium">
                               <li class="mb-4">
-                                  <a href="#" class="hover:underline ">{{__('Docs')}}</a>
+                                  <a href="#" class="hover:underline ">{{__('app.footer_docs')}}</a>
                               </li>
 
                               <li>
-                                  <a href="#" class="hover:underline">{{__('Tutorials')}}</a>
+                                  <a href="#" class="hover:underline">{{__('app.footer_tutorials')}}</a>
                               </li>
 
                           </ul>
                       </div>
 
                       <div>
-                          <h2 class="mb-6 text-sm font-semibold uppercase text-white">Legal</h2>
+                          <h2 class="mb-6 text-sm font-semibold uppercase text-white">{{__('app.footer_faq')}}</h2>
                           <ul class="text-gray-400 font-medium">
                               <li class="mb-4">
-                                  <a href="#" class="hover:underline">Privacy Policy</a>
+                                  <a href="mailto:admin@uruapan.tecnm.mx" class="hover:underline">admin@uruapan.tecnm.mx</a>
                               </li>
                               <li>
-                                  <a href="#" class="hover:underline">Terms &amp; Conditions</a>
+                                  <a href="#" class="hover:underline">{{__('app.about_us')}}</a>
                               </li>
                           </ul>
                       </div>
@@ -71,7 +71,7 @@
               </div>
               <hr class="my-6 sm:mx-auto border-gray-700 lg:my-8" />
               <div class="sm:flex sm:items-center sm:justify-between">
-                  <span class="text-sm sm:text-center text-gray-400">© 2025 <a href="#" class="hover:underline">ITSU</a>. All Rights Reserved.
+                  <span class="text-sm sm:text-center text-gray-400">© 2025 <a href="#" class="hover:underline">ITSU</a>. {{__('app.copyright')}}.
                   </span>
                   <div class="flex mt-4 sm:justify-center sm:mt-0">
                       <a href="#" class="text-gray-500 hover:text-white">

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('My Requisitions') }}
+            {{ __('requisition.history_title') }}
         </h2>
     </x-slot>
 
@@ -12,7 +12,7 @@
                     <div class="flex justify-end mb-4">
                         <a href="{{ route('requisition.create') }}"
                             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                            {{ __('Create New Requisition') }}
+                            {{ __('requisition.create_new_requisition') }}
                         </a>
                     </div>
 
@@ -22,13 +22,13 @@
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Folio') }}</th>
+                                        {{ __('requisition.folio') }}</th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Status') }}</th>
+                                        {{ __('requisition.status') }}</th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Current Approver') }}</th>
+                                        {{ __('requisition.current_approver') }}</th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">{{ __('Actions') }}</span>
                                     </th>
@@ -44,28 +44,28 @@
                                                 @case('draft')
                                                     <span
                                                         class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
-                                                        {{ $requisition->status }}
+                                                        {{ __('requisition.draft') }}
                                                     </span>
                                                 @break
 
                                                 @case('pending_approval')
                                                     <span
                                                         class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
-                                                        {{ $requisition->status }}
+                                                        {{ __('requisition.pending_approval') }}
                                                     </span>
                                                 @break
 
                                                 @case('approved')
                                                     <span
                                                         class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
-                                                        {{ $requisition->status }}
+                                                        {{ __('requisition.approved') }}
                                                     </span>
                                                 @break
 
                                                 @case('rejected')
                                                     <span
                                                         class="bg-red-100 text-red-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm">
-                                                        {{ $requisition->status }}
+                                                        {{ __('requisition.rejected') }}
                                                     </span>
                                                 @break
 
@@ -80,14 +80,15 @@
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $requisition->currentApprover->name ?? '' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href="{{ route('requisition.show', $requisition) }}"
-                                                class="text-indigo-600 hover:text-indigo-900">
-                                                {{ __('View') }}
-                                            </a>
                                             @if ($requisition->status == 'draft')
                                                 <a href="{{ route('requisition_items.index', $requisition) }}"
                                                     class="text-indigo-600 hover:text-indigo-900 ml-2">
-                                                    {{ __('Continue') }}
+                                                    {{ __('requisition.continue') }}
+                                                </a>
+                                            @else
+                                                <a href="{{ route('requisition.show', $requisition) }}"
+                                                    class="text-indigo-600 hover:text-indigo-900">
+                                                    {{ __('requisition.view') }}
                                                 </a>
                                             @endif
                                         </td>

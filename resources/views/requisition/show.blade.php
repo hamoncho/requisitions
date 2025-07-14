@@ -123,7 +123,7 @@
 
                                                 <td class="px-2 py-2 whitespace-nowrap">{{ $item->amount }}</td>
                                                 <td class="px-2 py-2 whitespace-nowrap">{{ $item->unit }}</td>
-                                                @if (!isset($item->type_resource) && $requisition->status == 'approved' && Auth::user()->role == 'planning')
+                                                @if (!isset($item->type_resource) && $requisition->status == 'pending_approval' && Auth::user()->role == 'planning')
                                                     <td class="px-2 py-2 whitespace-nowrap">
                                                         <form id=""
                                                             action="{{ route('requisition_items.type_resource.update', [$requisition, $item]) }}"

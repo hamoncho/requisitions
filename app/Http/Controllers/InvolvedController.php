@@ -36,11 +36,20 @@ class InvolvedController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $involveds = Involved::all();
+        return view('involved.list', compact('involveds'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Involved $involved)
     {
-        //
+        return view('involved.show', compact('involved'));
     }
 
     /**

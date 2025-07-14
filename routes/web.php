@@ -54,8 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/general_budget_item/edit/{generalBudgetItem}', [GeneralBudgetItemController::class, 'edit'])->name('general_budget_item.edit');
     Route::put('/general_budget_item/update/{generalBudgetItem}', [GeneralBudgetItemController::class, 'update'])->name('general_budget_item.update');
     Route::delete('/general_budget_item/destroy/{generalBudgetItem}', [GeneralBudgetItemController::class, 'destroy'])->name('general_budget_item.destroy');
+    Route::get('/general_budget_item/list', [GeneralBudgetItemController::class, 'list'])->name('general_budget_item.list');
+    Route::get('/general_budget_item/{generalBudgetItem}', [GeneralBudgetItemController::class, 'show'])->name('general_budget_item.show');
     //Route::get('/general_budget_item/menu', [GeneralBudgetItemController::class, 'menu'])->name('general_budget_item.menu');
-
 
     Route::get('/budget_item', [BudgetItemController::class, 'index'])->name('budget_item.index');
     Route::get('/budget_item/create', [BudgetItemController::class, 'create'])->name('budget_item.create');
@@ -63,8 +64,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/budget_item/edit/{budgetItem}', [BudgetItemController::class, 'edit'])->name('budget_item.edit');
     Route::put('/budget_item/update/{budgetItem}', [BudgetItemController::class, 'update'])->name('budget_item.update');
     Route::delete('/budget_item/destroy/{budgetItem}', [BudgetItemController::class, 'destroy'])->name('budget_item.destroy');
+    Route::get('/budget_item/list', [BudgetItemController::class, 'list'])->name('budget_item.list');
+    Route::get('/budget_item/{budgetItem}', [BudgetItemController::class, 'show'])->name('budget_item.show');
 
     Route::get('/involved',[InvolvedController::class, 'index'])->name('involved.index');
+    Route::get('/involved/list', [InvolvedController::class, 'list'])->name('involved.list');
+    Route::get('/involved/{involved}', [InvolvedController::class, 'show'])->name('involved.show');
     Route::get('/involved/create', [InvolvedController::class, 'create'])->name('involved.create');
     Route::post('/involved/store',[InvolvedController::class, 'store'])->name('involved.store');
     Route::get('/involved/edit/{involved}', [InvolvedController::class, 'edit'])->name('involved.edit');
@@ -81,6 +86,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/objective/destroy/{objective}', [ObjectiveController::class, 'destroy'])->name('objective.destroy');
 
     Route::get('/action', [ActionController::class, 'index'])->name('action.index');
+    Route::get('/action/list', [ActionController::class, 'list'])->name('action.list');
+    Route::get('/action/{action}', [ActionController::class, 'show'])->name('action.show');
     Route::get('/action/create', [ActionController::class,'create'])->name('action.create');
     Route::post('/action/store', [ActionController::class, 'store'])->name('action.store');
     Route::get('/action/edit/{action}', [ActionController::class, 'edit'])->name('action.edit');
@@ -100,8 +107,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/project/edit/{project}', [ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/project/update/{project}', [ProjectController::class, 'update'])->name('project.update');
     Route::delete('/project/destroy/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::get('/project/list', [ProjectController::class, 'list'])->name('project.list');
+    Route::get('/project/{project}', [ProjectController::class, 'show'])->name('project.show');
 
     Route::get('/indicator', [IndicatorController::class, 'index'])->name('indicator.index');
+    Route::get('/indicator/list', [IndicatorController::class, 'list'])->name('indicator.list');
+    Route::get('/indicator/{indicator}', [IndicatorController::class, 'show'])->name('indicator.show');
     Route::get('/indicator/create', [IndicatorController::class, 'create'])->name('indicator.create');
     Route::post('/indicator/store',[IndicatorController::class, 'store'])->name('indicator.store');
     Route::get('/indicator/edit/{indicator}', [IndicatorController::class, 'edit'])->name('indicator.edit');
@@ -114,6 +125,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/process/edit/{process}', [ProcessController::class, 'edit'])->name('process.edit');
     Route::put('/process/update/{process}', [ProcessController::class, 'update'])->name('process.update');
     Route::delete('/process/destroy/{process}', [ProcessController::class, 'destroy'])->name('process.destroy');
+    Route::get('/process/list', [ProcessController::class, 'list'])->name('process.list');
+    Route::get('/process/{process}', [ProcessController::class, 'show'])->name('process.show');
 
     Route::get('/requisition/history', function(){
         return view('requisition.history');

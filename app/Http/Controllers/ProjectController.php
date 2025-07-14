@@ -40,7 +40,16 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('project.show', compact('project'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $projects = Project::with('action', 'indicators', 'processess')->get();
+        return view('project.list', compact('projects'));
     }
 
     /**

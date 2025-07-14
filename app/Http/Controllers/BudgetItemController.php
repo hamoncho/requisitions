@@ -42,11 +42,21 @@ class BudgetItemController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $budgetItems = BudgetItem::with('generalBudgetItem')->get();
+        return view('budgetitem.list', compact('budgetItems'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(BudgetItem $budgetItem)
     {
-        //
+        $budgetItem->load('generalBudgetItem');
+        return view('budgetitem.show', compact('budgetItem'));
     }
 
     /**

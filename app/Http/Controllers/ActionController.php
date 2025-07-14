@@ -36,11 +36,21 @@ class ActionController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $actions = Action::all();
+        return view('action.list', compact('actions'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Action $action)
     {
-        //
+        $action->load('goals', 'projects.indicators', 'projects.processess');
+        return view('action.show', compact('action'));
     }
 
     /**

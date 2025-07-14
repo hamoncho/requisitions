@@ -50,7 +50,16 @@ class GeneralBudgetItemController extends Controller
      */
     public function show(GeneralBudgetItem $generalBudgetItem)
     {
-        //
+        return view('generalbudgetitem.show', compact('generalBudgetItem'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $generalBudgetItems = GeneralBudgetItem::with('budgetItems')->get();
+        return view('generalbudgetitem.list', compact('generalBudgetItems'));
     }
 
     /**

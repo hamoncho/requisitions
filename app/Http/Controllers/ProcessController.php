@@ -52,7 +52,16 @@ class ProcessController extends Controller
      */
     public function show(Process $process)
     {
-        //
+        return view('process.show', compact('process'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $processes = Process::with('projects')->get();
+        return view('process.list', compact('processes'));
     }
 
     /**

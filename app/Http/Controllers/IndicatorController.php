@@ -36,11 +36,20 @@ class IndicatorController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     */
+    public function list()
+    {
+        $indicators = Indicator::all();
+        return view('indicator.list', compact('indicators'));
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(Indicator $indicator)
     {
-        //
+        return view('indicator.show', compact('indicator'));
     }
 
     /**

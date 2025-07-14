@@ -18,6 +18,11 @@ class ObjectiveController extends Controller
         return view('objective.index', compact('objectives'));
     }
 
+    public function list(){
+        $objectives = Objective::all();
+        return view('objective.list',compact('objectives'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -53,7 +58,7 @@ class ObjectiveController extends Controller
      */
     public function show(Objective $objective)
     {
-        //
+        return view('objective.show', compact('objective'));
     }
 
     /**

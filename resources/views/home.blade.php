@@ -43,7 +43,7 @@
                     </a>
                 </div>
                 <div class="bg-gray-50  border border-gray-200 rounded-lg p-8 md:p-12">
-                    <a href="#" class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
+                    <a href="{{ route('objective.show', 1) }}" class="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md mb-2">
                         <svg class="w-3.5 h-5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 5 20 16">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                         </svg>
@@ -51,7 +51,7 @@
                     </a>
                     <h2 class="text-gray-900 text-3xl font-extrabold mb-2">{{__('home.card_summary_title')}}</h2>
                     <p class="text-lg font-normal text-gray-500 mb-4">{{__('home.card_summary_description')}}</p>
-                    <a href="#" class="text-blue-600 hover:underline font-medium text-lg inline-flex items-center">
+                    <a href="{{route('summary')}}" class="text-blue-600 hover:underline font-medium text-lg inline-flex items-center">
                         {{__('home.card_summary_link')}}
                         <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>

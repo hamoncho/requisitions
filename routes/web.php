@@ -40,6 +40,10 @@ Route::middleware('auth')->group(function () {
         return view('home');
     })->name('home');
 
+    Route::get('/summary', function(){
+        return view('summary');
+    })->name('summary');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -68,6 +72,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/involved/destroy/{involved}', [InvolvedController::class, 'destroy'])->name('involved.destroy');
 
     Route::get('/objective',[ObjectiveController::class, 'index'])->name('objective.index');
+    Route::get('/objective/list', [ObjectiveController::class, 'list'])->name('objective.list');
+    Route::get('/objective/{objective}',[ObjectiveController::class, 'show'])->name('objective.show');
     Route::get('/objective/create',[ObjectiveController::class, 'create'])->name('objective.create');
     Route::post('/objective/store', [ObjectiveController::class, 'store'])->name('objective.store');
     Route::get('/objective/edit/{objective}', [ObjectiveController::class, 'edit'])->name('objective.edit');

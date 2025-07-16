@@ -15,11 +15,11 @@ class InvolvedSeeder extends Seeder
     {
 
         Involved::create([
-            'name'=> 'Direcion General',
+            'name'=> 'Dirección General',
         ]);
 
         Involved::create([
-            'name'=> 'Direcion Academica',
+            'name'=> 'Dirección Academica',
         ]);
 
         Involved::create([
@@ -43,11 +43,15 @@ class InvolvedSeeder extends Seeder
         ]);
 
         Involved::create([
-            'name'=> 'Dirección Planeación y Vinculación',
+            'name'=> 'Dirección De Planeación y Vinculación',
         ]);
 
         Involved::create([
-            'name'=> 'Subdirección de Planeación y Departamento de Difusión',
+            'name'=> 'Subdirección de Planeación',
+        ]);
+
+        Involved::create([
+            'name'=> 'Departamento de Difusión',
         ]);
 
         Involved::create([
@@ -55,15 +59,19 @@ class InvolvedSeeder extends Seeder
         ]);
 
         Involved::create([
-            'name'=> 'Coordinación Cultural y Coordinación Deportiva',
+            'name'=> 'Coordinación Cultural',
         ]);
 
         Involved::create([
-            'name'=> 'Subdirección de Vinculación',
+            'name' => 'Coordinación Deportiva',
         ]);
 
         Involved::create([
-            'name'=> 'Subdirección de Servicios Administrativos',
+            'name'=> 'Subdirección De Vinculación',
+        ]);
+
+        Involved::create([
+            'name'=> 'Subdirección De Servicios Administrativos',
         ]);
 
         Involved::create([
@@ -78,6 +86,8 @@ class InvolvedSeeder extends Seeder
             'name'=> 'Jefatura del Departamento de Recursos Financieros',
         ]);
 
-
+        Involved::create([
+            'name' => 'Jefatura del Departamento de Personal',
+        ]);
     }
 }

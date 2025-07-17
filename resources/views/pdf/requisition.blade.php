@@ -32,8 +32,8 @@
 
         .info-list-header {
             padding: 0.25rem 0.5rem;
-            font-size: 12px;
-            font-weight: 700;
+            font-size: 14px;
+            font-weight: bolder;
             background-color: #172554;
             color: #f3f4f6;
             border-top-left-radius: 0.375rem;
@@ -41,20 +41,21 @@
         }
 
         .info-list-item {
-            padding: 0.25rem 0.5rem;
             line-height: 1;
+            padding-left: 10px;
+            padding-top: 3px;
         }
 
         .status-container {
-            display: inline-block;
+            top:-15px;
             right: 0;
+            display: inline-block;
             position: absolute;
             min-width: fit-content;
         }
 
         .status-badge {
             font-size: 12px;
-            margin-right: 0.5rem;
             font-weight: 700;
             padding: 0.25rem 0.75rem;
             border-radius: 0.375rem;
@@ -85,6 +86,10 @@
             color: #1e40af;
         }
 
+        .updated_at{
+            margin-top: 5px;
+        }
+
         .items-container {
             margin-top: 0px;
         }
@@ -110,13 +115,13 @@
 
         .table-header th {
             padding: 0.25rem 0.5rem;
-            text-align: left;
+            text-align: center;
             font-size: 12px;
-            font-weight: 500;
+            font-weight: 700;
             color: #6b7280;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            border-bottom: 1px solid #e5e7eb;
+            border: 1px solid #e5e7eb;
         }
 
         .table-body {
@@ -124,15 +129,56 @@
         }
 
         .table-body td {
+            padding: 5px;
             font-size: 12px;
             white-space: nowrap;
-            border-bottom: 1px solid #e5e7eb;
+            border: 1px solid #e5e7eb;
+        }
+
+        .budget-item-th{
+            width: 80px;
+        }
+
+        .amount-th{
+            width: 80px;
+        }
+
+        .unit-th{
+            width: 80px;
+        }
+
+        .resource_type-th{
+            width: 80px;
+        }
+
+        .price-th{
+            width: 80px;
+        }
+
+        .budget-item-td{
+            text-align: center;
+        }
+
+        .amount-td{
+            text-align: center;
+        }
+
+        .unit-td{
+            text-align: center;
+        }
+
+        .resource_type-td{
+            text-align: center;
+        }
+
+        .price-td{
+            text-align: right;
         }
 
         .table-footer-row td {
             font-weight: 700;
             text-align: right;
-            padding: 0.5rem 0.5rem;
+            padding: 5px;
         }
 
         .table-total-cell {
@@ -161,8 +207,13 @@
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Created by: ') }} </b>
+                <b>{{ __('Created by') }}: </b>
                 {{ $requisition->user->name }}
+            </li>
+
+            <li class="info-list-item">
+                <b>{{__('Create at')}}: </b>
+                {{$requisition->created_at->format('d/m/Y H:i')}}
             </li>
         </ul>
         <div class="status-container">
@@ -199,6 +250,9 @@
                         </span>
                 @endswitch
             </div>
+            <div class="updated_at">
+                {{$requisition->updated_at->format('d/m/Y H:i')}}
+            </div>
         </div>
     </div>
 
@@ -210,38 +264,38 @@
                 <table class="table">
                     <thead class="table-header">
                         <tr>
-                            <th>{{ __('Budget Item') }}</th>
-                            <th>{{ __('Description') }}</th>
-                            <th>{{ __('Amount') }}</th>
-                            <th>{{ __('Unit') }}</th>
-                            <th>{{ __('Resource Type') }}</th>
-                            <th>{{ __('Price') }}</th>
+                            <th class="budget-item-th">{{ __('Budget Item') }}</th>
+                            <th class="description-th">{{ __('Description') }}</th>
+                            <th class="amount-th">{{ __('Amount') }}</th>
+                            <th class="unit-th">{{ __('Unit') }}</th>
+                            <th class="resource_type-th">{{ __('Resource Type') }}</th>
+                            <th class="price-th">{{ __('Price') }}</th>
                         </tr>
                     </thead>
                     <tbody class="table-body">
                         @foreach ($requisition->requisitionItems as $item)
                             <tr>
-                                <td>
+                                <td class="budget-item-td">
                                     {{ $item->budgetItem->full_code ?? 'N/A' }}
                                 </td>
 
-                                <td>
+                                <td class="description-td">
                                     {{ $item->name }}
                                 </td>
 
-                                <td>
+                                <td class="amount-td">
                                     {{ $item->amount }}
                                 </td>
 
-                                <td>
+                                <td class="unit-td">
                                     {{ $item->unit }}
                                 </td>
 
-                                <td>
+                                <td class="type_resource-td">
                                     {{ $item->type_resource }}
                                 </td>
 
-                                <td>
+                                <td class="price-td">
                                     ${{ number_format($item->price, 2) }}
                                 </td>
                             </tr>

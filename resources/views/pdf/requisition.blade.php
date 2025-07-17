@@ -17,8 +17,7 @@
         }
 
 
-        .container {
-        }
+        .container {}
 
         .info-list {
             display: inline-block;
@@ -47,7 +46,7 @@
         }
 
         .status-container {
-            top:-15px;
+            top: -15px;
             right: 0;
             display: inline-block;
             position: absolute;
@@ -86,7 +85,7 @@
             color: #1e40af;
         }
 
-        .updated_at{
+        .updated_at {
             margin-top: 5px;
         }
 
@@ -135,44 +134,50 @@
             border: 1px solid #e5e7eb;
         }
 
-        .budget-item-th{
+        .budget-item-th {
+            width: 50px;
+        }
+
+        .amount-th {
+            width: 50px;
+        }
+
+        .unit-th {
             width: 80px;
         }
 
-        .amount-th{
+        .resource_type-th {
             width: 80px;
         }
 
-        .unit-th{
-            width: 80px;
+        .price-th {
+            width: 65px;
         }
 
-        .resource_type-th{
-            width: 80px;
-        }
-
-        .price-th{
-            width: 80px;
-        }
-
-        .budget-item-td{
+        .budget-item-td {
             text-align: center;
         }
 
-        .amount-td{
+        .amount-td {
             text-align: center;
         }
 
-        .unit-td{
+        .unit-td {
             text-align: center;
         }
 
-        .resource_type-td{
+        .resource_type-td {
             text-align: center;
         }
 
-        .price-td{
+        .price-td {
             text-align: right;
+        }
+
+        .folio{
+            font-size: 16px;
+            margin-top: 10px;
+            font-weight: 700;
         }
 
         .table-footer-row td {
@@ -186,6 +191,89 @@
             white-space: nowrap;
             padding: 0.5rem 0.5rem;
         }
+
+        .timeline-container {
+            position: relative;
+            margin-top: 30px;
+        }
+
+        .timeline-progress {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #d1d5db;
+            z-index: 1;
+        }
+
+        .timeline-steps {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step {
+            display: table-cell;
+            vertical-align: top;
+            text-align: center;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            border: 3px solid white;
+        }
+
+        .step-indicator.approved {
+            background-color: #dcfce7;
+            color: #16a34a;
+        }
+
+        .step-indicator.rejected {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .step-indicator.pending {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .step-indicator.default {
+            background-color: #e5e7eb;
+            color: #4b5563;
+        }
+
+        .approver-name {
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 3px;
+            font-size: 12px;
+        }
+
+        .approver-comment {
+            color: #4b5563;
+            font-size: 12px;
+            margin-bottom: 5px;
+            min-height: 20px;
+        }
+
+        .approver-date {
+            color: #9ca3af;
+            font-size: 11px;
+        }
     </style>
 </head>
 
@@ -197,64 +285,64 @@
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Objectivo') }}: </b>
+                <b>Objectivo: </b>
                 {{ $requisition->indicator->project->action->objective->name }} -
                 {{ $requisition->indicator->project->action->objective->description }}.
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Linea de acción') }}: </b>
+                <b>Linea de acción: </b>
                 {{ $requisition->indicator->project->action->index }} -
                 {{ $requisition->indicator->project->action->name }}.
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Project') }}: </b>
+                <b>Proyecto: </b>
                 {{ $requisition->indicator->project->index }} -
                 {{ $requisition->indicator->project->description }}.
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Indicator') }}: </b>
+                <b>Indicador: </b>
                 {{ $requisition->indicator->index }} -
                 {{ $requisition->indicator->description }}.
             </li>
 
             <li class="info-list-item">
-                <b>{{ __('Created by') }}: </b>
+                <b>Creado Por: </b>
                 {{ $requisition->user->name }}
             </li>
 
             <li class="info-list-item">
-                <b>{{__('Create at')}}: </b>
-                {{$requisition->created_at->format('d/m/Y H:i')}}
+                <b>Fecha de creación: </b>
+                {{ $requisition->created_at->format('d/m/Y H:i') }}
             </li>
         </ul>
         <div class="status-container">
             <div>
-                Status:
+                Estado:
                 @switch($requisition->status)
                     @case('draft')
                         <span class="status-badge status-draft">
-                            {{ $requisition->status }}
+                            Borrador
                         </span>
                     @break
 
                     @case('pending_approval')
                         <span class="status-badge status-pending">
-                            {{ $requisition->status }}
+                            Pendiente
                         </span>
                     @break
 
                     @case('approved')
                         <span class="status-badge status-approved">
-                            {{ $requisition->status }}
+                            Aprobado
                         </span>
                     @break
 
                     @case('rejected')
                         <span class="status-badge status-rejected">
-                            {{ $requisition->status }}
+                            Rechazado
                         </span>
                     @break
 
@@ -265,7 +353,11 @@
                 @endswitch
             </div>
             <div class="updated_at">
-                {{$requisition->updated_at->format('d/m/Y H:i')}}
+                {{ $requisition->updated_at->format('d/m/Y H:i') }}
+            </div>
+
+            <div class="folio">
+                Folio: {{ $requisition->folio }}
             </div>
         </div>
     </div>
@@ -278,12 +370,12 @@
                 <table class="table">
                     <thead class="table-header">
                         <tr>
-                            <th class="budget-item-th">{{ __('Budget Item') }}</th>
-                            <th class="description-th">{{ __('Description') }}</th>
-                            <th class="amount-th">{{ __('Amount') }}</th>
-                            <th class="unit-th">{{ __('Unit') }}</th>
-                            <th class="resource_type-th">{{ __('Resource Type') }}</th>
-                            <th class="price-th">{{ __('Price') }}</th>
+                            <th class="budget-item-th">P.P</th>
+                            <th class="description-th">Descripcción</th>
+                            <th class="amount-th">Cant.</th>
+                            <th class="unit-th">Unidad</th>
+                            <th class="resource_type-th">Tipo</th>
+                            <th class="price-th">Precio</th>
                         </tr>
                     </thead>
                     <tbody class="table-body">
@@ -324,6 +416,42 @@
                 </table>
             </div>
         @endif
+    </div>
+    <div class="container">
+        <h3>Historial De Aprobación</h3>
+
+        <div class="timeline-container">
+            <div class="timeline-progress"></div>
+            <div class="timeline-steps">
+                @foreach ($requisition->approvals as $approval)
+                    <div class="step">
+                        @php
+                            $statusClass = '';
+                            $symbol = '';
+                            if ($approval->status == 'approved') {
+                                $statusClass = 'approved';
+                                $symbol = 'A';
+                            } elseif ($approval->status == 'rejected') {
+                                $statusClass = 'rejected';
+                                $symbol = 'R';
+                            } else {
+                                $statusClass = $requisition->status == 'rejected' ? 'default' : 'pending';
+                                $symbol = $requisition->status == 'rejected' ? '⏱' : '!';
+                            }
+                        @endphp
+
+                        <div class="step-indicator {{ $statusClass }}">{{ $symbol }}</div>
+                        <div class="step-info">
+                            <div class="approver-name">{{ $approval->approver->name }}</div>
+                            <div class="approver-comment">{{ $approval->comments }}</div>
+                            @if ($approval->status == 'approved' || $approval->status == 'rejected')
+                                <div class="approver-date">{{ $approval->updated_at->format('d/m/Y H:i') }}</div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
 </body>
 

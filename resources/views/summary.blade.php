@@ -90,12 +90,12 @@
             </a>
 
             <!-- Card normal -->
-            <a href="{{ route('goal.index') }}" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/goal-flag.png') }}"
+            <a href="{{ route('indicator.list') }}" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
+                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
                     alt="Card">
                 <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.goal_title') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.goal_description') }}</p>
+                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.indicator_title') }}</h3>
+                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.indicator_description') }}</p>
                 </div>
             </a>
 
@@ -108,71 +108,6 @@
                     <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.action_description') }}</p>
                 </div>
             </a>
-
-            <!-- Card normal -->
-            <a href="{{ route('indicator.list') }}" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
-                    alt="Card">
-                <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.indicator_title') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.indicator_description') }}</p>
-                </div>
-            </a>
-
-            <!-- Card normal -->
-            <a href="#" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
-                    alt="Card">
-                <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.no_data') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.no_data') }}</p>
-                </div>
-            </a>
-
-            <!-- Card normal -->
-            <a href="#" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
-                    alt="Card">
-                <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.no_data') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.no_data') }}</p>
-                </div>
-            </a>
-
-            <!-- Tarjeta destacada CORREGIDA -->
-            <a href="#"
-                class="bg-white hover:scale-105 shadow-lg rounded-md overflow-hidden
-                      col-span-2 row-span-2
-                      flex flex-col">
-                <img class="h-3/4 object-contain" src="{{ asset('/storage/img/cards/user-admin.png') }}"
-                    alt="Card image">
-                <div class="p-4 bg-blue-950 flex-1 flex flex-col justify-between">
-                    <h3 class="text-lg sm:text-xl font-bold text-gray-200 mb-2">{{ __('summary.user_title') }}</h3>
-                    <p class="hidden md:block text-gray-300 text-xs sm:text-sm mb-4">{{ __('summary.user_description') }}</p>
-                </div>
-            </a>
-
-            <!-- Card normal -->
-            <a href="#" class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
-                    alt="Card">
-                <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.no_data') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.no_data') }}</p>
-                </div>
-            </a>
-
-            <!-- Card normal polimorfa -->
-            <a href="#"
-                class="bg-white hover:scale-105 shadow rounded-md overflow-hidden flex flex-col col-span-1 xl:col-span-2">
-                <img class="h-3/4 py-4 object-contain" src="{{ asset('/storage/img/cards/performance.png') }}"
-                    alt="Card">
-                <div class="px-4 content-center flex-1 bg-blue-950">
-                    <h3 class="font-semibold text-gray-200 text-sm sm:text-base">{{ __('summary.no_data') }}</h3>
-                    <p class="hidden md:block text-xs sm:text-sm text-gray-300">{{ __('summary.no_data') }}</p>
-                </div>
-            </a>
-
         </div>
     </div>
 </x-app-layout>

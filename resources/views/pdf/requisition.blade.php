@@ -197,13 +197,27 @@
             </li>
 
             <li class="info-list-item">
+                <b>{{ __('Objectivo') }}: </b>
+                {{ $requisition->indicator->project->action->objective->name }} -
+                {{ $requisition->indicator->project->action->objective->description }}.
+            </li>
+
+            <li class="info-list-item">
+                <b>{{ __('Linea de acción') }}: </b>
+                {{ $requisition->indicator->project->action->index }} -
+                {{ $requisition->indicator->project->action->name }}.
+            </li>
+
+            <li class="info-list-item">
                 <b>{{ __('Project') }}: </b>
-                {{ $requisition->indicator->project->description }}
+                {{ $requisition->indicator->project->index }} -
+                {{ $requisition->indicator->project->description }}.
             </li>
 
             <li class="info-list-item">
                 <b>{{ __('Indicator') }}: </b>
-                {{ $requisition->indicator->description }}
+                {{ $requisition->indicator->index }} -
+                {{ $requisition->indicator->description }}.
             </li>
 
             <li class="info-list-item">

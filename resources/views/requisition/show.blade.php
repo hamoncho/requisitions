@@ -65,7 +65,7 @@
                                         </span>
                                 @endswitch
                             </div>
-                            @if ($requisition->status == 'approved')
+                            @if ($requisition->status == 'approved' && Auth::user()->role == 'planning')
                                 <div>
                                     <a href="{{ route('pdf.requisition', ['requisition' => $requisition]) }}"
                                         class="inline-flex items-center px-4 py-2 bg-blue-950 hover:bg-blue-900 text-white text-sm font-medium rounded-md transition duration-300 ease-in-out transform hover:scale-105">

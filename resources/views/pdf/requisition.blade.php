@@ -148,23 +148,27 @@
         }
 
         .budget-item-th {
-            width: 50px;
+            width: 40px;
         }
 
         .amount-th {
-            width: 50px;
+            width: 40px;
         }
 
         .unit-th {
-            width: 80px;
+            width: 50px;
         }
 
         .resource_type-th {
-            width: 80px;
+            width: 60px;
         }
 
         .price-th {
             width: 65px;
+        }
+
+        .sign-th {
+            width: 100px;
         }
 
         .budget-item-td {
@@ -186,6 +190,8 @@
         .price-td {
             text-align: right;
         }
+
+        .sign-td {}
 
         .folio {
             margin-bottom: 5px;
@@ -240,7 +246,7 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            margin: 0 auto 15px;
+            margin: 0 auto 0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -272,18 +278,19 @@
         .approver-name {
             font-weight: 700;
             color: #1f2937;
-            margin-bottom: 3px;
             font-size: 12px;
         }
 
         .approver-comment {
             color: #4b5563;
-            font-size: 12px;
-            margin-bottom: 5px;
+            font-size: 11px;
+            line-height: 1;
             min-height: 20px;
         }
 
         .approver-date {
+            position: relative;
+            top: -58px;
             color: #9ca3af;
             font-size: 11px;
         }
@@ -386,8 +393,9 @@
                             <th class="description-th">Descripcción</th>
                             <th class="amount-th">Cant.</th>
                             <th class="unit-th">Unidad</th>
-                            <th class="resource_type-th">Tipo</th>
                             <th class="price-th">Precio</th>
+                            <th class="resource_type-th">Tipo</th>
+                            <th class="sign-th">Firma</th>
                         </tr>
                     </thead>
                     <tbody class="table-body">
@@ -409,20 +417,26 @@
                                     {{ $item->unit }}
                                 </td>
 
+                                <td class="price-td">
+                                    ${{ number_format($item->price, 2) }}
+                                </td>
+
                                 <td class="type_resource-td">
                                     {{ $item->type_resource }}
                                 </td>
 
-                                <td class="price-td">
-                                    ${{ number_format($item->price, 2) }}
+                                <td class="sign-td">
+
                                 </td>
                             </tr>
                         @endforeach
                         <tr class="table-footer-row">
-                            <td colspan="5">Total:</td>
+                            <td colspan="4">Total:</td>
                             <td class="table-total-cell">
                                 ${{ number_format($requisition->requisitionItems->sum('price'), 2) }}
                             </td>
+                            <td style="border: none; border-top: 1px solid #e5e7eb;"></td>
+                            <td style="border: none; border-top: 1px solid #e5e7eb;"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -454,17 +468,18 @@
 
                         <div class="step-indicator {{ $statusClass }}">{{ $symbol }}</div>
                         <div class="step-info">
-                            <div class="approver-name">{{ $approval->approver->name }}</div>
-                            <div class="approver-comment">{{ $approval->comments }}</div>
                             @if ($approval->status == 'approved' || $approval->status == 'rejected')
                                 <div class="approver-date">{{ $approval->updated_at->format('d/m/Y H:i') }}</div>
                             @endif
+                            <div class="approver-comment">{{ $approval->comments }}</div>
+                            <div class="approver-name">{{ $approval->approver->name }}</div>
                         </div>
                     </div>
                 @endforeach
                 <div class="step">
                     <div class="step-info">
                         <div class="approver-name director">{{ $directive->name }}</div>
+                        <div class="approver-position">Directora General</div>
                     </div>
                 </div>
             </div>

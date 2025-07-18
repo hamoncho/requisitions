@@ -57,5 +57,95 @@ class RequisitionItemSeeder extends Seeder
             'unit' => 'PAQUETE',
             'price' => 209.30,
         ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Caja de papel bond t/Carta',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 800,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Caja de folder crema T/C',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 150,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Caja de boligrafo azul kilometrico paper mate azul p.f',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 50,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Calculadora básica de escritorio',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 220,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Engrapadora media tira',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 150,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Cajitas de clip verde No 2',
+            'amount' => 3,
+            'unit' => 'PIEZAS',
+            'price' => 45,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Cajita con 10 lapices Mirado No 2',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 30,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Cubos postit 3x3',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 120,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Caja de folder colgante para escritorio',
+            'amount' => 1,
+            'unit' => 'PIEZA',
+            'price' => 200,
+        ]);
+
+        RequisitionItem::create([
+            'requisitions_id' => 2,
+            'budget_item_id' => 1,
+            'name' => 'Indices separadores de 15',
+            'amount' => 3,
+            'unit' => 'PIEZAS',
+            'price' => 200,
+        ]);
     }
 }

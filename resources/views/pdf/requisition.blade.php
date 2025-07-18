@@ -138,6 +138,7 @@
 
         .table-body {
             background-color: #ffffff;
+            text-transform: uppercase;
         }
 
         .table-body td {

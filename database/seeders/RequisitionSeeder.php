@@ -15,13 +15,22 @@ class RequisitionSeeder extends Seeder
      */
     public function run(): void
     {
-        $process = Process::where('index','PROC101')->first();
-        $user = User::where('role','user')->first();
+        $process101 = Process::where('index', 'PROC101')->first();
+        $process103 = Process::where('index', 'PROC103')->first();
+        $user = User::where('role', 'user')->first();
+
         Requisition::create([
-            'processes_id' => $process->id,
-            'indicators_id' => $process->projects->first()->indicators->first()->id,
+            'processes_id' => $process101->id,
+            'indicators_id' => $process101->projects->first()->indicators->first()->id,
             'users_id' => $user->id,
             'folio' => 100
+        ]);
+
+        Requisition::create([
+            'processes_id' => $process103->id,
+            'indicators_id' => $process103->projects->first()->indicators->first()->id,
+            'users_id' => $user->id,
+            'folio' => 101
         ]);
     }
 }

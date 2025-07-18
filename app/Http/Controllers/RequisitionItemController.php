@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BudgetItem;
 use App\Models\GeneralBudgetItem;
 use App\Models\Requisition;
 use App\Models\RequisitionItem;
@@ -16,7 +15,11 @@ class RequisitionItemController extends Controller
     public function index(Requisition $requisition)
     {
         $requisitionItems = $requisition->requisitionItems()->get();
-        return view('requisition.items.index', compact('requisition', 'requisitionItems'));
+        if($requisition->user->id == auth()->user()->id){
+            return view('requisition.items.index', compact('requisition', 'requisitionItems'));
+        }else{
+            return view('requisition.show', compact('requisition'));
+        }
     }
 
     /**

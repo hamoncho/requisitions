@@ -93,7 +93,7 @@ class RequisitionController extends Controller
     public function startApprovalProcess(Requisition $requisition, ApprovalService $approvalService)
     {
         $approvalService->startApprovalProcess($requisition);
-        return redirect()->route('requisition_items.index', $requisition);
+        return redirect()->route('requisition.show', $requisition);
     }
 
     public function approve(Request $request, Requisition $requisition, ApprovalService $approvalService)

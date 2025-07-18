@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Crear requisición') }}
+            {{ __('requisition.create_requisition') }}
         </h2>
     </x-slot>
 
@@ -13,15 +13,15 @@
                         <header class="flex justify-between">
                             <div>
                                 <h2 class="text-lg font-medium text-gray-900">
-                                    {{ __('Crear Requisición') }}
+                                    {{ __('requisition.create_requisition') }}
                                 </h2>
 
                                 <p class="mt-1 text-sm text-gray-600">
-                                    {{ __('Complete los campos para crear una nueva requisición.') }}
+                                    {{ __('requisition.create_description') }}
                                 </p>
                             </div>
                             <x-secondary-link-button href="{{ route('home') }}">
-                                {{ __('Volver') }}
+                                {{ __('button.back') }}
                             </x-secondary-link-button>
                         </header>
 
@@ -36,7 +36,7 @@
                             @method('post')
                             <!-- Proceso -->
                             <div>
-                                <x-input-label for="processes_id" :value="__('Proceso')" />
+                                <x-input-label for="processes_id" :value="__('requisition.process')" />
                                 <select id="processes_id" name="processes_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">Seleccione un proceso</option>
                                     @foreach ($processes as $item)
@@ -48,7 +48,7 @@
 
                             <!-- Proyecto -->
                             <div>
-                                <x-input-label for="projects_id" :value="__('Proyecto')" />
+                                <x-input-label for="projects_id" :value="__('requisition.project')" />
                                 <select id="projects_id" name="projects_id" disabled class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">Seleccione un proceso primero</option>
                                 </select>
@@ -57,7 +57,7 @@
 
                             <!-- Indicador -->
                             <div>
-                                <x-input-label for="indicators_id" :value="__('Indicador')" />
+                                <x-input-label for="indicators_id" :value="__('requisition.indicator')" />
                                 <select id="indicators_id" name="indicators_id" disabled class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
                                     <option value="">Seleccione un proyecto primero</option>
                                 </select>
@@ -74,7 +74,7 @@
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <x-primary-button>{{ __('Crear Requisición') }}</x-primary-button>
+                                <x-primary-button>{{ __('button.create') }}</x-primary-button>
                             </div>
                         </form>
                     </section>

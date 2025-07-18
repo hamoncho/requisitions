@@ -12,4 +12,28 @@ return [
     'approved' => 'Approved',
     'rejected' => 'Rejected',
     'default' => 'Default',
+    'create_requisition' => 'Create a requisition',
+    'create_description' => 'Complete the fields to create a new requisition. The action line and objective fields will be automatically added based on your selection. The folio will also be automatically generated.',
+    'process' => 'Process',
+    'processes' => 'processes',
+    'indicator' => 'Indicator',
+    'indicators' => 'Indicators',
+    'project' => 'Project',
+    'projects' => 'Projects',
+    'create_by' => 'Create By',
+    'no_items_found' => 'No items found',
+    'budget_item' => 'Budget Item',
+    'description' => 'Description',
+    'amount' => 'Amount',
+    'unit' => 'Unit',
+    'resource_type' => 'Resource Type',
+    'price' => 'Price',
+    'total' => 'Total',
+    'will_send_to' => 'This Requisition will be sent to',
+    'general_budget_item' => 'General Budget Item',
+    'budget_item' => 'Budget Item',
+    'add_item_to' => 'Add Item To Requisition',
+    'edit_item_for' => 'Edit Item For Requisition'
+
+
 ];

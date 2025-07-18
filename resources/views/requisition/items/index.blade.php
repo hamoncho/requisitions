@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Requisition') }} Folio #{{ $requisition->folio }}
+            {{ __('requisition.folio') }} {{ $requisition->folio }}
         </h2>
     </x-slot>
 
@@ -16,46 +16,46 @@
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
-                                <b class="font-bold">{{ __('Project') }}: </b>
+                                <b class="font-bold">{{ __('requisition.project') }}: </b>
                                 {{ $requisition->indicator->project->description }}
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
-                                <b class="font-bold">{{ __('Indicator') }}: </b>
+                                <b class="font-bold">{{ __('requisition.indicator') }}: </b>
                                 {{ $requisition->indicator->description }}
                             </li>
 
                             <li class="px-2 sm:px-6 pb-2">
-                                <b class="font-bold">{{ __('Created by: ') }} </b>
+                                <b class="font-bold">{{ __('requisition.create_by') }}: </b>
                                 {{ $requisition->user->name }}
                             </li>
                         </ul>
                         <div class="sm:ml-6 ml-0 mb-2 min-w-fit flex md:flex-col justify-between">
                             <div>
-                                Status:
+                                {{__('requisition.status')}}:
                                 @switch($requisition->status)
                                     @case('draft')
                                         <span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.draft') }}
                                         </span>
                                     @break
 
                                     @case('pending_approval')
                                         <span
                                             class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.pending_approval') }}
                                         </span>
                                     @break
 
                                     @case('approved')
                                         <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.approved') }}
                                         </span>
                                     @break
 
                                     @case('rejected')
                                         <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ requisition.rejected }}
                                         </span>
                                     @break
 
@@ -69,7 +69,7 @@
                                 <div class="">
                                     <a href="{{ route('requisition_items.create', $requisition) }}"
                                         class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
-                                        {{ __('Add New Item') }}
+                                        {{ __('button.add_new_item') }}
                                     </a>
                                 </div>
                             @endif
@@ -84,7 +84,7 @@
                     @endif
 
                     @if ($requisitionItems->isEmpty())
-                        <p>{{ __('No items found for this requisition.') }}</p>
+                        <p>{{ __('requisition.no_items_found') }}</p>
                     @else
                         <div class="overflow-x-auto mt-2">
                             <table class="min-w-full divide-y divide-gray-200">
@@ -92,22 +92,22 @@
                                     <tr class="divide-x divide-gray-200">
                                         <th scope="col"
                                             class="w-16 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Budget Item') }}</th>
+                                            {{ __('requisition.budget_item') }}</th>
                                         <th scope="col"
                                             class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Description') }}</th>
+                                            {{ __('requisition.description') }}</th>
                                         <th scope="col"
                                             class="w-20 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Amount') }}</th>
+                                            {{ __('requisition.amount') }}</th>
                                         <th scope="col"
                                             class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Unit') }}</th>
+                                            {{ __('requisition.unit') }}</th>
                                         <th scope="col"
                                             class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Resource Type') }}</th>
+                                            {{ __('requisition.resource_type') }}</th>
                                         <th scope="col"
                                             class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('Price') }}</th>
+                                            {{ __('requisition.price') }}</th>
 
                                     </tr>
                                 </thead>
@@ -127,21 +127,21 @@
                                             @if ($requisition->status == 'draft')
                                                 <td class="w-24 px-2 py-2 whitespace-nowrap text-right text-sm font-medium">
                                                     <a href="{{ route('requisition_items.edit', [$requisition, $item]) }}"
-                                                        class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>
+                                                        class="text-indigo-600 hover:text-indigo-900">{{ __('button.edit') }}</a>
                                                     <form
                                                         action="{{ route('requisition_items.destroy', [$requisition, $item]) }}"
                                                         method="POST" class="inline-block ml-2">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="text-red-600 hover:text-red-900"
-                                                            onclick="return confirm('Are you sure?')">{{ __('Delete') }}</button>
+                                                            onclick="return confirm('Are you sure?')">{{ __('button.delete') }}</button>
                                                     </form>
                                                 </td>
                                             @endif
                                         </tr>
                                     @endforeach
                                     <tr>
-                                        <td colspan="5" class="text-right font-bold px-2 py-2">Total:</td>
+                                        <td colspan="5" class="text-right font-bold px-2 py-2">{{__('requisition.total')}}:</td>
                                         <td class="px-2 py-2 whitespace-nowrap bg-gray-200">
                                             ${{ number_format($requisition->requisitionItems->sum('price'), 2) }}
                                         </td>
@@ -152,7 +152,7 @@
                             @if ($requisition->status == 'draft')
                                 <div class="flex justify-between items-center bg-gray-200 mt-4">
                                     <div class="ml-4">
-                                        {{ __('This Requisition will be sent to ') }}
+                                        {{ __('requisition.will_send_to') }}
                                         <a href="#" class="font-semibold underline">
                                             {{ Auth::user()->supervisor->name }}
                                         </a>
@@ -162,7 +162,7 @@
                                         action="{{ route('requisition.start_approval_process', $requisition) }}">
                                         @csrf
                                         <x-primary-button class="">
-                                            {{ __('Send') }}
+                                            {{ __('button.send') }}
                                         </x-primary-button>
                                     </form>
                                 </div>

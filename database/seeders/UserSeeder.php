@@ -17,6 +17,7 @@ class UserSeeder extends Seeder
         // Nivel 1: Director
         $director = User::create([
             'name' => 'Mtra. Selene Gómez Barragán',
+            'position' => 'Directora General',
             'email' => 'director@example.com',
             'password' => Hash::make('password'),
             'role' => 'directive',
@@ -25,7 +26,8 @@ class UserSeeder extends Seeder
 
         // Nivel 2: Subdireccion de Servicios Administrativos, reporta al Director
         $subdireccionServiciosAdministrativos = User::create([
-            'name' => 'L.C Cuitlahuac Arévalo Vargas',
+            'name' => 'C.P. Samuel Solís Castro',
+            'position' => 'Subdirector de Servicios Administrativos',
             'email' => 'subdireccion@example.com',
             'password' => Hash::make('password'),
             'role' => 'subdirectorate',
@@ -34,7 +36,8 @@ class UserSeeder extends Seeder
 
         // Nivel 3: Manager, reporta al Director
         $directoraPlaneacionVinculacion = User::create([
-            'name' => 'Lic. Ana Patricia Guizar Mendoza',
+            'name' => 'Lic. Norma Isela Arreola Cisneros',
+            'position' => 'Directora de Planeación y Vinculación',
             'email' => 'planning@example.com',
             'password' => Hash::make('password'),
             'role' => 'planning',
@@ -43,7 +46,8 @@ class UserSeeder extends Seeder
 
         // Nivel 4: Manager, reporta al Director
         $supervisor = User::create([
-            'name' => 'Kenia Judith Becerra Bautista',
+            'name' => 'Hugo Eric Mier López',
+            'position' => 'Subdirector de Planeación',
             'email' => 'supervisor@example.com',
             'password' => Hash::make('password'),
             'role' => 'immediate_boss',
@@ -52,7 +56,8 @@ class UserSeeder extends Seeder
 
         // Nivel 5: Empleado, reporta al Manager
         User::create([
-            'name' => 'User',
+            'name' => 'User De Pruebas',
+            'position' => 'Empleado',
             'email' => 'user@example.com',
             'password' => Hash::make('password'),
             'role' => 'user',
@@ -62,6 +67,7 @@ class UserSeeder extends Seeder
         // Create admin user
         User::create([
             'name' => 'admin',
+            'position' => 'Administrador Del Sistema',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
             'role' => 'admin',

@@ -285,14 +285,20 @@
             color: #4b5563;
             font-size: 11px;
             line-height: 1;
-            min-height: 20px;
         }
 
         .approver-date {
-            position: relative;
-            top: -58px;
+            position: absolute;
+            top: -6px;
+            left: 33%;
+            right: 67%;
             color: #9ca3af;
             font-size: 11px;
+        }
+
+        .approver-position {
+            font-size: 10px;
+            font-style: italic;
         }
 
         .director {
@@ -371,6 +377,11 @@
             <li class="info-list-item">
                 <b>Creado Por: </b>
                 {{ $requisition->user->name }}
+            </li>
+
+            <li class="info-list-item">
+                <b>Jefe Inmediato: </b>
+                {{ $requisition->user->supervisor->name }}
             </li>
 
             <li class="info-list-item info-list-item-last">
@@ -473,13 +484,14 @@
                             @endif
                             <div class="approver-comment">{{ $approval->comments }}</div>
                             <div class="approver-name">{{ $approval->approver->name }}</div>
+                            <div class="approver-position">{{ $approval->approver->position }}</div>
                         </div>
                     </div>
                 @endforeach
                 <div class="step">
                     <div class="step-info">
                         <div class="approver-name director">{{ $directive->name }}</div>
-                        <div class="approver-position">Directora General</div>
+                        <div class="approver-position">{{ $directive->position }}</div>
                     </div>
                 </div>
             </div>

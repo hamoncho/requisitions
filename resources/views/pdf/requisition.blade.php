@@ -16,12 +16,22 @@
             margin: 0;
         }
 
+        img {
+            display: inline-block;
+            height: 80px;
+            margin: 0;
+            padding: 0;
+        }
 
-        .container {}
+        .title {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
 
         .info-list {
             display: inline-block;
-            width: 780px;
+            width: 100%;
             list-style: none;
             background-color: #f3f4f6;
             border-radius: 0.375rem;
@@ -45,11 +55,14 @@
             padding-top: 3px;
         }
 
+        .info-list-item-last {
+            padding-bottom: 3px;
+        }
+
         .status-container {
-            top: -15px;
+            position: absolute;
             right: 0;
             display: inline-block;
-            position: absolute;
             min-width: fit-content;
         }
 
@@ -174,9 +187,9 @@
             text-align: right;
         }
 
-        .folio{
+        .folio {
+            margin-bottom: 5px;
             font-size: 16px;
-            margin-top: 10px;
             font-weight: 700;
         }
 
@@ -194,7 +207,6 @@
 
         .timeline-container {
             position: relative;
-            margin-top: 30px;
         }
 
         .timeline-progress {
@@ -203,6 +215,7 @@
             left: 0;
             right: 0;
             height: 3px;
+            width: 62.5%;
             background-color: #d1d5db;
             z-index: 1;
         }
@@ -274,51 +287,23 @@
             color: #9ca3af;
             font-size: 11px;
         }
+
+        .director {
+            margin-top: 60px;
+            border-top: solid;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <ul class="info-list">
-            <li class="info-list-header">
-                {{ $requisition->process->index }}
-            </li>
-
-            <li class="info-list-item">
-                <b>Objectivo: </b>
-                {{ $requisition->indicator->project->action->objective->name }} -
-                {{ $requisition->indicator->project->action->objective->description }}.
-            </li>
-
-            <li class="info-list-item">
-                <b>Linea de acción: </b>
-                {{ $requisition->indicator->project->action->index }} -
-                {{ $requisition->indicator->project->action->name }}.
-            </li>
-
-            <li class="info-list-item">
-                <b>Proyecto: </b>
-                {{ $requisition->indicator->project->index }} -
-                {{ $requisition->indicator->project->description }}.
-            </li>
-
-            <li class="info-list-item">
-                <b>Indicador: </b>
-                {{ $requisition->indicator->index }} -
-                {{ $requisition->indicator->description }}.
-            </li>
-
-            <li class="info-list-item">
-                <b>Creado Por: </b>
-                {{ $requisition->user->name }}
-            </li>
-
-            <li class="info-list-item">
-                <b>Fecha de creación: </b>
-                {{ $requisition->created_at->format('d/m/Y H:i') }}
-            </li>
-        </ul>
+    <div>
+        <img src="{{ storage_path('app/public/img/logo_tec_uruapan.png') }}" alt="Logo">
         <div class="status-container">
+
+            <div class="folio">
+                Folio: {{ $requisition->folio }}
+            </div>
+
             <div>
                 Estado:
                 @switch($requisition->status)
@@ -355,11 +340,38 @@
             <div class="updated_at">
                 {{ $requisition->updated_at->format('d/m/Y H:i') }}
             </div>
-
-            <div class="folio">
-                Folio: {{ $requisition->folio }}
-            </div>
         </div>
+    </div>
+    <h1 class="title">REQUISICIÓN DE BIENES Y SERVICIOS</h1>
+    <div class="container">
+        <ul class="info-list">
+            <li class="info-list-header">
+                {{ $requisition->process->index }}
+            </li>
+
+            <li class="info-list-item">
+                <b>Proyecto: </b>
+                {{ $requisition->indicator->project->index }} -
+                {{ $requisition->indicator->project->description }}.
+            </li>
+
+            <li class="info-list-item">
+                <b>Indicador: </b>
+                {{ $requisition->indicator->index }} -
+                {{ $requisition->indicator->description }}.
+            </li>
+
+            <li class="info-list-item">
+                <b>Creado Por: </b>
+                {{ $requisition->user->name }}
+            </li>
+
+            <li class="info-list-item info-list-item-last">
+                <b>Fecha de creación: </b>
+                {{ $requisition->created_at->format('d/m/Y H:i') }}
+            </li>
+        </ul>
+
     </div>
 
     <div class="items-container">
@@ -450,9 +462,13 @@
                         </div>
                     </div>
                 @endforeach
+                <div class="step">
+                    <div class="step-info">
+                        <div class="approver-name director">{{ $directive->name }}</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
 </body>
 
 </html>

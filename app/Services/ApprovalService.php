@@ -70,8 +70,7 @@ class ApprovalService
         $supervisor = $user->supervisor;
         $planning = User::where('role', 'planning')->first();
         $subdirectorate = User::where('role', 'subdirectorate')->first();
-        $directive = $user->directive;
-        $approvers = [$supervisor, $subdirectorate, $directive, $planning];
+        $approvers = [$supervisor, $subdirectorate, $planning];
         return $approvers;
     }
 

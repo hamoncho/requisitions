@@ -61,15 +61,6 @@ class User extends Authenticatable
     }
 
     /**
-     *  Get the user's directive
-     */
-    public function directive()
-    {
-        return $this->belongsTo(User::class, 'directive_id');
-    }
-
-
-    /**
      * Get the user's subordinates.
      */
     public function subordinates()

@@ -6,6 +6,7 @@ use App\Models\Indicator;
 use App\Models\Process;
 use App\Models\Project;
 use App\Models\Requisition;
+use App\Models\User;
 use App\Services\ApprovalService;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -32,7 +33,7 @@ class RequisitionController extends Controller
         $projects = Project::all();
         $indicators = Indicator::all();
 
-        return view('requisition.create',compact('processes', 'projects','indicators'));
+        return view('requisition.create', compact('processes', 'projects', 'indicators'));
     }
 
     /**
@@ -111,10 +112,11 @@ class RequisitionController extends Controller
 
     public function pdf(Requisition $requisition)
     {
+        $directive = User::Where('role', 'directive')->first();
         $requisition->load('approvals.approver');
-        $pdf = Pdf::setPaper('letter','landscape')->loadView('pdf.requisition', compact('requisition'));
+        $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pdf.requisition', compact('requisition', 'directive'));
 
-        //return view('pdf.requisition',compact('requisition'));
+        //return view('pdf.requisition',compact('requisition','directive'));
         return $pdf->download('requisition.pdf');
     }
 }

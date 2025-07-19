@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Projects') }}
+            {{ __('project.title') }}
         </h2>
     </x-slot>
 
@@ -19,12 +19,12 @@
                                             <span class="text-xs font-mono text-gray-500 flex-shrink-0">#{{ $project->index }}</span>
                                         </div>
                                         <div class="mt-4 pt-3 border-t border-gray-200">
-                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Indicators</h4>
+                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">{{__('project.indicators')}}</h4>
                                             <ul class="list-disc list-inside mt-2 space-y-1">
                                                 @forelse($project->indicators as $indicator)
                                                     <li class="leading-none text-sm text-gray-600"> {{ $indicator->index }}: {{ $indicator->description }}</li>
                                                 @empty
-                                                    <li class="text-sm text-gray-600">No indicators</li>
+                                                    <li class="text-sm text-gray-600">{{__('project.no_indicators')}}</li>
                                                 @endforelse
                                             </ul>
                                         </div>

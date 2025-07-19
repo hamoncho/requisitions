@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Objectives') }}
+            {{ __('objective.title') }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                                         </div>
                                         <p class="mt-2 text-sm text-gray-600 h-16 overflow-hidden">{{ $objective->description }}</p>
                                         <div class="mt-4 pt-3 border-t border-blue-900">
-                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Involveds</h4>
+                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">{{__('objective.involveds')}}</h4>
                                             @if($objective->involveds->isNotEmpty())
                                                 <div class="flex flex-wrap gap-1 mt-2">
                                                     @foreach($objective->involveds as $involved)
@@ -30,7 +30,7 @@
                                                     @endforeach
                                                 </div>
                                             @else
-                                                <p class="text-xs text-gray-500 mt-2">Not assigned</p>
+                                                <p class="text-xs text-gray-500 mt-2">{{__('objective.not_assigned')}}</p>
                                             @endif
                                         </div>
                                     </div>

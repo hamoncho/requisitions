@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Budget Items') }}
+            {{ __('budgetitem.title') }}
         </h2>
     </x-slot>
 
@@ -20,7 +20,7 @@
                                         </div>
                                         <p class="mt-2 text-sm text-gray-600 h-16 overflow-hidden">{{ $budgetItem->description }}</p>
                                         <div class="mt-4 pt-3 border-t border-blue-900">
-                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">Belongs to</h4>
+                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider mt-2">{{__('budgetitem.belongs_to')}}</h4>
                                             <p class="text-sm text-gray-800">{{ $budgetItem->generalBudgetItem->code }}</p>
                                             <p class="text-sm text-gray-800 mt-1">{{ $budgetItem->generalBudgetItem->name }}</p>
                                         </div>

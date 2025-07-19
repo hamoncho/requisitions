@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Process Details') }}
+            {{ __('process.title_show') }}
         </h2>
     </x-slot>
 
@@ -13,7 +13,7 @@
                 <div class="p-6 sm:p-8 border-b border-gray-200">
                     <div class="flex flex-col sm:flex-row justify-between items-start">
                         <div>
-                            <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider">Process</p>
+                            <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider">{{__('process.process')}}</p>
                             <h3 class="text-3xl font-bold text-gray-900 mt-1">{{ $process->index }}</h3>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-4 flex-shrink-0">
@@ -26,14 +26,14 @@
 
                 <!-- Projects Section -->
                 <div class="p-6 sm:p-8">
-                    <h4 class="text-lg font-semibold text-gray-800">Associated Projects</h4>
+                    <h4 class="text-lg font-semibold text-gray-800">{{__('process.associated_projects')}}</h4>
                     <div class="mt-4 flex flex-wrap gap-2">
                         @forelse($process->projects as $project)
                             <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
                                 {{ $project->description }}
                             </span>
                         @empty
-                            <p class="text-gray-500">No projects for this process.</p>
+                            <p class="text-gray-500">{{__('process.no_projects')}}</p>
                         @endforelse
                     </div>
                 </div>
@@ -41,7 +41,7 @@
 
             <div class="mt-8 text-center">
                 <a href="{{ route('process.list') }}" class="inline-flex items-center px-6 py-3 bg-blue-950 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition ease-in-out duration-150">
-                    Back to Processes
+                    {{__('process.back_button')}}
                 </a>
             </div>
         </div>

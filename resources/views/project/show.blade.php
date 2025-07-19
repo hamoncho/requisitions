@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Project Details') }}
+            {{ __('project.title_show') }}
         </h2>
     </x-slot>
 
@@ -13,13 +13,13 @@
                 <div class="p-6 sm:p-8 border-b border-gray-200">
                     <div class="flex flex-col sm:flex-row justify-between items-start">
                         <div>
-                            <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider">Project</p>
+                            <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider">{{__('project.project')}}</p>
                             <h3 class="text-3xl font-bold text-gray-900 mt-1">{{ $project->description }}</h3>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-4 flex-shrink-0">
                             <span
                                 class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
-                                Index: {{ $project->index }}
+                                {{__('project.index')}}: {{ $project->index }}
                             </span>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
 
                 <!-- Action Section -->
                 <div class="p-6 sm:p-8 border-b border-gray-200">
-                    <h4 class="text-lg font-semibold text-gray-800">Associated Action</h4>
+                    <h4 class="text-lg font-semibold text-gray-800">{{__('project.associated_action')}}</h4>
                     <p class="text-gray-600">
                         <a href="{{ route('action.show', $project->action) }}"
                             aria-label="Ir a action {{ $project->action->index }}"
@@ -52,7 +52,7 @@
                 <div class="p-6 sm:p-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Indicators</h4>
+                            <h4 class="text-lg font-semibold text-gray-800">{{__('project.indicators')}}</h4>
                             <ol class="list-inside mt-4 space-y-2">
                                 @forelse($project->indicators as $indicator)
                                     <li class="leading-none">
@@ -74,12 +74,12 @@
                                         </a>
                                     </li>
                                 @empty
-                                    <li class="text-gray-500">No indicators for this project.</li>
+                                    <li class="text-gray-500">{{__('project.no_indicators')}}</li>
                                 @endforelse
                             </ol>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold text-gray-800">Processes</h4>
+                            <h4 class="text-lg font-semibold text-gray-800">{{__('project.processes')}}</h4>
                             <div class="mt-4 flex flex-wrap gap-2">
                                 @forelse($project->processess as $process)
                                     <a href="{{ route('process.show', $process) }}"
@@ -87,7 +87,7 @@
                                         {{ $process->index }}
                                     </a>
                                 @empty
-                                    <p class="text-gray-500">No processes for this project.</p>
+                                    <p class="text-gray-500">{{__('project.no_processes')}}</p>
                                 @endforelse
                             </div>
                         </div>
@@ -98,7 +98,7 @@
             <div class="mt-8 text-center">
                 <a href="{{ route('project.list') }}"
                     class="inline-flex items-center px-6 py-3 bg-blue-950 border border-transparent rounded-md font-semibold text-white tracking-widest hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition ease-in-out duration-150">
-                    Back to Projects
+                    {{__('project.back_button')}}
                 </a>
             </div>
         </div>

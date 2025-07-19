@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Processes') }}
+            {{ __('process.title') }}
         </h2>
     </x-slot>
 
@@ -15,11 +15,11 @@
                                 <div class="flex flex-col justify-between h-full bg-white rounded-lg shadow-lg overflow-hidden border-t-4 border-blue-950 hover:shadow-xl transition-shadow duration-150">
                                     <div class="p-6">
                                         <div class="flex justify-between items-baseline">
-                                            <h3 class="text-lg font-semibold text-gray-900 truncate pr-2" title="Process #{{ $process->index }}">Process #{{ $process->index }}</h3>
+                                            <h3 class="text-lg font-semibold text-gray-900 truncate pr-2" title="Process #{{ $process->index }}">{{__('process.process')}} #{{ $process->index }}</h3>
                                             <span class="text-xs font-mono text-gray-500 flex-shrink-0">#{{ $process->id }}</span>
                                         </div>
                                         <div class="mt-4 pt-3 border-t border-gray-200">
-                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Projects</h4>
+                                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">{{__('process.projects')}}</h4>
                                             @if($process->projects->isNotEmpty())
                                                 <div class="flex flex-wrap gap-1 mt-2">
                                                     @foreach($process->projects as $project)
@@ -29,7 +29,7 @@
                                                     @endforeach
                                                 </div>
                                             @else
-                                                <p class="text-xs text-gray-500 mt-2">Not assigned</p>
+                                                <p class="text-xs text-gray-500 mt-2">{{__('process.not_assigned')}}</p>
                                             @endif
                                         </div>
                                     </div>

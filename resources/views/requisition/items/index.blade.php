@@ -92,7 +92,7 @@
                                     <tr class="divide-x divide-gray-200">
                                         <th scope="col"
                                             class="w-16 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            {{ __('requisition.budget_item') }}</th>
+                                            {{ __('requisition.p_p') }}</th>
                                         <th scope="col"
                                             class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('requisition.description') }}</th>

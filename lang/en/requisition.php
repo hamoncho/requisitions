@@ -24,6 +24,7 @@ return [
     'create_by' => 'Create By',
     'no_items_found' => 'No items found',
     'budget_item' => 'Budget Item',
+    'p_p' => 'P.P',
     'description' => 'Description',
     'amount' => 'Amount',
     'unit' => 'Unit',

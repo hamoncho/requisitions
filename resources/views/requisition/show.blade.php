@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Requisition') }} Folio #{{ $requisition->folio }}
+            {{ __('requisition.show_title') }} #{{ $requisition->folio }}
         </h2>
     </x-slot>
 
@@ -16,46 +16,46 @@
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
-                                <b class="font-bold">{{ __('Project') }}: </b>
+                                <b class="font-bold">{{ __('requisition.project') }}: </b>
                                 {{ $requisition->indicator->project->description }}
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
-                                <b class="font-bold">{{ __('Indicator') }}: </b>
+                                <b class="font-bold">{{ __('requisition.indicator') }}: </b>
                                 {{ $requisition->indicator->description }}
                             </li>
 
                             <li class="px-2 sm:px-6 pb-2">
-                                <b class="font-bold">{{ __('Created by: ') }} </b>
+                                <b class="font-bold">{{ __('requisition.create_by') }}: </b>
                                 {{ $requisition->user->name }}
                             </li>
                         </ul>
                         <div class="sm:ml-6 ml-0 mb-2 min-w-fit flex md:flex-col justify-between">
                             <div>
-                                Status:
+                                {{__('requisition.status')}}:
                                 @switch($requisition->status)
                                     @case('draft')
                                         <span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.draft') }}
                                         </span>
                                     @break
 
                                     @case('pending_approval')
                                         <span
                                             class="bg-yellow-100 text-yellow-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.pending_approval') }}
                                         </span>
                                     @break
 
                                     @case('approved')
                                         <span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.approved') }}
                                         </span>
                                     @break
 
                                     @case('rejected')
                                         <span class="bg-red-100 text-red-800 text-sm font-medium me-2 px-3 py-1 rounded-md">
-                                            {{ $requisition->status }}
+                                            {{ __('requisition.rejected') }}
                                         </span>
                                     @break
 
@@ -75,7 +75,7 @@
                                                 d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
                                             </path>
                                         </svg>
-                                        Download PDF
+                                    {{__('button.download_pdf')}}
                                     </a>
                                 </div>
                             @endif
@@ -83,9 +83,8 @@
                     </div>
 
                     <div class="mt-6">
-                        <h3 class="text-lg font-medium text-gray-900">{{ __('Requisition Items') }}</h3>
                         @if ($requisition->requisitionItems->isEmpty())
-                            <p>{{ __('No items found for this requisition.') }}</p>
+                            <p>{{ __('requisition.no_items_found') }}</p>
                         @else
                             <div class="overflow-x-auto mt-2">
                                 <table class="min-w-full divide-y divide-gray-200">
@@ -93,22 +92,22 @@
                                         <tr class="divide-x divide-gray-200">
                                             <th scope="col"
                                                 class="w-16 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Budget Item') }}</th>
+                                                {{ __('requisition.budget_item') }}</th>
                                             <th scope="col"
                                                 class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Description') }}</th>
+                                                {{ __('requisition.description') }}</th>
                                             <th scope="col"
                                                 class="w-20 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Amount') }}</th>
+                                                {{ __('requisition.amount') }}</th>
                                             <th scope="col"
                                                 class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Unit') }}</th>
+                                                {{ __('requisition.unit') }}</th>
                                             <th scope="col"
                                                 class="w-32 px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Resource Type') }}</th>
+                                                {{ __('requisition.resource_type') }}</th>
                                             <th scope="col"
                                                 class="w-32 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Price') }}</th>
+                                                {{ __('requisition.price') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
@@ -133,10 +132,10 @@
                                                             <select id="type_resource" name="type_resource"
                                                                 onchange = "this.form.submit()">
                                                                 <option>Vacio</option>
-                                                                <option value="Estado">Estado</option>
-                                                                <option value="Federal">Federal</option>
-                                                                <option value="Propios">Propios</option>
-                                                                <option value="Projectos">Projectos</option>
+                                                                <option value="ESTADO">ESTADO</option>
+                                                                <option value="FEDERAL">FEDERAL</option>
+                                                                <option value="PROPIOS">PROPIOS</option>
+                                                                <option value="PROYECTOS">PROYECTOS</option>
                                                             </select>
                                                         </form>
                                                     </td>
@@ -151,7 +150,7 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="5" class="text-right font-bold px-2 py-2">Total:</td>
+                                            <td colspan="5" class="text-right font-bold px-2 py-2">{{__('requisition.total')}}:</td>
                                             <td class="px-2 py-2 whitespace-nowrap bg-gray-200">
                                                 ${{ number_format($requisition->requisitionItems->sum('price'), 2) }}
                                             </td>
@@ -164,7 +163,7 @@
 
                     <section class="bg-white py-8  mx-auto max-w-screen-xl">
                         <h3 class="mb-4 text-lg font-medium text-gray-900">
-                            {{ __('Approval History') }}
+                            {{ __('requisition.approval_history') }}
                         </h3>
 
                         <ol class="relative text-gray-500 ml-8 border-s border-gray-200">
@@ -233,7 +232,7 @@
 
                     @if ($requisition->status === 'pending_approval' && $requisition->current_approver_id === auth()->id())
                         <div class="mt-6">
-                            <h3 class="text-lg font-medium text-gray-900">{{ __('Approve or Reject') }}</h3>
+                            <h3 class="text-lg font-medium text-gray-900">{{ __('requisition.approve_or_reject') }}</h3>
                             <div class="mt-4">
                                 <form action="{{ route('requisition.approve', $requisition) }}" method="POST">
                                     @csrf
@@ -243,7 +242,7 @@
                                             class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>
                                     <x-primary-button>
-                                        {{ __('Approve') }}
+                                        {{ __('button.approve') }}
                                     </x-primary-button>
                                 </form>
                             </div>
@@ -256,7 +255,7 @@
                                             class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>
                                     <x-danger-button>
-                                        {{ __('Reject') }}
+                                        {{ __('button.reject') }}
                                     </x-danger-button>
                                 </form>
                             </div>

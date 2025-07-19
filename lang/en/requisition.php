@@ -1,5 +1,6 @@
 <?php
 return [
+    'show_title' => 'Requisition With Folio',
     'history_title' => 'My Requisitions',
     'folio' => 'Folio',
     'status' => 'Status',
@@ -33,7 +34,7 @@ return [
     'general_budget_item' => 'General Budget Item',
     'budget_item' => 'Budget Item',
     'add_item_to' => 'Add Item To Requisition',
-    'edit_item_for' => 'Edit Item For Requisition'
-
-
+    'edit_item_for' => 'Edit Item For Requisition',
+    'approval_history' => 'Approval History',
+    'approve_or_reject' => 'Approve or Reject',
 ];

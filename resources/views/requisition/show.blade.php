@@ -237,7 +237,7 @@
                                 <form action="{{ route('requisition.approve', $requisition) }}" method="POST">
                                     @csrf
                                     <div class="mb-4">
-                                        <x-input-label for="comments" :value="__('Comments')" />
+                                        <x-input-label for="comments" :value="__('requisition.comments')" />
                                         <textarea name="comments" id="comments"
                                             class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>
@@ -250,7 +250,7 @@
                                 <form action="{{ route('requisition.reject', $requisition) }}" method="POST">
                                     @csrf
                                     <div class="mb-4">
-                                        <x-input-label for="comments" :value="__('Comments')" />
+                                        <x-input-label for="comments" :value="__('requisition.comments')" />
                                         <textarea name="comments" id="comments"
                                             class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
                                     </div>

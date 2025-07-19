@@ -37,4 +37,5 @@ return [
     'edit_item_for' => 'Edit Item For Requisition',
     'approval_history' => 'Approval History',
     'approve_or_reject' => 'Approve or Reject',
+    'comments' => 'Comments',
 ];

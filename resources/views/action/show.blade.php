@@ -15,7 +15,6 @@
                         <div>
                             <p class="text-sm font-semibold text-blue-500 uppercase tracking-wider">{{__('action.action')}}</p>
                             <h3 class="text-3xl font-bold text-gray-900 mt-1">{{ $action->name }}</h3>
-                            <p class="text-lg text-gray-600 mt-2">{{ $action->formula }}</p>
                         </div>
                         <div class="mt-4 sm:mt-0 sm:ml-4 flex-shrink-0">
                             <span
@@ -28,6 +27,7 @@
 
                 <!-- Goals -->
                 <div class="p-6 sm:p-8">
+                    <p class="text-lg text-gray-600 mt-2">{{ $action->formula }}</p>
                     <h5 class="font-semibold text-lg text-gray-700">{{__('action.goals')}}</h5>
                     <ul class="mt-2 list-disc list-inside space-y-1 text-gray-600">
                         @forelse($action->goals as $goal)

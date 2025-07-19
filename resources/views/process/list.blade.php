@@ -20,17 +20,13 @@
                                         </div>
                                         <div class="mt-4 pt-3 border-t border-gray-200">
                                             <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">{{__('process.projects')}}</h4>
-                                            @if($process->projects->isNotEmpty())
-                                                <div class="flex flex-wrap gap-1 mt-2">
-                                                    @foreach($process->projects as $project)
-                                                        <span class="inline-block bg-teal-100 text-teal-800 rounded-full px-2 py-1 text-xs font-semibold">
-                                                            {{ $project->description }}
-                                                        </span>
-                                                    @endforeach
-                                                </div>
-                                            @else
-                                                <p class="text-xs text-gray-500 mt-2">{{__('process.not_assigned')}}</p>
-                                            @endif
+                                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                                @forelse($process->projects as $project)
+                                                    <li class="py-1 leading-none text-sm text-gray-600"> {{ $project->index }}: {{ $project->description }}</li>
+                                                @empty
+                                                    <li class="text-sm text-gray-600">{{__('process.no_projects')}}</li>
+                                                @endforelse
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

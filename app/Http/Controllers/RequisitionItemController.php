@@ -41,7 +41,6 @@ class RequisitionItemController extends Controller
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',
-            //'type_resource' => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
         ]);
 
@@ -50,13 +49,11 @@ class RequisitionItemController extends Controller
             'budget_item_id' => $request->budget_item_id,
             'amount' => $request->amount,
             'unit' => $request->unit,
-            //'type_resource' => $request->type_resource,
             'price' => $request->price,
 
         ]);
 
-        return redirect()->route('requisition_items.index', $requisition)
-            ->with('success', 'Requisition item created successfully.');
+        return redirect()->route('requisition_items.index', $requisition);
     }
 
     /**
@@ -64,8 +61,6 @@ class RequisitionItemController extends Controller
      */
     public function show(Requisition $requisition, RequisitionItem $item)
     {
-        // No se usará directamente ya que la ruta resource tiene except(['show'])
-        // Pero si es necesario.
         return view('requisition.items.show', compact('requisition', 'item'));
     }
 
@@ -101,8 +96,7 @@ class RequisitionItemController extends Controller
 
         ]);
 
-        return redirect()->route('requisition_items.index', $requisition)
-            ->with('success', 'Requisition item updated successfully.');
+        return redirect()->route('requisition_items.index', $requisition);
     }
 
     /**
@@ -130,7 +124,6 @@ class RequisitionItemController extends Controller
     {
         $requisition_item->delete();
 
-        return redirect()->route('requisition_items.index', $requisition)
-            ->with('success', 'Requisition item deleted successfully.');
+        return back();
     }
 }

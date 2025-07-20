@@ -31,6 +31,108 @@
                 </header>
             @endif
 
+            <!-- Success Notification -->
+            @if (session('success'))
+            <div id="notification-success" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+                <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
+                    <div class="flex items-start p-6">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-medium text-gray-900">¡Operación exitosa!</h3>
+                            <p class="mt-1 text-gray-600">{{ session('success') }}</p>
+                        </div>
+                        <button onclick="this.closest('div[id^=notification-]').classList.add('hidden')" class="text-gray-400 hover:text-gray-500">
+                            <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="bg-green-500 h-2 w-full">
+                        <div class="bg-green-400 h-full w-full animate-progress"></div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <!-- Error Notification -->
+            @if (session('error'))
+            <div id="notification-error" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+                <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
+                    <div class="flex items-start p-6">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-medium text-gray-900">¡Error!</h3>
+                            <p class="mt-1 text-gray-600">{{ session('error') }}</p>
+                        </div>
+                        <button onclick="this.closest('div[id^=notification-]').classList.add('hidden')" class="text-gray-400 hover:text-gray-500">
+                            <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="bg-red-500 h-2 w-full">
+                        <div class="bg-red-400 h-full w-full animate-progress"></div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <!-- Warning Notification -->
+            @if (session('warning'))
+            <div id="notification-warning" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm"></div>
+                <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-md mx-auto overflow-hidden">
+                    <div class="flex items-start p-6">
+                        <div class="flex-shrink-0">
+                            <svg class="h-8 w-8 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                            </svg>
+                        </div>
+                        <div class="ml-4 flex-1">
+                            <h3 class="text-lg font-medium text-gray-900">¡Advertencia!</h3>
+                            <p class="mt-1 text-gray-600">{{ session('warning') }}</p>
+                        </div>
+                        <button onclick="this.closest('div[id^=notification-]').classList.add('hidden')" class="text-gray-400 hover:text-gray-500">
+                            <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="bg-yellow-500 h-2 w-full">
+                        <div class="bg-yellow-400 h-full w-full animate-progress"></div>
+                    </div>
+                </div>
+            </div>
+            @endif
+
+            <style>
+                @keyframes progress {
+                    from { width: 100%; }
+                    to { width: 0%; }
+                }
+                .animate-progress {
+                    animation: progress 5s linear forwards;
+                }
+            </style>
+
+            <script>
+                // Cierre automático para todas las notificaciones
+                document.querySelectorAll('div[id^="notification-"]').forEach(notification => {
+                    setTimeout(() => {
+                        notification.classList.add('hidden');
+                    }, 5000);
+                });
+            </script>
             <!-- Page Content -->
             <main>
                 {{ $slot }}

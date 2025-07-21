@@ -125,7 +125,7 @@ class RequisitionController extends Controller
             $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pdf.requisition', compact('requisition', 'directive'));
 
             //return view('pdf.requisition',compact('requisition','directive'));
-            return $pdf->download('requisition.pdf');
+            return $pdf->download('requisition-'.$requisition->folio.'.pdf');
         }
         return back()->with('error', trans('requisition.not_authorized'));
     }

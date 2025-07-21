@@ -176,13 +176,13 @@ class ProjectSeeder extends Seeder
         //for action_3_1
         Project::create([
             'index' => '3.1.1',
-            'description' => 'Dato no disponible',
+            'description' => 'Atención de primer nivel o de prevención',
             'action_id' => $action_3_1->id
         ]);
 
         Project::create([
             'index' => '3.1.2',
-            'description' => 'Dato no disponible',
+            'description' => 'Atención de segundo nivel o de competición y exhibición',
             'action_id' => $action_3_1->id
         ]);
 
@@ -393,7 +393,7 @@ class ProjectSeeder extends Seeder
         //for action_6_3
         Project::create([
             'index' => '6.3.1',
-            'description' => 'No hay datos en el excel de este proyecto',
+            'description' => 'Gestión de mayor financiamiento federal para el TecNM',
             'action_id' => $action_6_3->id
         ]);
 
@@ -412,7 +412,7 @@ class ProjectSeeder extends Seeder
 
         Project::create([
             'index' => '6.4.3',
-            'description' => 'Este dato aparece con error en el excel',
+            'description' => 'Consolidación de la cultura de rendición de cuentas y de acceso a la información publica en los institutos tecnológicos y centros',
             'action_id' => $action_6_4->id
         ]);
 

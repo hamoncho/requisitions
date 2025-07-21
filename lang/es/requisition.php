@@ -38,4 +38,9 @@ return [
     'approval_history' => 'Historial De Aprobación',
     'approve_or_reject' => 'Aprobar O Rechazar',
     'comments' => 'Comentarios',
+    'dont_belongs_to_you' => 'Esta requisicion no es tuya',
+    'not_authorized' => 'No está autorizado para realizar esta acción',
+    'been_sent' => 'La requisición ya habia sido enviada',
+    'sent_success' => 'Requisición envida con exito',
+
 ];

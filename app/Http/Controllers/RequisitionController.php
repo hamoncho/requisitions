@@ -87,13 +87,20 @@ class RequisitionController extends Controller
      */
     public function destroy(Requisition $requisition)
     {
-        //
+        if ($requisition->status == 'draft') {
+            $requisition->delete();
+            return back();
+        }
+        return back();
     }
 
     public function startApprovalProcess(Requisition $requisition, ApprovalService $approvalService)
     {
-        $approvalService->startApprovalProcess($requisition);
-        return redirect()->route('requisition.show', $requisition);
+        if ($requisition->status == 'draft') {
+            $approvalService->startApprovalProcess($requisition);
+            return redirect()->route('requisition.show', $requisition)->with('success', trans('requisition.sent_success'));
+        }
+        return redirect()->route('requisition.show', $requisition)->with('warning', trans('requisition.been_sent'));
     }
 
     public function approve(Request $request, Requisition $requisition, ApprovalService $approvalService)
@@ -112,11 +119,14 @@ class RequisitionController extends Controller
 
     public function pdf(Requisition $requisition)
     {
-        $directive = User::Where('role', 'directive')->first();
-        $requisition->load('approvals.approver');
-        $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pdf.requisition', compact('requisition', 'directive'));
+        if (auth()->user()->role == 'planning' && $requisition->status == 'approved') {
+            $directive = User::Where('role', 'directive')->first();
+            $requisition->load('approvals.approver');
+            $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pdf.requisition', compact('requisition', 'directive'));
 
-        //return view('pdf.requisition',compact('requisition','directive'));
-        return $pdf->download('requisition.pdf');
+            //return view('pdf.requisition',compact('requisition','directive'));
+            return $pdf->download('requisition.pdf');
+        }
+        return back()->with('error', trans('requisition.not_authorized'));
     }
 }

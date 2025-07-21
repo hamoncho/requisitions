@@ -39,4 +39,8 @@ return [
     'approval_history' => 'Approval History',
     'approve_or_reject' => 'Approve or Reject',
     'comments' => 'Comments',
+    'dont_belongs_to_you' => 'This requisition is not yours',
+    'not_authorized' => 'You are not authorized to perform this action',
+    'been_sent' => 'The requisition has already been sent',
+    'sent_success' => 'The request has been successfully sent',
 ];

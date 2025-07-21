@@ -15,11 +15,11 @@ class RequisitionItemController extends Controller
     public function index(Requisition $requisition)
     {
         $requisitionItems = $requisition->requisitionItems()->get();
-        if($requisition->user->id == auth()->user()->id){
+        if ($requisition->user->id == auth()->user()->id) {
             return view('requisition.items.index', compact('requisition', 'requisitionItems'));
-        }else{
-            return view('requisition.show', compact('requisition'));
         }
+
+        return back()->with('error', trans('requisition.dont_belongs_to_you'));
     }
 
     /**
@@ -44,16 +44,19 @@ class RequisitionItemController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
-        $requisition->requisitionItems()->create([
-            'name' => $request->name,
-            'budget_item_id' => $request->budget_item_id,
-            'amount' => $request->amount,
-            'unit' => $request->unit,
-            'price' => $request->price,
+        if ($requisition->user->id == auth()->user()->id) {
+            $requisition->requisitionItems()->create([
+                'name' => $request->name,
+                'budget_item_id' => $request->budget_item_id,
+                'amount' => $request->amount,
+                'unit' => $request->unit,
+                'price' => $request->price,
 
-        ]);
+            ]);
+            return redirect()->route('requisition_items.index', $requisition);
+        }
 
-        return redirect()->route('requisition_items.index', $requisition);
+        return back()->with('error', 'requisition.dont_belongs_to_you');
     }
 
     /**
@@ -87,16 +90,19 @@ class RequisitionItemController extends Controller
             'price' => 'required|numeric|min:0',
         ]);
 
-        $requisition_item->update([
-            'name' => $request->name,
-            'budget_item_id' => $request->budget_item_id,
-            'amount' => $request->amount,
-            'unit' => $request->unit,
-            'price' => $request->price,
 
-        ]);
+        if ($requisition->user->id == auth()->user()->id) {
+            $requisition_item->update([
+                'name' => $request->name,
+                'budget_item_id' => $request->budget_item_id,
+                'amount' => $request->amount,
+                'unit' => $request->unit,
+                'price' => $request->price,
 
-        return redirect()->route('requisition_items.index', $requisition);
+            ]);
+            return redirect()->route('requisition_items.index', $requisition);
+        }
+        return back()->with('error', trans('requisition.dont_belongs_to_you'));
     }
 
     /**
@@ -104,17 +110,19 @@ class RequisitionItemController extends Controller
      */
     public function updateTypeResource(Request $request, Requisition $requisition, RequisitionItem $requisition_item)
     {
-
         $request->validate([
             'type_resource' => 'required',
         ]);
 
-        $requisition_item->update([
-            'type_resource' => $request->type_resource,
-        ]);
+        if (auth()->user()->role == 'planning') {
+            $requisition_item->update([
+                'type_resource' => $request->type_resource,
+            ]);
 
-        return redirect()->route('requisition.show', $requisition)
-            ->with('success', 'Requisition item updated successfully.');
+            return back();
+        }
+
+        return back()->with('error', trans('requisition.not_authorized'));
     }
 
     /**
@@ -122,8 +130,11 @@ class RequisitionItemController extends Controller
      */
     public function destroy(Requisition $requisition, RequisitionItem $requisition_item)
     {
-        $requisition_item->delete();
+        if ($requisition->user->id == auth()->user()->id) {
+            $requisition_item->delete();
+            return back();
+        }
 
-        return back();
+        return back()->with('error', trans('requisition.dont_belongs_to_you'));
     }
 }

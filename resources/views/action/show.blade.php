@@ -3,6 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('action.title_show') }}
         </h2>
+        <x-back-arrow-link href="{{ route('action.list') }}" />
     </x-slot>
 
     <div class="py-12 bg-gray-50">

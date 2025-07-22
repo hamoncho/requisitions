@@ -6,7 +6,7 @@
         <x-back-arrow-link href="{{ route('home') }}"/>
     </x-slot>
 
-    <div class="max-w-[1536px] m-auto px-4 py-8">
+    <div class="max-w-[1536px] m-auto px-2 sm:px-4 py-8">
         <!-- Contenedor grid padre corregido -->
         <div
             class="grid grid-cols-3 gap-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 auto-rows-[100px] sm:auto-rows-[135px] md:auto-rows-[210px]">

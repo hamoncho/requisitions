@@ -14,16 +14,14 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // Nivel 1: Director
-        $director = User::create([
-            'name' => 'Mtra. Selene Gómez Barragán',
-            'position' => 'Directora General',
-            'email' => 'director@example.com',
+        $supervisor = User::create([
+            'name' => 'Supervisor User',
+            'position' => 'Subdirector de Planeación',
+            'email' => 'supervisor@itsuruapan.edu.mx',
             'password' => Hash::make('password'),
-            'role' => 'directive',
-            'supervisor_id' => 1,
+            'role' => 'immediate_boss',
         ]);
-        // Nivel 5: Empleado, reporta al Manager
+
         User::create([
             'name' => 'User De Pruebas',
             'position' => 'Empleado',

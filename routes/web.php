@@ -13,6 +13,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RequisitionController;
 use App\Http\Controllers\RequisitionItemController;
 use App\Http\Controllers\ApprovalController;
+use App\Http\Controllers\UserController;
 use App\Models\Requisition;
 use Illuminate\Support\Facades\Route;
 
@@ -152,6 +153,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/approvals', [ApprovalController::class, 'index'])->name('approvals.index');
 
     Route::get('/pdf/requisition/{requisition}',[RequisitionController::class, 'pdf'])->name('pdf.requisition');
+
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::post('users/{user}/reset-password', [UserController::class, 'resetPassword'])->name('users.reset-password');
 });
 
 require __DIR__.'/auth.php';

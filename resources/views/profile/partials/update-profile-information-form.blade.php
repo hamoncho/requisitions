@@ -48,12 +48,6 @@
         </div>
 
         <div>
-            <x-input-label for="role" :value="__('Role')" />
-            <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" :value="old('role', $user->role)" required />
-            <x-input-error class="mt-2" :messages="$errors->get('role')" />
-        </div>
-
-        <div>
             <x-input-label for="supervisor_id" :value="__('Supervisor')" />
             <select id="supervisor_id" name="supervisor_id" class="mt-1 block w-full">
                 <option value="">{{ __('None') }}</option>

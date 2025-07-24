@@ -20,7 +20,8 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        $users = User::all();
+        return view('auth.register', compact('users'));
     }
 
     /**
@@ -32,14 +33,18 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'position' => ['nullable', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'supervisor_id' => ['nullable', 'exists:users,id'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
+            'position' => $request->position,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'supervisor_id' => $request->supervisor_id,
         ]);
 
         event(new Registered($user));

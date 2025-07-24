@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RequestApproval;
 use App\Models\Indicator;
 use App\Models\Process;
 use App\Models\Project;

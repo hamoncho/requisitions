@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
+use App\Mail\RequestApproval;
 use App\Models\Requisition;
 use App\Models\User;
-use Illuminate\Console\View\Components\Warn;
+use Illuminate\Support\Facades\Mail;
 
 class ApprovalService
 {
@@ -88,6 +89,7 @@ class ApprovalService
                 'status' => 'pending_approval',
                 'current_approver_id' => $nextApproval->approver_id,
             ]);
+            Mail::to($requisition->currentApprover->email)->send(new RequestApproval($requisition, $requisition->currentApprover));
         } else {
             $requisition->update([
                 'status' => 'approved',

@@ -47,6 +47,31 @@
             @endif
         </div>
 
+        <div>
+            <x-input-label for="role" :value="__('Role')" />
+            <x-text-input id="role" name="role" type="text" class="mt-1 block w-full" :value="old('role', $user->role)" required />
+            <x-input-error class="mt-2" :messages="$errors->get('role')" />
+        </div>
+
+        <div>
+            <x-input-label for="supervisor_id" :value="__('Supervisor')" />
+            <select id="supervisor_id" name="supervisor_id" class="mt-1 block w-full">
+                <option value="">{{ __('None') }}</option>
+                @foreach($users as $supervisor)
+                    <option value="{{ $supervisor->id }}" {{ old('supervisor_id', $user->supervisor_id) == $supervisor->id ? 'selected' : '' }}>
+                        {{ $supervisor->name }}
+                    </option>
+                @endforeach
+            </select>
+            <x-input-error class="mt-2" :messages="$errors->get('supervisor_id')" />
+        </div>
+
+        <div>
+            <x-input-label for="position" :value="__('Position')" />
+            <x-text-input id="position" name="position" type="text" class="mt-1 block w-full" :value="old('position', $user->position)" />
+            <x-input-error class="mt-2" :messages="$errors->get('position')" />
+        </div>
+
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

@@ -130,8 +130,8 @@
             const editForm = document.getElementById('editUserForm');
             const resetBtn = document.getElementById('resetPasswordBtn');
 
-            editForm.action = '/users/' + user.id;
-            resetBtn.setAttribute('formaction', '/users/' + user.id + '/reset-password');
+            editForm.action = '{{route('users.index')}}/'+ user.id;
+            resetBtn.setAttribute('formaction', '{{route('users.index')}}/' + user.id + '/reset-password');
 
             document.getElementById('position').value = user.position;
             document.getElementById('role').value = user.role;

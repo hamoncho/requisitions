@@ -17,11 +17,13 @@
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.project') }}: </b>
+                                {{ $requisition->indicator->project->index }} -
                                 {{ $requisition->indicator->project->description }}
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.indicator') }}: </b>
+                                {{ $requisition->indicator->index }} -
                                 {{ $requisition->indicator->description }}
                             </li>
 

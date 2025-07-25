@@ -14,6 +14,10 @@ class RequisitionItemController extends Controller
      */
     public function index(Requisition $requisition)
     {
+        if(auth()->user()->supervisor === null){
+            return back()->with('warning',trans('requisition.dont_have_boss_assigned'));
+        }
+
         $requisitionItems = $requisition->requisitionItems()->get();
         if ($requisition->user->id == auth()->user()->id) {
             return view('requisition.items.index', compact('requisition', 'requisitionItems'));

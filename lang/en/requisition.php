@@ -43,4 +43,5 @@ return [
     'not_authorized' => 'You are not authorized to perform this action',
     'been_sent' => 'The requisition has already been sent',
     'sent_success' => 'The request has been successfully sent',
+    'dont_have_boss_assigned' => "You do not have an immediate boss assigned",
 ];

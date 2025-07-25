@@ -42,5 +42,6 @@ return [
     'not_authorized' => 'No está autorizado para realizar esta acción',
     'been_sent' => 'La requisición ya habia sido enviada',
     'sent_success' => 'Requisición envida con exito',
+    'dont_have_boss_assigned' => 'No tienes un jefe inmediato asignado',
 
 ];

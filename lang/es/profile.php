@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'delete_user_title' => 'Eliminar cuenta',
+    'delete_user_description' => 'Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.',
+    'delete_user_button' => 'Eliminar cuenta',
+    'delete_user_modal_title' => '¿Está seguro de que desea eliminar su cuenta?',
+    'delete_user_modal_description' => 'Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Ingrese su contraseña para confirmar que desea eliminar permanentemente su cuenta.',
+    'password_label' => 'Contraseña',
+    'cancel_button' => 'Cancelar',
+    'update_password_title' => 'Actualizar contraseña',
+    'update_password_description' => 'Asegúrese de que su cuenta esté usando una contraseña larga y aleatoria para mantenerse seguro.',
+    'current_password_label' => 'Contraseña actual',
+    'new_password_label' => 'Nueva contraseña',
+    'confirm_password_label' => 'Confirmar contraseña',
+    'save_button' => 'Guardar',
+    'saved_message' => 'Guardado.',
+    'profile_information_title' => 'Información del perfil',
+    'profile_information_description' => 'Actualice la información de perfil y la dirección de correo electrónico de su cuenta.',
+    'name_label' => 'Nombre',
+    'email_label' => 'Correo electrónico',
+    'unverified_email_message' => 'Su dirección de correo electrónico no está verificada.',
+    'resend_verification_email_button' => 'Haga clic aquí para volver a enviar el correo electrónico de verificación.',
+    'verification_link_sent_message' => 'Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.',
+    'supervisor_label' => 'Supervisor',
+    'none_option' => 'Ninguno',
+    'position_label' => 'Cargo',
+];

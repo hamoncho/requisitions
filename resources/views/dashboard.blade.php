@@ -140,7 +140,7 @@
             </a>
 
             <!-- Tarjeta destacada CORREGIDA -->
-            <a href="#"
+            <a href="{{ route('users.index') }}"
                 class="bg-white hover:scale-105 shadow-lg rounded-md overflow-hidden
                       col-span-2 row-span-2
                       flex flex-col">

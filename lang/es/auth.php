@@ -1,20 +1,28 @@
 <?php
 
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-
     'failed' => 'Estas credenciales no coinciden con nuestros registros.',
     'password' => 'La contraseña proporcionada es incorrecta.',
     'throttle' => 'Demasiados intentos de inicio de sesión. Por favor, inténtalo de nuevo en :seconds segundos.',
-
+    'confirm_password_message' => 'Esta es un área segura de la aplicación. Por favor, confirme su contraseña antes de continuar.',
+    'forgot_password_message' => '¿Olvidó su contraseña? No hay problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace para restablecer la contraseña que le permitirá elegir una nueva.',
+    'email_label' => 'Correo electrónico',
+    'password_label' => 'Contraseña',
+    'remember_me_label' => 'Recuérdame',
+    'forgot_password_link' => '¿Olvidó su contraseña?',
+    'login_button' => 'Iniciar sesión',
+    'name_label' => 'Nombre',
+    'position_label' => 'Cargo',
+    'confirm_password_label' => 'Confirmar contraseña',
+    'supervisor_label' => 'Supervisor',
+    'select_option' => 'Seleccione una opción',
+    'already_registered_link' => '¿Ya está registrado?',
+    'register_button' => 'Registrarse',
+    'reset_password_button' => 'Restablecer contraseña',
+    'verify_email_message' => '¡Gracias por registrarse! Antes de comenzar, ¿podría verificar su dirección de correo electrónico haciendo clic en el enlace que le acabamos de enviar? Si no recibió el correo electrónico, con gusto le enviaremos otro.',
+    'verification_link_sent_message' => 'Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó durante el registro.',
+    'resend_verification_email_button' => 'Reenviar correo de verificación',
+    'logout_button' => 'Cerrar sesión',
+    'confirm_button' => 'Confirmar',
+    'email_password_reset_link_button' => 'Enviar enlace para restablecer contraseña',
 ];

@@ -10,7 +10,6 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -161,7 +160,7 @@
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
                     <a href="#" class="flex items-center">
-                        <img src="{{ asset('/storage/img/logo.svg') }}" class="h-8 me-3" alt="FlowBite Logo" />
+                        <img src="{{ asset('/storage/img/logo.svg') }}" class="h-8 me-3" alt="Logo" />
                         <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ITSU</span>
                     </a>
                 </div>
@@ -274,7 +273,6 @@
             </div>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
     @stack('scripts')
 </body>
 

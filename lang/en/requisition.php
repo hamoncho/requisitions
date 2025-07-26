@@ -1,5 +1,7 @@
 <?php
 return [
+    'requisition' => 'Requisition',
+    'requisitions' => 'Requisitions',
     'show_title' => 'Requisition With Folio',
     'history_title' => 'My Requisitions',
     'folio' => 'Folio',
@@ -44,4 +46,10 @@ return [
     'been_sent' => 'The requisition has already been sent',
     'sent_success' => 'The request has been successfully sent',
     'dont_have_boss_assigned' => "You do not have an immediate boss assigned",
+    'requisition_list' => 'Requisition List',
+    'set_next_folio' => 'Set Next Folio',
+    'current_highest_folio' => 'Current highest folio',
+    'next_folio' => 'Next Folio',
+    'set_folio' => 'Set Folio',
+    'actions' => 'Actions',
 ];

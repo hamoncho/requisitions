@@ -140,6 +140,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/requisition/{requisition}', [RequisitionController::class, 'show'])->name('requisition.show');
     Route::get('/requisition/{requisition}/items', [RequisitionController::class, 'addItems'])->name('requisition.addItems');
     Route::post('/requisition/{requisition}/startApprovalProcess', [RequisitionController::class, 'startApprovalProcess'])->name('requisition.start_approval_process');
+    Route::delete('/requisition/{requisition}', [RequisitionController::class, 'destroy'])->name('requisition.destroy');
 
     // Rutas anidadas para Requisition Items
     Route::resource('requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
@@ -158,6 +159,8 @@ Route::middleware('auth')->group(function () {
     Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::put('users/{user}/reset-password', [UserController::class, 'resetPassword'])->name('users.reset-password');
+    Route::get('/dashboard/requisition/list', [RequisitionController::class, 'list'])->name('requisition.list');
+    Route::post('/dashboard/requisition/set-next-folio', [RequisitionController::class, 'setNextFolio'])->name('requisition.setNextFolio');
 });
 
 require __DIR__.'/auth.php';

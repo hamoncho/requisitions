@@ -1,5 +1,7 @@
 <?php
 return [
+    'requisition' => 'Requisición',
+    'requisitions' => 'Requisiciones',
     'show_title' => 'Requisición con Folio',
     'history_title' => 'Mis Requisiciones',
     'folio' => 'Folio',
@@ -43,5 +45,10 @@ return [
     'been_sent' => 'La requisición ya habia sido enviada',
     'sent_success' => 'Requisición envida con exito',
     'dont_have_boss_assigned' => 'No tienes un jefe inmediato asignado',
-
+    'requisition_list' => 'Lista de Requisiciones',
+    'set_next_folio' => 'Establecer Siguiente Folio',
+    'current_highest_folio' => 'Folio más alto actual',
+    'next_folio' => 'Siguiente Folio',
+    'set_folio' => 'Establecer Folio',
+    'actions' => 'Acciones',
 ];

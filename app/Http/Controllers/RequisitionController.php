@@ -88,11 +88,35 @@ class RequisitionController extends Controller
      */
     public function destroy(Requisition $requisition)
     {
-        if ($requisition->status == 'draft') {
+        if ($requisition->status == 'draft' || $requisition->status == 'system') {
             $requisition->delete();
-            return back();
+            return back()->with('success', 'Requisicion borrada con exito');
         }
         return back();
+    }
+
+    public function list()
+    {
+        $requisitions = Requisition::all();
+        $max_folio = Requisition::max('folio');
+        return view('requisition.list', compact('requisitions', 'max_folio'));
+    }
+
+    public function setNextFolio(Request $request)
+    {
+        $request->validate([
+            'next_folio' => 'required|integer|min:'.(Requisition::max('folio') + 1),
+        ]);
+
+        Requisition::create([
+            'folio' => $request->next_folio,
+            'status' => 'system',
+            'users_id' => auth()->id(),
+            'processes_id' => 0,
+            'indicators_id' => 0,
+        ]);
+
+        return back()->with('success', 'Next folio set successfully.');
     }
 
     public function startApprovalProcess(Requisition $requisition, ApprovalService $approvalService)

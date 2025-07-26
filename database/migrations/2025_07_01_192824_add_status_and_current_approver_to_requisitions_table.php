@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('requisitions', function (Blueprint $table) {
-            $table->enum('status', ['draft', 'in_progress', 'pending_approval', 'approved', 'rejected'])->default('draft');
+            $table->enum('status', ['draft', 'system', 'pending_approval', 'approved', 'rejected'])->default('draft');
             $table->foreignId('current_approver_id')->nullable()->constrained('users')->onDelete('set null');
         });
     }

@@ -11,7 +11,7 @@
             class="grid grid-cols-3 gap-2 sm:gap-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 auto-rows-[100px] sm:auto-rows-[135px] md:auto-rows-[210px]">
 
             <!-- Tarjeta destacada CORREGIDA -->
-            <a href="#"
+            <a href="{{ route('requisition.list') }}"
                 class="bg-white hover:scale-105 shadow-lg rounded-md overflow-hidden
                       col-span-2 row-span-2
                       flex flex-col">

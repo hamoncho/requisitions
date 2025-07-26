@@ -11,5 +11,7 @@ return [
     'download_pdf' => 'Descargar PDF',
     'approve' => 'Aprobar',
     'reject' => 'Rechazar',
+    'login' => 'Iniciar Sesión',
+    'register' => 'Registrarse',
 ];
 

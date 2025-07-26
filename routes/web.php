@@ -30,7 +30,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -58,7 +58,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/general_budget_item/destroy/{generalBudgetItem}', [GeneralBudgetItemController::class, 'destroy'])->name('general_budget_item.destroy');
     Route::get('/general_budget_item/list', [GeneralBudgetItemController::class, 'list'])->name('general_budget_item.list');
     Route::get('/general_budget_item/{generalBudgetItem}', [GeneralBudgetItemController::class, 'show'])->name('general_budget_item.show');
-    //Route::get('/general_budget_item/menu', [GeneralBudgetItemController::class, 'menu'])->name('general_budget_item.menu');
 
     Route::get('/budget_item', [BudgetItemController::class, 'index'])->name('budget_item.index');
     Route::get('/budget_item/create', [BudgetItemController::class, 'create'])->name('budget_item.create');
@@ -143,7 +142,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/requisition/{requisition}', [RequisitionController::class, 'destroy'])->name('requisition.destroy');
 
     // Rutas anidadas para Requisition Items
-    Route::resource('requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
+    Route::resource('/requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
 
     //Update type_resource
     Route::put('/requisition/{requisition}/requisition_items/type_resource/{requisition_item}',[RequisitionItemController::class, 'updateTypeResource'])->name('requisition_items.type_resource.update');
@@ -155,10 +154,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pdf/requisition/{requisition}',[RequisitionController::class, 'pdf'])->name('pdf.requisition');
 
-    Route::get('users', [UserController::class, 'index'])->name('users.index');
-    Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
-    Route::put('users/{user}/reset-password', [UserController::class, 'resetPassword'])->name('users.reset-password');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::put('/users/{user}/reset-password', [UserController::class, 'resetPassword'])->name('users.reset-password');
     Route::get('/dashboard/requisition/list', [RequisitionController::class, 'list'])->name('requisition.list');
     Route::post('/dashboard/requisition/set-next-folio', [RequisitionController::class, 'setNextFolio'])->name('requisition.setNextFolio');
 });

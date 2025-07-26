@@ -11,4 +11,6 @@ return [
     'download_pdf' => 'Download PDF',
     'approve' => 'Approve',
     'reject' => 'Reject',
+    'login' => 'Log in',
+    'register' => 'Register',
 ];

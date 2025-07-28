@@ -202,7 +202,7 @@ ServerAdmin tucorreo@tudominio.com
 </VirtualHost>
 ```
 2. **Clonar el repositorio de git.**
-Ir a la carpeta donde donde se va clonar el repositorio.
+Ir a la carpeta dónde se va clonar el repositorio.
 ```bash
 cd /var/www/html
 ```

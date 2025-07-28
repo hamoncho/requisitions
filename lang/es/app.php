@@ -7,4 +7,5 @@ return [
     'footer_faq' => 'Preguntas frecuentes',
     'about_us' => 'Sobre nosotros',
     'copyright' => 'Todos los derechos reservados',
+    'not_authorized' => 'No está autorizado para realizar esta acción',
 ];

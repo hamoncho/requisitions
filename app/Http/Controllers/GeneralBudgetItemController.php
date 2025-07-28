@@ -8,10 +8,11 @@ use App\Models\GeneralBudgetItem;
 
 class GeneralBudgetItemController extends Controller
 {
-   /**
-    * Display a menu
-    */
-    public function menu(){
+    /**
+     * Display a menu
+     */
+    public function menu()
+    {
         return view('generalbudgetitem.menu');
     }
 
@@ -67,7 +68,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function edit(GeneralBudgetItem $generalBudgetItem)
     {
-        return view('generalbudgetitem.edit',compact('generalBudgetItem'));
+        return view('generalbudgetitem.edit', compact('generalBudgetItem'));
     }
 
     /**
@@ -75,7 +76,7 @@ class GeneralBudgetItemController extends Controller
      */
     public function update(UpdateGeneralBudgetItemRequest $request, GeneralBudgetItem $generalBudgetItem)
     {
-       $generalBudgetItem->update($request->all());
+        $generalBudgetItem->update($request->all());
         return redirect()->route('general_budget_item.index');
     }
 

@@ -33,15 +33,22 @@
                             <div>
                                 <x-input-label for="name" :value="__('Code')" />
                                 <x-text-input id="code" name="code" type="number" class="mt-1 block w-full"
-                                    :value="old('code', $generalBudgetItem->code)" required autofocus autocomplete="code" />
+                                    :value="old('code', $generalBudgetItem->code)" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('code')" />
                             </div>
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
                                 <x-text-input id="name" name="name" type="text" class="mt-1 block w-full"
-                                    :value="old('name', $generalBudgetItem->name)" required autofocus autocomplete="name" />
+                                    :value="old('name', $generalBudgetItem->name)" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="description" :value="__('Description')" />
+                                <x-text-input id="description" name="description" type="text"
+                                    class="mt-1 block w-full" :value="old('description', $generalBudgetItem->description)" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('description')" />
                             </div>
 
                             <div class="flex items-center gap-4">

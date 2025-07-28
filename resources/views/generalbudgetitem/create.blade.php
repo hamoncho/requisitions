@@ -30,25 +30,26 @@
                             @method('post')
                             <div>
                                 <x-input-label for="code" :value="__('Code')" />
-                                <x-text-input id="create_code" name="code" type="text"
+                                <x-text-input id="create_code" name="code" type="number"
                                     class="mt-1 block w-full" />
-                                <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('code')" class="mt-2" />
                             </div>
 
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="create_name" name="name" type="text"
+                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" />
+                                <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="description" :value="__('Description')" />
+                                <x-text-input id="description" name="description" type="text"
                                     class="mt-1 block w-full" />
-                                <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('description')" class="mt-2" />
                             </div>
 
                             <div class="flex items-center gap-4">
                                 <x-primary-button>{{ __('Save') }}</x-primary-button>
-
-                                @if (session('status') === 'password-updated')
-                                    <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
-                                @endif
                             </div>
                         </form>
                     </section>

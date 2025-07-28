@@ -22,8 +22,9 @@ class UpdateGeneralBudgetItemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'code' => ['required', 'integer'],
+            'code' => ['required', 'integer','min:1'],
             'name' => ['required', 'string',  'max:255'],
+            'description' => ['required', 'string',  'max:1024'],
         ];
     }
 }

@@ -24,6 +24,7 @@ class StoreGeneralBudgetItemRequest extends FormRequest
         return [
             'code' => ['required', 'integer'],
             'name' => ['required', 'string',  'max:255'],
+            'description' => ['required', 'string',  'max:1024'],
         ];
 
     }

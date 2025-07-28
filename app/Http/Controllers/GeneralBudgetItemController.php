@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreGeneralBudgetItemRequest;
 use App\Http\Requests\UpdateGeneralBudgetItemRequest;
 use App\Models\GeneralBudgetItem;
+use Exception;
+use Illuminate\Support\Facades\Log;
 
 class GeneralBudgetItemController extends Controller
 {
@@ -38,12 +40,14 @@ class GeneralBudgetItemController extends Controller
      */
     public function store(StoreGeneralBudgetItemRequest $request)
     {
-        $generalBudgetItem = new GeneralBudgetItem;
-        $generalBudgetItem->code = $request->code;
-        $generalBudgetItem->name = $request->name;
-        $generalBudgetItem->save();
-
-        return redirect()->route('general_budget_item.index');
+        try {
+            GeneralBudgetItem::create($request->all());
+            return redirect()->route('general_budget_item.index')->with('success', trans('GeneralBudgetItem created successfuly'));
+        } catch (Exception $e) {
+            Log::error('Error saving GeneralBudgetItem: ' . $e->getMessage());
+            return back()->with('error', trans('Error'));
+        }
+        return back()->with('error', trans('Error'));
     }
 
     /**
@@ -76,8 +80,13 @@ class GeneralBudgetItemController extends Controller
      */
     public function update(UpdateGeneralBudgetItemRequest $request, GeneralBudgetItem $generalBudgetItem)
     {
-        $generalBudgetItem->update($request->all());
-        return redirect()->route('general_budget_item.index');
+        try {
+            $generalBudgetItem->update($request->all());
+            return redirect()->route('general_budget_item.index')->with('success', trans('Updated successfuly'));
+        } catch (Exception $e) {
+            Log::error('Error updating GeneralBudgetItem: ' . $e->getMessage());
+            return back()->with('error', trans('error'));
+        }
     }
 
     /**
@@ -85,7 +94,12 @@ class GeneralBudgetItemController extends Controller
      */
     public function destroy(GeneralBudgetItem $generalBudgetItem)
     {
-        $generalBudgetItem->delete();
-        return redirect()->route('general_budget_item.index');
+        try {
+            $generalBudgetItem->delete();
+            return redirect()->route('general_budget_item.index')->with('success', trans('Deleted successfuly'));
+        } catch (Exception $e) {
+            Log::error('Error deleting GeneralBudgetItem: ' . $e->getMessage());
+            return back()->with('error', trans('error'));
+        }
     }
 }

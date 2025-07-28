@@ -86,7 +86,7 @@ No importa el sistema operativo que estes usando los pasos son los mismos.
      ```
 #### 2. Configurar archivo `.env`.
 
-   - **Crear arhivo `.env`.**
+   - **Crear archivo `.env`.**
      
      El proyecto ya viene con un archivo de ejemplo `.env.example` copielo y cambie el nombre a `.env`.
      

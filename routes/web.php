@@ -96,7 +96,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/pdf/requisition/{requisition}', [RequisitionController::class, 'pdf'])->name('pdf.requisition');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth','admin')->group(function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');

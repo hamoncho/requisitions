@@ -44,11 +44,9 @@
                             {{ __('navigation.link_profile') }}
                         </x-dropdown-link>
 
-                        @if (Auth::user()->role !== 'user')
-                            <x-dropdown-link :href="route('approvals.index')">
-                                {{ __('navigation.link_aprove_requisition') }}
-                            </x-dropdown-link>
-                        @endif
+                        <x-dropdown-link :href="route('approvals.index')">
+                            {{ __('navigation.link_aprove_requisition') }}
+                        </x-dropdown-link>
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">

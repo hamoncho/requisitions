@@ -14,7 +14,7 @@ return [
     'name_label' => 'Nombre',
     'position_label' => 'Cargo',
     'confirm_password_label' => 'Confirmar contraseña',
-    'supervisor_label' => 'Supervisor',
+    'supervisor_label' => 'Jefe Inmediato',
     'select_option' => 'Seleccione una opción',
     'already_registered_link' => '¿Ya está registrado?',
     'register_button' => 'Registrarse',

@@ -7,6 +7,7 @@ use App\Models\Indicator;
 use App\Models\Process;
 use App\Models\Project;
 use App\Models\Requisition;
+use App\Models\RequisitionItem;
 use App\Models\User;
 use App\Services\ApprovalService;
 use Illuminate\Http\Request;
@@ -95,6 +96,17 @@ class RequisitionController extends Controller
         return back();
     }
 
+    public function truncate() {
+
+        if (auth()->user()->role == 'admin') {
+            Requisition::destroy(Requisition::all());
+            RequisitionItem::destroy(RequisitionItem::all());
+            return back()->with('success', 'Requisicion borrada con exito');
+        }
+
+        return back()->with('error', trans('requisition.not_authorized'));
+    }
+
     public function list()
     {
         $requisitions = Requisition::all();
@@ -152,6 +164,21 @@ class RequisitionController extends Controller
             //return view('pdf.requisition',compact('requisition','directive'));
             return $pdf->download('requisition-'.$requisition->folio.'.pdf');
         }
+        return back()->with('error', trans('requisition.not_authorized'));
+    }
+
+    public function allPDF(){
+
+        if (auth()->user()->role == 'admin') {
+            $directive = User::Where('role', 'directive')->first();
+            $requisitions = Requisition::Where('status','!=', 'system')->get();
+            $pdf = Pdf::setPaper('letter', 'landscape');
+
+            $pdf->loadView('pdf.requisitions', compact('requisitions', 'directive'));
+
+            return $pdf->download(trans('requisition.requisitions').'.pdf');
+        }
+
         return back()->with('error', trans('requisition.not_authorized'));
     }
 }

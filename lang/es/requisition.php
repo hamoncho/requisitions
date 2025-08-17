@@ -51,4 +51,5 @@ return [
     'next_folio' => 'Siguiente Folio',
     'set_folio' => 'Establecer Folio',
     'actions' => 'Acciones',
+    'download_all_requisitions' => 'Descargar todas las requisición'
 ];

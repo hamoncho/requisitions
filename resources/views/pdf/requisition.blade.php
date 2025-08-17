@@ -382,7 +382,7 @@
 
             <li class="info-list-item">
                 <b>Jefe Inmediato: </b>
-                {{ $requisition->user->supervisor->name }}
+                {{ $requisition->user->supervisor->name ?? "" }}
             </li>
 
             <li class="info-list-item info-list-item-last">
@@ -491,8 +491,8 @@
                 @endforeach
                 <div class="step">
                     <div class="step-info">
-                        <div class="approver-name director">{{ $directive->name }}</div>
-                        <div class="approver-position">{{ $directive->position }}</div>
+                        <div class="approver-name director">{{ $directive->name ?? "" }}</div>
+                        <div class="approver-position">{{ $directive->position ?? ""}}</div>
                     </div>
                 </div>
             </div>

@@ -81,6 +81,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/requisition/{requisition}/items', [RequisitionController::class, 'addItems'])->name('requisition.addItems');
     Route::post('/requisition/{requisition}/startApprovalProcess', [RequisitionController::class, 'startApprovalProcess'])->name('requisition.start_approval_process');
     Route::delete('/requisition/{requisition}', [RequisitionController::class, 'destroy'])->name('requisition.destroy');
+    Route::delete('/requisitions', [RequisitionController::class, 'truncate'])->name('requisition.truncate');
 
     // Rutas anidadas para Requisition Items
     Route::resource('/requisition/{requisition}/requisition_items', RequisitionItemController::class)->except(['show']);
@@ -94,6 +95,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/approvals', [ApprovalController::class, 'index'])->name('approvals.index');
 
     Route::get('/pdf/requisition/{requisition}', [RequisitionController::class, 'pdf'])->name('pdf.requisition');
+    Route::get('/allpdf/requisition', [RequisitionController::class, 'allPDF'])->name('allpdf.requisition');
 });
 
 Route::middleware('auth','admin')->group(function () {

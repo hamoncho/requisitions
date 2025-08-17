@@ -90,6 +90,7 @@ class RequisitionController extends Controller
     public function destroy(Requisition $requisition)
     {
         if ($requisition->status == 'draft' || $requisition->status == 'system') {
+            $requisition->requisitionItems()->delete();
             $requisition->delete();
             return back()->with('success', 'Requisicion borrada con exito');
         }

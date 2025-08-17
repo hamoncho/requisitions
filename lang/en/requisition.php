@@ -52,5 +52,6 @@ return [
     'next_folio' => 'Next Folio',
     'set_folio' => 'Set Folio',
     'actions' => 'Actions',
-    'download_all_requisitions' => 'Download all requisitions'
+    'download_all_requisitions' => 'Download all requisitions',
+    'delete_all_requisitions' => 'Delete all requisitions',
 ];

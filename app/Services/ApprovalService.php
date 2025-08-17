@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Mail\RequestApproval;
 use App\Models\Requisition;
 use App\Models\User;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Mail;
 
 class ApprovalService
@@ -84,7 +85,7 @@ class ApprovalService
 
     public function resetLastStatus(Requisition $requisition){
 
-        $currentApprover = $requisition->approvals()->get()[3];
+        $currentApprover = $requisition->approvals()->get()->last();
 
         $currentApprover->update([
             'status' => 'pending',

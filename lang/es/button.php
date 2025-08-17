@@ -14,5 +14,6 @@ return [
     'login' => 'Iniciar Sesión',
     'register' => 'Registrarse',
     'reset' => 'Restablecer',
+    'view' => 'Ver',
 ];
 

@@ -97,7 +97,9 @@
                                     <option value="user">{{ __('User') }}</option>
                                     <option value="accountant">{{ __('Accountant') }}</option>
                                     <option value="planning">{{ __('Planning') }}</option>
+                                    <option value="requisition">{{ __('Requisition') }}</option>
                                     <option value="directive">{{ __('Directive') }}</option>
+                                    <option value="admin">{{ __('Admin') }}</option>
                                 </select>
                             </div>
                             <div class="mt-4">

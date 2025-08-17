@@ -462,32 +462,34 @@
             <div class="timeline-progress"></div>
             <div class="timeline-steps">
                 @foreach ($requisition->approvals as $approval)
-                    <div class="step">
-                        @php
-                            $statusClass = '';
-                            $symbol = '';
-                            if ($approval->status == 'approved') {
-                                $statusClass = 'approved';
-                                $symbol = 'A';
-                            } elseif ($approval->status == 'rejected') {
-                                $statusClass = 'rejected';
-                                $symbol = 'R';
-                            } else {
-                                $statusClass = $requisition->status == 'rejected' ? 'default' : 'pending';
-                                $symbol = $requisition->status == 'rejected' ? '⏱' : '!';
-                            }
-                        @endphp
+                    @if($approval->approver->role != 'requisition')
+                        <div class="step">
+                            @php
+                                $statusClass = '';
+                                $symbol = '';
+                                if ($approval->status == 'approved') {
+                                    $statusClass = 'approved';
+                                    $symbol = 'A';
+                                } elseif ($approval->status == 'rejected') {
+                                    $statusClass = 'rejected';
+                                    $symbol = 'R';
+                                } else {
+                                    $statusClass = $requisition->status == 'rejected' ? 'default' : 'pending';
+                                    $symbol = $requisition->status == 'rejected' ? '⏱' : '!';
+                                }
+                            @endphp
 
-                        <div class="step-indicator {{ $statusClass }}">{{ $symbol }}</div>
-                        <div class="step-info">
-                            @if ($approval->status == 'approved' || $approval->status == 'rejected')
-                                <div class="approver-date">{{ $approval->updated_at->format('d/m/Y H:i') }}</div>
-                            @endif
-                            <div class="approver-comment">{{ $approval->comments }}</div>
-                            <div class="approver-name">{{ $approval->approver->name }}</div>
-                            <div class="approver-position">{{ $approval->approver->position }}</div>
+                            <div class="step-indicator {{ $statusClass }}">{{ $symbol }}</div>
+                            <div class="step-info">
+                                @if ($approval->status == 'approved' || $approval->status == 'rejected')
+                                    <div class="approver-date">{{ $approval->updated_at->format('d/m/Y H:i') }}</div>
+                                @endif
+                                <div class="approver-comment">{{ $approval->comments }}</div>
+                                <div class="approver-name">{{ $approval->approver->name }}</div>
+                                <div class="approver-position">{{ $approval->approver->position }}</div>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
                 <div class="step">
                     <div class="step-info">

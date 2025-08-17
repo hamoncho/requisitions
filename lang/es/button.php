@@ -13,5 +13,6 @@ return [
     'reject' => 'Rechazar',
     'login' => 'Iniciar Sesión',
     'register' => 'Registrarse',
+    'reset' => 'Restablecer',
 ];
 

@@ -12,8 +12,8 @@ class ApprovalController extends Controller
     public function index()
     {
 
-        // Planiacion tiene que establecer el presupuesto.
-        if (auth()->user()->role == 'planning') {
+        // usuario con role requisition tiene que establecer el presupuesto.
+        if (auth()->user()->role == 'requisition') {
             $requisitions = RequisitionItem::whereNull('type_resource')
                 ->get()
                 ->map(function ($requisitionItem, $key) {

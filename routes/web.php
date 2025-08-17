@@ -15,6 +15,7 @@ use App\Http\Controllers\RequisitionItemController;
 use App\Http\Controllers\ApprovalController;
 use App\Http\Controllers\UserController;
 use App\Models\Requisition;
+use App\Services\ApprovalService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,6 +97,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/pdf/requisition/{requisition}', [RequisitionController::class, 'pdf'])->name('pdf.requisition');
     Route::get('/allpdf/requisition', [RequisitionController::class, 'allPDF'])->name('allpdf.requisition');
+
+    Route::post('/requisition/{requisition}/reset_last_status', [ApprovalService::class, 'resetLastStatus'])->name('requisition.reset_last_status');
 });
 
 Route::middleware('auth','admin')->group(function () {

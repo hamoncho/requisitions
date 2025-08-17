@@ -13,4 +13,5 @@ return [
     'reject' => 'Reject',
     'login' => 'Log in',
     'register' => 'Register',
+    'reset' => 'Reset',
 ];

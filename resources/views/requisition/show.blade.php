@@ -67,7 +67,7 @@
                                         </span>
                                 @endswitch
                             </div>
-                            @if ($requisition->status == 'approved' && Auth::user()->role == 'planning')
+                            @if ($requisition->status == 'approved' && Auth::user()->role == 'requisition')
                                 <div>
                                     <a href="{{ route('pdf.requisition', ['requisition' => $requisition]) }}"
                                         class="inline-flex items-center px-4 py-2 bg-blue-950 hover:bg-blue-900 text-white text-sm font-medium rounded-md transition duration-300 ease-in-out transform hover:scale-105">
@@ -124,7 +124,7 @@
 
                                                 <td class="px-2 py-2 whitespace-nowrap">{{ $item->amount }}</td>
                                                 <td class="px-2 py-2 whitespace-nowrap">{{ $item->unit }}</td>
-                                                @if (!isset($item->type_resource) && $requisition->status == 'pending_approval' && Auth::user()->role == 'planning')
+                                                @if (!isset($item->type_resource) && $requisition->status == 'pending_approval' && Auth::user()->role == 'requisition')
                                                     <td class="px-2 py-2 whitespace-nowrap">
                                                         <form id=""
                                                             action="{{ route('requisition_items.type_resource.update', [$requisition, $item]) }}"
@@ -263,6 +263,16 @@
                             </div>
                         </div>
                     @endif
+
+                    @if(($requisition->status == 'approved') && auth()->user()->role == 'requisition')
+                        <form action="{{ route('requisition.reset_last_status', $requisition) }}" method="POST">
+                            @csrf
+                            <x-primary-button>
+                                {{ __('button.reset') }}
+                            </x-primary-button>
+                        </form>
+                    @endif
+
                 </div>
             </div>
         </div>

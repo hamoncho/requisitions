@@ -157,7 +157,7 @@ class RequisitionController extends Controller
 
     public function pdf(Requisition $requisition)
     {
-        if (auth()->user()->role == 'planning' && $requisition->status == 'approved') {
+        if (auth()->user()->role == 'requisition' && $requisition->status == 'approved') {
             $directive = User::Where('role', 'directive')->first();
             $requisition->load('approvals.approver');
             $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pdf.requisition', compact('requisition', 'directive'));

@@ -15,5 +15,9 @@ return [
     'register' => 'Registrarse',
     'reset' => 'Restablecer',
     'view' => 'Ver',
+    'save' => 'Guardar',
+    'cancel' => 'Cancelar',
+    'reset_password' => 'Restablecer Contraseña',
+
 ];
 

@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Users') }}
+            {{ __('profile.users') }}
         </h2>
     </x-slot>
 
@@ -14,19 +14,13 @@
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Name') }}
+                                        {{ __('Info') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Email') }}
+                                        {{ __('auth.role') }}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Position') }}
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Role') }}
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        {{ __('Supervisor') }}
+                                        {{ __('auth.supervisor_label') }}
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">{{ __('Actions') }}</span>
@@ -36,14 +30,10 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($users as $user)
                                     <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {{ $user->name }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $user->email }}
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {{ $user->position }}
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                            <p class="text-gray-900">{{ $user->name }}</p>
+                                            <p class="text-gray-500">{{ $user->email }}</p>
+                                            <i class="text-gray-500">{{ $user->position }}</i>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                             {{ $user->role }}
@@ -52,11 +42,11 @@
                                             {{ $user->supervisor->name ?? 'N/A' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <button class="text-indigo-600 hover:text-indigo-900" onclick='openEditModal(@json($user), @json($allUsers))'>{{ __('Edit') }}</button>
+                                            <button class="text-indigo-600 hover:text-indigo-900" onclick='openEditModal(@json($user), @json($allUsers))'>{{ __('button.edit') }}</button>
                                             <form action="{{ route('users.destroy', $user) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this user?');">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="text-red-600 hover:text-red-900 ml-4">{{ __('Delete') }}</button>
+                                                <button type="submit" class="text-red-600 hover:text-red-900 ml-4">{{ __('button.delete') }}</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -88,11 +78,11 @@
                         </h3>
                         <div class="mt-2">
                             <div class="mt-4">
-                                <x-input-label for="position" :value="__('Position')" />
+                                <x-input-label for="position" :value="__('auth.position_label')" />
                                 <x-text-input id="position" class="block mt-1 w-full" type="text" name="position" />
                             </div>
                             <div class="mt-4">
-                                <x-input-label for="role" :value="__('Role')" />
+                                <x-input-label for="role" :value="__('auth.role')" />
                                 <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                     <option value="user">{{ __('User') }}</option>
                                     <option value="accountant">{{ __('Accountant') }}</option>
@@ -103,7 +93,7 @@
                                 </select>
                             </div>
                             <div class="mt-4">
-                                <x-input-label for="supervisor_id" :value="__('Supervisor')" />
+                                <x-input-label for="supervisor_id" :value="__('auth.supervisor_label')" />
                                 <select id="supervisor_id" name="supervisor_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                     <option value="">{{ __('Select an option') }}</option>
                                 </select>
@@ -112,13 +102,13 @@
                     </div>
                     <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                         <button type="submit" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:ml-3 sm:w-auto sm:text-sm">
-                            {{ __('Save') }}
+                            {{ __('button.save') }}
                         </button>
                         <button type="submit" id="resetPasswordBtn" formmethod="POST" onclick="return confirm('Are you sure you want to reset the password for this user?');" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-                            {{ __('Reset Password') }}
+                            {{ __('button.reset_password') }}
                         </button>
                         <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm" onclick="closeEditModal()">
-                            {{ __('Cancel') }}
+                            {{ __('button.cancel') }}
                         </button>
                     </div>
                 </form>

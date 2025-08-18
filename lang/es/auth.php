@@ -25,4 +25,5 @@ return [
     'logout_button' => 'Cerrar sesión',
     'confirm_button' => 'Confirmar',
     'email_password_reset_link_button' => 'Enviar enlace para restablecer contraseña',
+    'role' => 'Rol',
 ];

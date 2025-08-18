@@ -22,4 +22,5 @@ return [
     'logout_button' => 'Log Out',
     'confirm_button' => 'Confirm',
     'email_password_reset_link_button' => 'Email Password Reset Link',
+    'role' => 'Role',
 ];

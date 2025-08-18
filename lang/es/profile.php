@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'user' => 'Usuario',
+    'users' => 'Usuarios',
     'delete_user_title' => 'Eliminar cuenta',
     'delete_user_description' => 'Una vez que se elimine su cuenta, todos sus recursos y datos se eliminarán permanentemente. Antes de eliminar su cuenta, descargue cualquier dato o información que desee conservar.',
     'delete_user_button' => 'Eliminar cuenta',
@@ -22,7 +24,7 @@ return [
     'unverified_email_message' => 'Su dirección de correo electrónico no está verificada.',
     'resend_verification_email_button' => 'Haga clic aquí para volver a enviar el correo electrónico de verificación.',
     'verification_link_sent_message' => 'Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.',
-    'supervisor_label' => 'Supervisor',
+    'supervisor_label' => 'Jefe Inmediato',
     'none_option' => 'Ninguno',
     'position_label' => 'Cargo',
 ];

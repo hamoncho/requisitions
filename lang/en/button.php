@@ -15,4 +15,7 @@ return [
     'register' => 'Register',
     'reset' => 'Reset',
     'view' => 'View',
+    'save' => 'Save',
+    'cancel' => 'Cancel',
+    'reset_password' => 'Reset Password',
 ];

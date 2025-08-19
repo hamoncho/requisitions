@@ -40,8 +40,12 @@ class RequisitionItemController extends Controller
      */
     public function store(Request $request, Requisition $requisition)
     {
+        if($requisition->requisitionItems->count() >= 11){
+            return redirect()->route('requisition_items.index', $requisition)->with('warning', trans('requisition.has_many_items'));
+        }
+
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:64',
             'budget_item_id' => 'required|exists:budget_items,id',
             'amount' => 'required|integer|min:1',
             'unit' => 'required|string|max:255',

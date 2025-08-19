@@ -54,4 +54,5 @@ return [
     'actions' => 'Actions',
     'download_all_requisitions' => 'Download all requisitions',
     'delete_all_requisitions' => 'Delete all requisitions',
+    'has_many_items' => 'This requisition has many items, max items 11'
 ];

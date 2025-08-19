@@ -190,40 +190,7 @@
                     {{ $requisition->indicator->project->description }}</div>
                 <div class="info-item"><b>Indicador:</b> {{ $requisition->indicator->index }} - {{ $requisition->indicator->description }}</div>
                 <div class="info-item"><b>Solicitante:</b> {{ $requisition->user->name }}</div>
-                <div class="info-item"><b>Fecha de creacion:</b> {{ $requisition->created_at->format('d/m/Y H:i') }}
-                </div>
-                <div class="info-item"><b>Estado:</b>
-                    @switch($requisition->status)
-                        @case('draft')
-                            <span class="status-badge status-draft">
-                                Borrador
-                            </span>
-                        @break
-
-                        @case('pending_approval')
-                            <span class="status-badge status-pending">
-                                Pendiente De Aprobación
-                            </span>
-                        @break
-
-                        @case('approved')
-                            <span class="status-badge status-approved">
-                                Aprobado
-                            </span>
-                        @break
-
-                        @case('rejected')
-                            <span class="status-badge status-rejected">
-                                Rechazado
-                            </span>
-                        @break
-
-                        @default
-                            <span class="status-badge status-default">
-                                {{ $requisition->status }}
-                            </span>
-                    @endswitch
-                </div>
+                <div class="info-item"><b>Fecha de creacion:</b> {{ $requisition->created_at->format('d/m/Y H:i') }}</div>
             </div>
 
             <h3 style="margin-top: 30px; border-bottom: 2px solid #eee; padding-bottom: 10px;">Artículos de la

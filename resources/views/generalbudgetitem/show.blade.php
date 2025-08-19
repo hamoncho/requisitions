@@ -29,15 +29,19 @@
                 <!-- BudgetItems Section -->
                 <div class="p-6 sm:p-8">
                     <h4 class="text-lg font-semibold text-gray-800">{{__('generalbudgetitem.associated_budget_items')}}</h4>
-                    <div class="mt-4 flex flex-wrap gap-2">
+                    <ul class="mt-2 list-disc list-inside space-y-1 text-gray-600">
                         @forelse($generalBudgetItem->budgetItems as $budgetItem)
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                            <li>
+                                <a href="{{ route('budget_item.show', $budgetItem) }}"
+                                    class="text-blue-600 hover:underline text-md font-medium">
+                                    {{ $budgetItem->full_code }}
+                                </a>
                                 {{ $budgetItem->name }}
-                            </span>
+                            </li>
                         @empty
-                            <p class="text-gray-500">{{__('generalbudgetitem.no_budget_items')}}</p>
+                            <li class="text-gray-500">{{__('objective.no_indicators')}}</li>
                         @endforelse
-                    </div>
+                    </ul>
                 </div>
             </div>
 

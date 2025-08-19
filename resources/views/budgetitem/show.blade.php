@@ -31,7 +31,13 @@
                 <div class="p-6 sm:p-8">
                     <h4 class="text-lg font-semibold text-gray-800">{{__('budgetitem.belongs_to')}}</h4>
                         <div>
-                            <p class="text-gray-800">{{ $budgetItem->generalBudgetItem->name }}</p>
+                            <p class="text-gray-800">
+                                <a href="{{ route('general_budget_item.show', $budgetItem->generalBudgetItem) }}"
+                                    class="text-blue-600 hover:underline text-md font-medium">
+                                    {{ $budgetItem->generalBudgetItem->code }}
+                                </a>
+                                {{ $budgetItem->generalBudgetItem->name }}
+                            </p>
                         </div>
                 </div>
             </div>

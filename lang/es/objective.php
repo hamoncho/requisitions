@@ -5,6 +5,7 @@ return [
     'title' => 'Objetivos',
     'involveds' => 'Involucrados',
     'not_assigned' => 'No asignado',
+    'objectives' => 'Objetivos',
 
     //show
     'title_show' => 'Detalles del Objetivo',
@@ -20,6 +21,7 @@ return [
     'indicators' => 'Indicadores',
     'no_indicators' => 'No hay indicadores.',
     'processes' => 'Procesos',
+    'no_objectives' => 'No Hay Objetivos',
     'no_processes' => 'No hay procesos.',
     'no_projects' => 'No hay proyectos para esta acción.',
     'no_actions' => 'No hay acciones asociadas a este objetivo.',

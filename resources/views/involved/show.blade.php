@@ -26,6 +26,21 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="p-6 sm:p-8">
+                    <h4 class="text-lg font-semibold text-gray-800">{{__('objective.involved_parties')}}</h4>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        @forelse($involved->objectives as $objective)
+                            <a href="{{ route('objective.show', $objective) }}"
+                                class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition duration-150">
+                                {{ $objective->name }}
+                            </a>
+                        @empty
+                            <p class="text-gray-500">{{__('involved.not_objective')}}</p>
+                        @endforelse
+                    </div>
+                </div>
+
             </div>
 
             <div class="mt-8 text-center">

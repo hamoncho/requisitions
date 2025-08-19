@@ -5,6 +5,7 @@ return [
     'title' => 'Objectives',
     'involveds' => 'Involveds',
     'not_assigned' => 'Not assigned',
+    'objectives' => 'Objectives',
 
     //show
     'title_show' => 'Objective Details',
@@ -21,6 +22,7 @@ return [
     'no_indicators' => 'No indicators.',
     'processes' => 'Processes',
     'no_processes' => 'No processes.',
+    'no_objectives' => 'No objectives',
     'no_projects' => 'No projects for this action.',
     'no_actions' => 'No actions associated with this objective.',
     'back_button' => 'Back to Objectives',

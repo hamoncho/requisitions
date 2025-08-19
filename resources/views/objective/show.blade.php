@@ -32,9 +32,10 @@
                     <h4 class="text-lg font-semibold text-gray-800">{{__('objective.involved_parties')}}</h4>
                     <div class="mt-4 flex flex-wrap gap-2">
                         @forelse($objective->involveds as $involved)
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium">
+                            <a href="{{ route('involved.show', $involved) }}"
+                                class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition duration-150">
                                 {{ $involved->name }}
-                            </span>
+                            </a>
                         @empty
                             <p class="text-gray-500">{{__('objective.no_involved_parties')}}</p>
                         @endforelse

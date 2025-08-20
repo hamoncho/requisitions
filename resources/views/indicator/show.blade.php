@@ -25,6 +25,17 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="p-6 sm:p-8 border-b border-gray-200">
+                    <h4 class="text-lg font-semibold text-gray-800">{{__('indicator.associated_project')}}</h4>
+                    <p class="text-gray-600">
+                        <a href="{{ route('project.show', $indicator->project) }}"
+                            class="text-blue-600 hover:underline text-md font-medium">
+                            {{ $indicator->project->index }}
+                        </a>
+                        {{ $indicator->project->description }}
+                    </p>
+                </div>
             </div>
 
             <div class="mt-8 text-center">

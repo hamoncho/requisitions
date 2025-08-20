@@ -9,4 +9,5 @@ return [
     'indicator' => 'Indicador',
     'index' => 'Índice',
     'back_button' => 'Volver a Indicadores',
+    'associated_project' => 'Projecto Asociado',
 ];

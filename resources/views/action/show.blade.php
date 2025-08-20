@@ -28,7 +28,8 @@
 
                 <!-- Goals -->
                 <div class="p-6 sm:p-8">
-                    <p class="text-lg text-gray-600 mt-2">{{ $action->formula }}</p>
+                    <p class="font-semibold text-gray-600">{{__('objective.formula')}}</p>
+                    <p class="text-lg text-gray-600">{{ $action->formula }}</p>
                     <h5 class="font-semibold text-lg text-gray-700">{{__('action.goals')}}</h5>
                     <ul class="mt-2 list-disc list-inside space-y-1 text-gray-600">
                         @forelse($action->goals as $goal)
@@ -41,40 +42,53 @@
                 </div>
 
                 <!-- Projects -->
-                <div class="p-6 space-y-4 border-t border-gray-200">
-                    <h5 class="font-semibold text-lg text-gray-700">{{__('action.projects')}}</h5>
+                <div class="p-4 sm:p-6 space-y-4 border-t border-gray-200">
+                    <h5 class="font-semibold text-lg text-gray-700">{{__('objective.projects')}}</h5>
                     @forelse($action->projects as $project)
                         <div class="p-4 border border-gray-200 rounded-lg bg-gray-50">
-                            <p class="font-bold text-gray-800">{{ $project->index }} -
-                                {{ $project->description }}</p>
+                            <p class="font-bold text-gray-800">
+                                <a href="{{ route('project.show', $project) }}"
+                                    class="text-blue-600 hover:underline text-md font-medium">
+                                    {{ $project->index }}
+                                </a>
+                                    {{ $project->description }}
+                            </p>
                             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
                                 <!-- Indicators -->
                                 <div>
-                                    <h6 class="font-semibold text-gray-600">{{__('action.indicators')}}</h6>
+                                    <h6 class="font-semibold text-gray-600">{{__('objective.indicators')}}</h6>
                                     <ul class="mt-2 list-disc list-inside space-y-1 text-gray-600">
                                         @forelse($project->indicators as $indicator)
-                                            <li>{{ $indicator->index }} - {{ $indicator->description }}
+                                            <li>
+                                                <a href="{{ route('indicator.show', $indicator) }}"
+                                                    class="text-blue-600 hover:underline text-md font-medium">
+                                                    {{ $indicator->index }}
+                                                </a>
+                                                {{ $indicator->description }}
                                             </li>
                                         @empty
-                                            <li class="text-gray-500">{{__('action.no_indicators')}}</li>
+                                            <li class="text-gray-500">{{__('objective.no_indicators')}}</li>
                                         @endforelse
                                     </ul>
                                 </div>
                                 <!-- Processes -->
                                 <div>
-                                    <h6 class="font-semibold text-gray-600">{{__('action.processes')}}</h6>
-                                    <ul class="mt-2 list-disc list-inside space-y-1 text-gray-600">
+                                    <h6 class="font-semibold text-gray-600">{{__('objective.processes')}}</h6>
+                                    <div class="mt-4 flex flex-wrap gap-2">
                                         @forelse($project->processess as $process)
-                                            <li>{{ $process->index }}</li>
+                                            <a href="{{ route('process.show', $process) }}"
+                                                class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm font-medium hover:bg-gray-200 transition duration-150">
+                                                {{ $process->index }}
+                                            </a>
                                         @empty
-                                            <li class="text-gray-500">{{__('action.no_processes')}}</li>
+                                            <p class="text-gray-500">{{__('objective.no_processes')}}</p>
                                         @endforelse
-                                    </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     @empty
-                        <p class="text-gray-500">{{__('action.no_projects')}}</p>
+                        <p class="text-gray-500">{{__('objective.no_projects')}}</p>
                     @endforelse
                 </div>
             </div>

@@ -144,6 +144,16 @@
                                                 @else
                                                     <td class="px-2 py-2 whitespace-nowrap">
                                                         {{ $item->type_resource }}
+                                                        @if ((Auth::user()->role == 'requisition') && ($item->type_resource != null) && ($requisition->status == 'pending_approval'))
+                                                        <form id=""
+                                                            action="{{ route('requisition_items.type_resource.update', [$requisition, $item]) }}"
+                                                            method="post">
+                                                            @csrf
+                                                            @method('PUT')
+                                                           <x-primary-button> {{__('button.reset') }}</x-primary-button>
+                                                            <input type="hidden" id="type_resource_delete" name="type_resource" value=null>
+                                                        </form>
+                                                        @endif
                                                     </td>
                                                 @endif
                                                 <td class="px-2 py-2 whitespace-nowrap">

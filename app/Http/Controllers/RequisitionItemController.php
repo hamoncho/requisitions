@@ -122,6 +122,10 @@ class RequisitionItemController extends Controller
             'type_resource' => 'required',
         ]);
 
+        if($request->type_resource == 'null'){
+            $request->type_resource = null;
+        }
+
         if (auth()->user()->role == 'requisition') {
             $requisition_item->update([
                 'type_resource' => $request->type_resource,

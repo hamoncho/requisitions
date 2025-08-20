@@ -143,7 +143,11 @@ class RequisitionController extends Controller
 
     public function approve(Request $request, Requisition $requisition, ApprovalService $approvalService)
     {
-        $approvalService->approve($requisition, auth()->user(), $request->input('comments'));
+        $response = $approvalService->approve($requisition, auth()->user(), $request->input('comments'));
+
+        if ($response) {
+            return $response;
+        }
 
         return back()->with('success', 'Requisition approved.');
     }

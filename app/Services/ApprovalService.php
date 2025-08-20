@@ -9,6 +9,8 @@ use Exception;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
+use function Laravel\Prompts\warning;
+
 class ApprovalService
 {
     public function startApprovalProcess(Requisition $requisition)
@@ -38,6 +40,16 @@ class ApprovalService
 
         if (!$approval || $approval->status !== 'pending') {
             return; // Or throw an exception
+        }
+
+
+        // The requisition can only be approved with a non-null resource type.
+        if($approver->role == 'requisition'){
+            foreach($requisition->requisitionItems as $item){
+                if($item->type_resource === null){
+                    return back()->with('warning', 'Set type resource to all requisition items');
+                }
+            }
         }
 
         $approval->update([

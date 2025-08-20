@@ -201,8 +201,7 @@
                     © 2025
                     <a href="https://tecuruapan.edu.mx/" class="hover:underline">
                         ITSU
-                    </a>.
-                    {{ __('app.copyright') }}.
+                    </a>
                 </span>
 
                 <div class="flex mt-4 sm:justify-center sm:mt-0">

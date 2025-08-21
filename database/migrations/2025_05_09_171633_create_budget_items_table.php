@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedInteger('full_code');
             $table->string('name',255);
-            $table->string('description', 1024);
+            $table->string('description', 1512);
             $table->unsignedBigInteger('general_budget_item_id');
             $table->timestamps();
         });

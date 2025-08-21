@@ -53,5 +53,8 @@ return [
     'actions' => 'Acciones',
     'download_all_requisitions' => 'Descargar todas las requisición',
     'delete_all_requisitions' => 'Eliminar todas las requisiciones',
-    'has_many_items' => 'Esta requisición tiene muchos artículos, máximo 11 artículos'
+    'has_many_items' => 'Esta requisición tiene muchos artículos, máximo 11 artículos',
+    'sets_the_resource_type_to_all' => 'Establece el tipo de recurso para todos los elementos de la requisición',
+    'requisition_rejected' => 'Requisición rechazada',
+    'requisition_approved' => 'Requisición aprobada',
 ];

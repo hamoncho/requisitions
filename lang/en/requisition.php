@@ -54,5 +54,8 @@ return [
     'actions' => 'Actions',
     'download_all_requisitions' => 'Download all requisitions',
     'delete_all_requisitions' => 'Delete all requisitions',
-    'has_many_items' => 'This requisition has many items, max items 11'
+    'has_many_items' => 'This requisition has many items, max items 11',
+    'sets_the_resource_type_to_all' => 'Sets the resource type for all items in the requisition',
+    'requisition_rejected' => 'Requisition rejected',
+    'requisition_approved' => 'Requisition approved',
 ];

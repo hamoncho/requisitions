@@ -47,7 +47,7 @@ class ApprovalService
         if($approver->role == 'requisition'){
             foreach($requisition->requisitionItems as $item){
                 if($item->type_resource === null){
-                    return back()->with('warning', 'Set type resource to all requisition items');
+                    return back()->with('warning', trans('requisition.sets_the_resource_type_to_all'));
                 }
             }
         }

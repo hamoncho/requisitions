@@ -149,14 +149,14 @@ class RequisitionController extends Controller
             return $response;
         }
 
-        return back()->with('success', 'Requisition approved.');
+        return back()->with('success', trans('requisition.requisition_approved'));
     }
 
     public function reject(Request $request, Requisition $requisition, ApprovalService $approvalService)
     {
         $approvalService->reject($requisition, auth()->user(), $request->input('comments'));
 
-        return back()->with('success', 'Requisition rejected.');
+        return back()->with('success', trans('requisition.requisition_rejected'));
     }
 
     public function pdf(Requisition $requisition)

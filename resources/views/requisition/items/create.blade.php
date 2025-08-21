@@ -24,7 +24,7 @@
                             <x-input-label for="general_budget_item_id" :value="__('requisition.general_budget_item')" />
                             <select id="general_budget_item_id" name="general_budget_item_id"
                                 class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                <option value="">Seleccione Una General Partida</option>
+                                <option value="">Seleccione La Partida General</option>
                                 @foreach ($general_budget_items as $generalItem)
                                     <option value="{{ $generalItem->id }}"> {{$generalItem->code}}: {{ $generalItem->name }}</option>
                                 @endforeach
@@ -37,7 +37,7 @@
                             <x-input-label for="budget_item_id" :value="__('requisition.budget_item')" />
                             <select id="budget_item_id" name="budget_item_id"
                                 class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm" disabled>
-                                <option value="">Primero Seleccione Una Parida General Primero</option>
+                                <option value="">Primero Seleccione La Parida General</option>
                             </select>
                             <x-input-error :messages="$errors->get('budget_item_id')" class="mt-2" />
                         </div>
@@ -108,7 +108,7 @@
                 // Agregar opción por defecto
                 const defaultOption = document.createElement('option');
                 defaultOption.value = "";
-                defaultOption.textContent = selectedId ? "Seleccione Una Partida Espesifica" : "Primero Seleccione Una Partida General";
+                defaultOption.textContent = selectedId ? "Seleccione La Partida Específica" : "Primero Seleccione La Partida General";
                 budgetItemSelect.appendChild(defaultOption);
 
                 // Si hay una selección válida, agregar los budget items correspondientes

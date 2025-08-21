@@ -35,7 +35,7 @@ return [
     'total' => 'Total',
     'will_send_to' => 'Esta requisición será enviada a',
     'general_budget_item' => 'Partida Presupuestaria General',
-    'add_item_to' => 'Agregar Elemento A La Requisición',
+    'add_item_to' => 'Agregar elemento a la requisición',
     'edit_item_for' => 'Editar Elemento Para La Requisición',
     'approval_history' => 'Historial De Aprobación',
     'approve_or_reject' => 'Aprobar O Rechazar',

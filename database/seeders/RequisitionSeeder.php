@@ -22,6 +22,7 @@ class RequisitionSeeder extends Seeder
         Requisition::create([
             'processes_id' => $process101->id,
             'indicators_id' => $process101->projects->first()->indicators->first()->id,
+            'to_be_used' => 'Papeleria básica para las lavores del departamento de Planeación',
             'users_id' => $user->id,
             'folio' => 100
         ]);
@@ -29,6 +30,7 @@ class RequisitionSeeder extends Seeder
         Requisition::create([
             'processes_id' => $process103->id,
             'indicators_id' => $process103->projects->first()->indicators->first()->id,
+            'to_be_used' => 'Papeleria básica para las lavores del departamento de Planeación',
             'users_id' => $user->id,
             'folio' => 101
         ]);

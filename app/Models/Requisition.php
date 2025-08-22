@@ -20,6 +20,7 @@ class Requisition extends Model
         'indicators_id',
         'status',
         'current_approver_id',
+        'to_be_used',
         'folio',
     ];
 

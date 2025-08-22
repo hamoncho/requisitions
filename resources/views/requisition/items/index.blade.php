@@ -21,15 +21,20 @@
                                 {{ $requisition->indicator->project->description }}
                             </li>
 
-                            <li class="px-2 sm:px-6 py-1 leading-none">
+                            <li class="px-2 sm:px-6 pb-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.indicator') }}: </b>
                                 {{ $requisition->indicator->index }} -
                                 {{ $requisition->indicator->description }}
                             </li>
 
-                            <li class="px-2 sm:px-6 pb-2">
+                            <li class="px-2 sm:px-6 pb-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.create_by') }}: </b>
                                 {{ $requisition->user->name }}
+                            </li>
+
+                            <li class="px-2 sm:px-6 pb-2 leading-none">
+                                <b class="font-bold">{{ __('requisition.to_be_used') }}: </b>
+                                {{ $requisition->to_be_used }}
                             </li>
                         </ul>
                         <div class="sm:ml-6 ml-0 mb-2 min-w-fit flex md:flex-col justify-between">

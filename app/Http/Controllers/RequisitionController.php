@@ -41,20 +41,20 @@ class RequisitionController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, ApprovalService $approvalService)
+    public function store(Request $request)
     {
         $request->validate([
             'processes_id' => 'required|exists:processes,id',
             'indicators_id' => 'required|exists:indicators,id',
+            'to_be_used' => 'required|max:150',
         ]);
 
         $requisition = Requisition::create([
             'processes_id' => $request->processes_id,
             'indicators_id' => $request->indicators_id,
+            'to_be_used' => $request->to_be_used,
             'users_id' => auth()->id(),
         ]);
-
-        //$approvalService->startApprovalProcess($requisition);
 
         return redirect()->route('requisition_items.index', $requisition);
     }
@@ -127,6 +127,7 @@ class RequisitionController extends Controller
             'users_id' => auth()->id(),
             'processes_id' => 0,
             'indicators_id' => 0,
+            'to_be_used' => 'Establecer el folio',
         ]);
 
         return back()->with('success', 'Next folio set successfully.');

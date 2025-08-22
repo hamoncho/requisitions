@@ -64,6 +64,13 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('indicators_id')" />
                             </div>
 
+                            <!-- Para ser utilizado -->
+                            <div>
+                                <x-input-label for="to_be_used" :value="__('requisition.to_be_used')" />
+                                <x-text-input id="to_be_used" class="block mt-1 w-full" type="text" name="to_be_used" :value="old('to_be_used')" required autofocus />
+                                <x-input-error class="mt-2" :messages="$errors->get('to_be_used')" />
+                            </div>
+
                             <!-- Indicador de carga -->
                             <div id="loading" class="hidden flex items-center justify-center py-4">
                                 <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">

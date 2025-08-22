@@ -57,4 +57,5 @@ return [
     'sets_the_resource_type_to_all' => 'Establece el tipo de recurso para todos los elementos de la requisición',
     'requisition_rejected' => 'Requisición rechazada',
     'requisition_approved' => 'Requisición aprobada',
+    'to_be_used' => 'Para Ser Utilizado',
 ];

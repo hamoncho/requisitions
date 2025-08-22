@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('processes_id');
             $table->unsignedBigInteger('indicators_id');
             $table->unsignedBigInteger('users_id');
+            $table->string('to_be_used', 255);
             $table->integer('folio')->unique()->nullable();
             $table->timestamps();
         });

@@ -58,4 +58,5 @@ return [
     'sets_the_resource_type_to_all' => 'Sets the resource type for all items in the requisition',
     'requisition_rejected' => 'Requisition rejected',
     'requisition_approved' => 'Requisition approved',
+    'to_be_used' => 'To Be Used',
 ];

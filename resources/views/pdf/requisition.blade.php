@@ -24,9 +24,13 @@
         }
 
         .title {
+            position: absolute;
+            top: -15px;
+            width: 100%;
             text-align: center;
             margin: 0;
             padding: 0;
+            font-size: 20px;
         }
 
         .info-list {
@@ -383,6 +387,11 @@
             <li class="info-list-item">
                 <b>Jefe Inmediato: </b>
                 {{ $requisition->user->supervisor->name ?? "" }}
+            </li>
+
+            <li class="info-list-item">
+                <b>Para Ser Utilizado: </b>
+                {{ $requisition->to_be_used }}
             </li>
 
             <li class="info-list-item info-list-item-last">

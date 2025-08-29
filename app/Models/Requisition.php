@@ -22,6 +22,8 @@ class Requisition extends Model
         'current_approver_id',
         'to_be_used',
         'folio',
+        'pdf_path',
+        'pdf_original_name',
     ];
 
     /**

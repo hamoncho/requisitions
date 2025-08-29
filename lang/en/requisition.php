@@ -59,4 +59,7 @@ return [
     'requisition_rejected' => 'Requisition rejected',
     'requisition_approved' => 'Requisition approved',
     'to_be_used' => 'To Be Used',
+    'pdf_file' => 'PDF File',
+    'download_pdf' => 'Download PDF',
+    'attached_file' => 'Attached File',
 ];

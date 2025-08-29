@@ -12,6 +12,7 @@ use App\Models\User;
 use App\Services\ApprovalService;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class RequisitionController extends Controller
 {
@@ -47,13 +48,23 @@ class RequisitionController extends Controller
             'processes_id' => 'required|exists:processes,id',
             'indicators_id' => 'required|exists:indicators,id',
             'to_be_used' => 'required|max:150',
+            'pdf_file' => 'nullable|max:51200',
         ]);
+
+        $pdfPath = null;
+        $pdfOriginalName = null;
+        if ($request->hasFile('pdf_file')) {
+            $pdfPath = $request->file('pdf_file')->store('requisitions', 'public');
+            $pdfOriginalName = $request->file('pdf_file')->getClientOriginalName();
+        }
 
         $requisition = Requisition::create([
             'processes_id' => $request->processes_id,
             'indicators_id' => $request->indicators_id,
             'to_be_used' => $request->to_be_used,
             'users_id' => auth()->id(),
+            'pdf_path' => $pdfPath,
+            'pdf_original_name' => $pdfOriginalName,
         ]);
 
         return redirect()->route('requisition_items.index', $requisition);
@@ -186,5 +197,23 @@ class RequisitionController extends Controller
         }
 
         return back()->with('error', trans('requisition.not_authorized'));
+    }
+
+    public function downloadPdf(Requisition $requisition)
+    {
+        if (is_null($requisition->pdf_path) || !Storage::disk('public')->exists($requisition->pdf_path)) {
+            abort(404);
+        }
+
+        return Storage::disk('public')->download($requisition->pdf_path, $requisition->pdf_original_name);
+    }
+
+    public function viewPdf(Requisition $requisition)
+    {
+        if (is_null($requisition->pdf_path) || !Storage::disk('public')->exists($requisition->pdf_path)) {
+            abort(404);
+        }
+
+        return Storage::disk('public')->response($requisition->pdf_path);
     }
 }

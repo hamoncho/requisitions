@@ -31,7 +31,7 @@
                              data-error-class="bg-red-100 text-red-800">
                         </div>
 
-                        <form id="requisitionForm" method="post" action="{{ route('requisition.store') }}" class="mt-6 space-y-6">
+                        <form id="requisitionForm" method="post" action="{{ route('requisition.store') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
                             @csrf
                             @method('post')
                             <!-- Proceso -->
@@ -69,6 +69,12 @@
                                 <x-input-label for="to_be_used" :value="__('requisition.to_be_used')" />
                                 <x-text-input id="to_be_used" class="block mt-1 w-full" type="text" name="to_be_used" :value="old('to_be_used')" required autofocus />
                                 <x-input-error class="mt-2" :messages="$errors->get('to_be_used')" />
+                            </div>
+
+                            <div>
+                                <x-input-label for="pdf_file" :value="__('requisition.pdf_file')" />
+                                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" class="mt-1 block w-full" />
+                                <x-input-error class="mt-2" :messages="$errors->get('pdf_file')" />
                             </div>
 
                             <!-- Indicador de carga -->

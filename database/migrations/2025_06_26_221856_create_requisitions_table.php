@@ -18,6 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('users_id');
             $table->string('to_be_used', 255);
             $table->integer('folio')->unique()->nullable();
+            $table->string('pdf_path')->nullable();
+            $table->string('pdf_original_name')->nullable();
             $table->timestamps();
         });
     }

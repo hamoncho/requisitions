@@ -79,6 +79,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/requisition/create', [RequisitionController::class, 'create'])->name('requisition.create');
     Route::post('/requisition', [RequisitionController::class, 'store'])->name('requisition.store');
     Route::get('/requisition/{requisition}', [RequisitionController::class, 'show'])->name('requisition.show');
+    Route::get('/requisition/{requisition}/download-pdf', [RequisitionController::class, 'downloadPdf'])->name('requisition.download_pdf');
+    Route::get('/requisition/{requisition}/view-pdf', [RequisitionController::class, 'viewPdf'])->name('requisition.view_pdf');
     Route::get('/requisition/{requisition}/items', [RequisitionController::class, 'addItems'])->name('requisition.addItems');
     Route::post('/requisition/{requisition}/startApprovalProcess', [RequisitionController::class, 'startApprovalProcess'])->name('requisition.start_approval_process');
     Route::delete('/requisition/{requisition}', [RequisitionController::class, 'destroy'])->name('requisition.destroy');

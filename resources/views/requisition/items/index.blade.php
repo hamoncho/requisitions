@@ -32,6 +32,13 @@
                                 {{ $requisition->user->name }}
                             </li>
 
+                            @if ($requisition->pdf_path)
+                                <li class="px-2 sm:px-6 pb-1 leading-none">
+                                <b class="font-bold">{{ __('requisition.attached_file') }}: </b>
+                                    <a href="{{ route('requisition.view_pdf', $requisition) }}" target="_blank" class="text-blue-500 hover:underline">{{ $requisition->pdf_original_name }}</a>
+                                </li>
+                            @endif
+
                             <li class="px-2 sm:px-6 pb-2 leading-none">
                                 <b class="font-bold">{{ __('requisition.to_be_used') }}: </b>
                                 {{ $requisition->to_be_used }}

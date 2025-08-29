@@ -58,4 +58,7 @@ return [
     'requisition_rejected' => 'Requisición rechazada',
     'requisition_approved' => 'Requisición aprobada',
     'to_be_used' => 'Para Ser Utilizado',
+    'pdf_file' => 'Archivo PDF',
+    'download_pdf' => 'Descargar PDF',
+    'attached_file' => 'Archivo Adjunto',
 ];

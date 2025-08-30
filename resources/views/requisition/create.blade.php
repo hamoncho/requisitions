@@ -73,7 +73,33 @@
 
                             <div>
                                 <x-input-label for="pdf_file" :value="__('requisition.pdf_file')" />
-                                <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" class="mt-1 block w-full" />
+                                <div id="dropzone" class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
+                                    <div class="space-y-1 text-center">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div class="flex text-sm text-gray-600">
+                                            <label for="pdf_file" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
+                                                <span>{{ __('requisition.upload_a_file') }}</span>
+                                                <input id="pdf_file" name="pdf_file" type="file" class="sr-only" accept="application/pdf">
+                                            </label>
+                                            <p class="pl-1">{{ __('requisition.or_drag_and_drop') }}</p>
+                                        </div>
+                                        <p class="text-xs text-gray-500">{{ __('requisition.pdf_up_to_50mb') }}</p>
+                                    </div>
+                                </div>
+
+                                <div id="selected-file-display" class="mt-1 hidden items-center justify-between px-6 pt-5 pb-6 border-2 border-gray-300 rounded-md">
+                                    <div class="flex items-center space-x-3">
+                                        <svg class="h-12 w-12 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zM6 20V4h7v5h5v11H6z" />
+                                        </svg>
+                                        <p id="selected-file-name" class="text-sm text-gray-900"></p>
+                                    </div>
+                                    <button type="button" id="remove-file-button" class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                                        {{ __('button.delete') }}
+                                    </button>
+                                </div>
                                 <x-input-error class="mt-2" :messages="$errors->get('pdf_file')" />
                             </div>
 
@@ -240,6 +266,64 @@
                 if (!processesSelect.value || !projectsSelect.value || !indicatorsSelect.value) {
                     e.preventDefault();
                     showNotification('Por favor complete todos los campos', 'error');
+                }
+            });
+
+            const pdfFileInput = document.getElementById('pdf_file');
+            const dropzone = document.getElementById('dropzone');
+            const selectedFileDisplay = document.getElementById('selected-file-display');
+            const selectedFileName = document.getElementById('selected-file-name');
+            const removeFileButton = document.getElementById('remove-file-button');
+
+            function showSelectedFile(file) {
+                dropzone.classList.add('hidden');
+                selectedFileDisplay.classList.remove('hidden');
+                selectedFileDisplay.classList.add('flex');
+                selectedFileName.textContent = file.name;
+            }
+
+            function hideSelectedFile() {
+                dropzone.classList.remove('hidden');
+                selectedFileDisplay.classList.add('hidden');
+                selectedFileDisplay.classList.remove('flex');
+                selectedFileName.textContent = '';
+                pdfFileInput.value = ''; // Clear the file input
+            }
+
+            pdfFileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    showSelectedFile(this.files[0]);
+                } else {
+                    hideSelectedFile();
+                }
+            });
+
+            removeFileButton.addEventListener('click', function() {
+                hideSelectedFile();
+            });
+
+            dropzone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.add('border-indigo-500');
+            });
+
+            dropzone.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('border-indigo-500');
+            });
+
+            dropzone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropzone.classList.remove('border-indigo-500');
+
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    pdfFileInput.files = files;
+                    const changeEvent = new Event('change');
+                    pdfFileInput.dispatchEvent(changeEvent);
                 }
             });
         });

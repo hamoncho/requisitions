@@ -61,4 +61,8 @@ return [
     'pdf_file' => 'Archivo PDF',
     'download_pdf' => 'Descargar PDF',
     'attached_file' => 'Archivo Adjunto',
+    'upload_a_file' => 'Sube un archivo',
+    'or_drag_and_drop' => 'o arrastra y suelta',
+    'pdf_up_to_50mb' => 'PDF hasta 50MB',
+    'selected_file' => 'Archivo seleccionado',
 ];

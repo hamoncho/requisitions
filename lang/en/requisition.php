@@ -62,4 +62,8 @@ return [
     'pdf_file' => 'PDF File',
     'download_pdf' => 'Download PDF',
     'attached_file' => 'Attached File',
+    'upload_a_file' => 'Upload a file',
+    'or_drag_and_drop' => 'or drag and drop',
+    'pdf_up_to_50mb' => 'PDF up to 50MB',
+    'selected_file' => 'Selected file',
 ];

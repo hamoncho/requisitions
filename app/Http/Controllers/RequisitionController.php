@@ -48,7 +48,7 @@ class RequisitionController extends Controller
             'processes_id' => 'required|exists:processes,id',
             'indicators_id' => 'required|exists:indicators,id',
             'to_be_used' => 'required|max:150',
-            'pdf_file' => 'nullable|max:51200',
+            'pdf_file' => 'nullable|mimes:pdf|max:51200',
         ]);
 
         $pdfPath = null;

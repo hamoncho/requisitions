@@ -47,7 +47,7 @@ class RequisitionItemController extends Controller
         $request->validate([
             'name' => 'required|string|max:64',
             'budget_item_id' => 'required|exists:budget_items,id',
-            'amount' => 'required|integer|min:1',
+            'amount' => 'required|numeric|min:0',
             'unit' => 'required|string|max:10',
             'price' => 'required|numeric|min:0',
         ]);
@@ -93,7 +93,7 @@ class RequisitionItemController extends Controller
         $request->validate([
             'name' => 'required|string|max:64',
             'budget_item_id' => 'required|exists:budget_items,id',
-            'amount' => 'required|integer|min:1',
+            'amount' => 'required|numeric|min:0',
             'unit' => 'required|string|max:10',
             'price' => 'required|numeric|min:0',
         ]);

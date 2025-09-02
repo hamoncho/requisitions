@@ -16,7 +16,7 @@
                         <!-- Name -->
                         <div class="mb-4">
                             <x-input-label for="name" :value="__('requisition.description')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name', $requisition_item->name)" required autofocus />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" maxlength="64" :value="old('name', $requisition_item->name)" required autofocus />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
@@ -57,14 +57,14 @@
                         <!-- Amount -->
                         <div class="mb-4">
                             <x-input-label for="amount" :value="__('requisition.amount')" />
-                            <x-text-input id="amount" class="block mt-1 w-full" type="number" name="amount" :value="old('amount', $requisition_item->amount)" required autofocus />
+                            <x-text-input id="amount" class="block mt-1 w-full" type="number" step="0.01" name="amount" :value="old('amount', $requisition_item->amount)" required autofocus />
                             <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                         </div>
 
                         <!-- Unit -->
                         <div class="mb-4">
                             <x-input-label for="unit" :value="__('requisition.unit')" />
-                            <x-text-input id="unit" class="block mt-1 w-full" type="text" name="unit" :value="old('unit', $requisition_item->unit)" required />
+                            <x-text-input id="unit" class="block mt-1 w-full" type="text" name="unit" maxlength="10" :value="old('unit', $requisition_item->unit)" required />
                             <x-input-error :messages="$errors->get('unit')" class="mt-2" />
                         </div>
 

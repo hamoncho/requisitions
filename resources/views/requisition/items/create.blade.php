@@ -12,10 +12,10 @@
                     <form method="POST" action="{{ route('requisition_items.store', $requisition) }}">
                         @csrf
 
-                        <!-- Name -->
+                        <!-- description -->
                         <div class="mb-4">
                             <x-input-label for="name" :value="__('requisition.description')" />
-                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+                            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" maxlength="64" required autofocus />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
 
@@ -45,14 +45,14 @@
                         <!-- Amount -->
                         <div class="mb-4">
                             <x-input-label for="amount" :value="__('requisition.amount')" />
-                            <x-text-input id="amount" class="block mt-1 w-full" type="number" name="amount" :value="old('amount')" required autofocus />
+                            <x-text-input id="amount" class="block mt-1 w-full" type="number" step="0.01" name="amount" :value="old('amount')" required autofocus />
                             <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                         </div>
 
                         <!-- Unit -->
                         <div class="mb-4">
                             <x-input-label for="unit" :value="__('requisition.unit')" />
-                            <x-text-input id="unit" class="block mt-1 w-full" type="text" name="unit" :value="old('unit')" required />
+                            <x-text-input id="unit" class="block mt-1 w-full" type="text" name="unit" :value="old('unit')" maxlength="10" required />
                             <x-input-error :messages="$errors->get('unit')" class="mt-2" />
                         </div>
 

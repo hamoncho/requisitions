@@ -47,7 +47,7 @@
                             </div>
 
                             <div>
-                                <h3 class="mb-4 font-semibold text-gray-700">Technology</h3>
+                                <h3 class="mb-4 font-semibold text-gray-700">{{ __('objective.involveds')}}</h3>
                                 <ul class="flex flex-wrap text-gray-900 p-2 border border-gray-200 rounded-lg">
                                     @forelse ($involveds as $item)
                                         <li class="flex-grow m-1 bg-white border border-gray-200 rounded-md">

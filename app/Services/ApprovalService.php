@@ -87,7 +87,7 @@ class ApprovalService
         $accountant = User::where('role', 'accountant')->first();
         $userRequisition = User::where('role', 'requisition')->first();
 
-        $approvers = [$supervisor, $accountant, $planning, $userRequisition];
+        $approvers = [$supervisor, $userRequisition, $accountant, $planning, $userRequisition];
         return $approvers;
     }
 

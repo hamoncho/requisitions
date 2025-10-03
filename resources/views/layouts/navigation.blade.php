@@ -99,6 +99,10 @@
                     {{ __('navigation.link_profile') }}
                 </x-responsive-nav-link>
 
+                <x-responsive-nav-link :href="route('approvals.index')">
+                    {{ __('navigation.link_aprove_requisition') }}
+                </x-responsive-nav-link>
+
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf

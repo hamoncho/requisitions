@@ -36,6 +36,7 @@ class BudgetItemController extends Controller
         $budgetitem->full_code = $request->full_code;
         $budgetitem->name = $request->name;
         $budgetitem->general_budget_item_id = $request->general_budget_item_id;
+        $budgetitem->description = $request->description;
         $budgetitem->save();
 
         return redirect()->route('budget_item.index');

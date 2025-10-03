@@ -66,6 +66,7 @@
                                     @endforelse
 
                                 </ul>
+                                <x-input-error class="mt-2" :messages="$errors->get('involveds')" />
                             </div>
 
                             <div class="flex items-center gap-4">

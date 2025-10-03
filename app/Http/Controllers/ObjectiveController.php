@@ -37,6 +37,14 @@ class ObjectiveController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'index' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'involveds' => 'required|array|min:1',
+            'involveds.*' => 'exists:involveds,id',
+        ]);
+
         $objective = Objective::create([
             'index' => $request->index,
             'name' => $request->name,
@@ -75,6 +83,14 @@ class ObjectiveController extends Controller
      */
     public function update(Request $request, Objective $objective)
     {
+        $request->validate([
+            'index' => 'required',
+            'name' => 'required',
+            'description' => 'required',
+            'involveds' => 'required|array|min:1',
+            'involveds.*' => 'exists:involveds,id',
+        ]);
+
          $objective->update([
             'index' => $request->index,
             'name' => $request->name,

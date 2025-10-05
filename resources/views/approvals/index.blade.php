@@ -10,7 +10,7 @@
                 <div class="p-6 text-gray-900">
                     <!-- Pestañas -->
                     <div class="mb-4 border-b border-gray-200">
-                        <ul class="flex flex-wrap -mb-px text-sm font-medium text-center">
+                        <ul class="flex text-sm font-medium text-center">
                             <li class="me-2">
                                 <button id="pending-tab" data-tab="pending" class="tab-button inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 active">
                                     {{ __('approval.pendings') }}

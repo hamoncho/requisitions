@@ -164,7 +164,7 @@
                         <span class="self-center text-2xl font-semibold whitespace-nowrap text-white">ITSU</span>
                     </a>
                 </div>
-                <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                <div class="grid grid-cols-1 gap-6 sm:gap-4 sm:grid-cols-2">
                     <div>
                         <h2 class="mb-6 text-sm font-semibold uppercase text-white">{{ __('app.footer_resources') }}
                         </h2>

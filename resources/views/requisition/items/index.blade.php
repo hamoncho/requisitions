@@ -141,7 +141,7 @@
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="text-red-600 hover:text-red-900"
-                                                            onclick="return confirm('Are you sure?')">{{ __('button.delete') }}</button>
+                                                            onclick="return confirm('¿Estas seguro?')">{{ __('button.delete') }}</button>
                                                     </form>
                                                 </td>
                                             @endif

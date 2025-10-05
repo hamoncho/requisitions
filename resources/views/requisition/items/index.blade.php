@@ -98,7 +98,7 @@
                                 <thead class="bg-gray-50">
                                     <tr class="divide-x divide-gray-200">
                                         <th scope="col"
-                                            class="w-16 px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            class="w-16 px-2 py-1 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('requisition.p_p') }}</th>
                                         <th scope="col"
                                             class="px-2 py-1 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -122,12 +122,15 @@
                                     @foreach ($requisitionItems as $item)
                                         <tr class="divide-gray-200">
                                             <td class="px-2 py-2 whitespace-nowrap">
-                                                {{ $item->budgetItem->full_code ?? 'N/A' }}
+                                                <a href="{{ route('budget_item.show', $item->budgetItem) }}" target="_blank"
+                                                    class="text-blue-600 hover:underline text-md font-medium">
+                                                    {{ $item->budgetItem->full_code ?? 'N/A' }}
+                                                </a>
                                             </td>
                                             <td class="px-2 py-2 whitespace-nowrap">
                                                 {{ $item->name }}
                                             </td>
-                                            <td class="px-2 py-2 whitespace-nowrap">{{ $item->amount }}</td>
+                                            <td class="px-2 py-2 text-center whitespace-nowrap">{{ $item->amount }}</td>
                                             <td class="px-2 py-2 whitespace-nowrap">{{ $item->unit }}</td>
                                             <td class="px-2 py-2 whitespace-nowrap">{{ $item->type_resource }}</td>
                                             <td class="px-2 py-2 whitespace-nowrap">${{ number_format($item->price, 2) }}</td>

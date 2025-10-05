@@ -239,12 +239,24 @@
             z-index: 2;
         }
 
+        .timeline-progress-aux {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            width: 75%;
+            background-color: #d1d5db;
+            z-index: 1;
+
+        }
+
         .step {
             display: table-cell;
             vertical-align: top;
             text-align: center;
             position: relative;
-            padding: 0 15px;
+            padding: 0 5px;
         }
 
         .step-indicator {
@@ -283,12 +295,12 @@
         .approver-name {
             font-weight: 700;
             color: #1f2937;
-            font-size: 12px;
+            font-size: 11px;
         }
 
         .approver-comment {
             color: #4b5563;
-            font-size: 11px;
+            font-size: 10px;
             line-height: 1;
         }
 
@@ -302,7 +314,7 @@
         }
 
         .approver-position {
-            font-size: 10px;
+            font-size: 9px;
             font-style: italic;
         }
 
@@ -468,7 +480,14 @@
         <h3>Historial De Aprobación</h3>
 
         <div class="timeline-container">
-            <div class="timeline-progress"></div>
+
+            <!-- Change the length of the progress line depending on the number of items there are. -->
+            @if ($requisition->approvals->count() > 5 )
+                <div class="timeline-progress-aux"></div>
+            @else
+                <div class="timeline-progress"></div>
+            @endif
+
             <div class="timeline-steps">
                 @foreach ($requisition->approvals as $approval)
                     @if($approval->approver->role != 'requisition')

@@ -85,6 +85,7 @@
                                 <x-input-label for="role" :value="__('auth.role')" />
                                 <select id="role" name="role" class="block mt-1 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                                     <option value="user">{{ __('User') }}</option>
+                                    <option value="auxiliary">{{ __('Auxiliary') }}</option>
                                     <option value="accountant">{{ __('Accountant') }}</option>
                                     <option value="planning">{{ __('Planning') }}</option>
                                     <option value="requisition">{{ __('Requisition') }}</option>

@@ -87,7 +87,15 @@ class ApprovalService
         $accountant = User::where('role', 'accountant')->first();
         $userRequisition = User::where('role', 'requisition')->first();
 
+        // Here you can add more users to the process of accepting a requisition.
         $approvers = [$supervisor, $userRequisition, $accountant, $planning, $userRequisition];
+
+        // Special case for when the user is an auxiliary.
+        if($user->role == 'auxiliary'){
+            $userSupervisorSupervisor = $user->supervisor->supervisor;
+            $userSupervisorSupervisorSupervisor = $user->supervisor->supervisor->supervisor;
+            $approvers = [$supervisor,$userSupervisorSupervisor,$userSupervisorSupervisorSupervisor, $userRequisition, $accountant, $planning, $userRequisition];
+        }
         return $approvers;
     }
 

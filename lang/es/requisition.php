@@ -65,4 +65,7 @@ return [
     'or_drag_and_drop' => 'o arrastra y suelta',
     'pdf_up_to_50mb' => 'PDF hasta 50MB',
     'selected_file' => 'Archivo seleccionado',
+    'your_boss_dont_have_boss_assigned' => 'Tu jefe inmediato no tiene un jefe inmediato asignado',
+    'boss_boss_dont_have_boss_assigned' => 'Hay un jefe inmediato no asignado en la cadena de aprobación',
+
 ];

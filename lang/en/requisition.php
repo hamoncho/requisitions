@@ -66,4 +66,6 @@ return [
     'or_drag_and_drop' => 'or drag and drop',
     'pdf_up_to_50mb' => 'PDF up to 50MB',
     'selected_file' => 'Selected file',
+    'your_boss_dont_have_boss_assigned' => 'Your supervisor doesn\'t have an assigned supervisor',
+    'boss_boss_dont_have_boss_assigned' => 'There is an unassigned immediate supervisor in the approval chain.',
 ];

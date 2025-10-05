@@ -14,15 +14,28 @@ class RequisitionItemController extends Controller
      */
     public function index(Requisition $requisition)
     {
+        // Return back if you supervisor is unassigned
         if(auth()->user()->supervisor === null){
             return back()->with('warning',trans('requisition.dont_have_boss_assigned'));
         }
 
+        // Return back if there is an unassigned immediate supervisor in the approval chain.
+        if(auth()->user()->supervisor->supervisor === null && auth()->user()->role === 'auxiliary'){
+            return back()->with('warning',trans('requisition.your_boss_dont_have_boss_assigned'));
+        }
+
+        // Return back if there is an unassigned immediate supervisor in the approval chain.
+        if(auth()->user()->supervisor->supervisor->supervisor === null && auth()->user()->role === 'auxiliary'){
+            return back()->with('warning',trans('requisition.boss_boss_dont_have_boss_assigned'));
+        }
+
+        // redirect to view index if all is ok
         $requisitionItems = $requisition->requisitionItems()->get();
         if ($requisition->user->id == auth()->user()->id) {
             return view('requisition.items.index', compact('requisition', 'requisitionItems'));
         }
 
+        // Return back if the requisition dont belongs to you
         return back()->with('error', trans('requisition.dont_belongs_to_you'));
     }
 

@@ -111,14 +111,9 @@
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
                                             @if ($requisition->status == 'draft' || $requisition->status == 'system')
-                                                <form action="{{ route('requisition.destroy', $requisition) }}"
-                                                    method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <x-danger-button type="submit">
-                                                        {{ __('button.delete') }}
-                                                    </x-danger-button>
-                                                </form>
+                                                <x-delete-button>
+                                                    {{route('requisition.destroy', $requisition)}}
+                                                </x-delete-button>
                                             @endif
                                         </td>
                                     </tr>
@@ -136,14 +131,9 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h3 class="text-lg font-medium text-gray-900">{{ __('requisition.delete_all_requisitions') }}</h3>
-                    <form action="{{ route('requisition.truncate') }}"
-                        method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <x-danger-button type="submit">
-                            {{ __('button.delete') }}
-                        </x-danger-button>
-                    </form>
+                    <x-delete-button>
+                        {{ route('requisition.truncate') }}
+                    </x-delete-button>
                 </div>
              </div>
          </div>

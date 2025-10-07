@@ -29,7 +29,7 @@
 
                             <li class="px-2 sm:px-6 pb-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.create_by') }}: </b>
-                                {{ $requisition->user->name }}
+                                {{ $requisition->user->name ?? 'Usuario No Encontrado' }}
                             </li>
 
                             @if ($requisition->pdf_path)

@@ -364,24 +364,24 @@
     <div class="container">
         <ul class="info-list">
             <li class="info-list-header">
-                {{ $requisition->process->index }}
+                {{ $requisition->process->index ?? 'Proceso No Encontrado'}}
             </li>
 
             <li class="info-list-item">
                 <b>Proyecto: </b>
-                {{ $requisition->indicator->project->index }} -
-                {{ $requisition->indicator->project->description }}.
+                {{ $requisition->indicator->project->index ?? '0'}} -
+                {{ $requisition->indicator->project->description ?? 'Proyecto No Encontrado' }}.
             </li>
 
             <li class="info-list-item">
                 <b>Indicador: </b>
-                {{ $requisition->indicator->index }} -
-                {{ $requisition->indicator->description }}.
+                {{ $requisition->indicator->index ?? '0' }} -
+                {{ $requisition->indicator->description ?? 'Indicador No Encontrado' }}.
             </li>
 
             <li class="info-list-item">
                 <b>Creado Por: </b>
-                {{ $requisition->user->name }}
+                {{ $requisition->user->name ?? 'Usuario No Encontrado' }}
             </li>
 
             <li class="info-list-item">
@@ -391,7 +391,7 @@
 
             <li class="info-list-item">
                 <b>Para Ser Utilizado: </b>
-                {{ $requisition->to_be_used }}
+                {{ $requisition->to_be_used ?? "" }}
             </li>
 
             <li class="info-list-item info-list-item-last">

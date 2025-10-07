@@ -12,24 +12,24 @@
                     <div class="flex justify-between flex-col-reverse md:flex-row">
                         <ul class="list-none bg-gray-100 rounded-md grow">
                             <li class="py-1 px-2 sm:px-6 text-lg font-bold  bg-blue-950 text-gray-100 rounded-t-md">
-                                {{ $requisition->process->index }}
+                                {{ $requisition->process->index ?? 'Proceso No Encontrado'}}
                             </li>
 
                             <li class="px-2 sm:px-6 py-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.project') }}: </b>
-                                {{ $requisition->indicator->project->index }} -
-                                {{ $requisition->indicator->project->description }}
+                                {{ $requisition->indicator->project->index ?? '0' }} -
+                                {{ $requisition->indicator->project->description ?? 'Proyecto No Encotrado' }}
                             </li>
 
                             <li class="px-2 sm:px-6 pb-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.indicator') }}: </b>
-                                {{ $requisition->indicator->index }} -
-                                {{ $requisition->indicator->description }}
+                                {{ $requisition->indicator->index ?? '0'}} -
+                                {{ $requisition->indicator->description ?? 'Indicador No Encontrado' }}
                             </li>
 
                             <li class="px-2 sm:px-6 pb-1 leading-none">
                                 <b class="font-bold">{{ __('requisition.create_by') }}: </b>
-                                {{ $requisition->user->name }}
+                                {{ $requisition->user->name ?? 'Usuario No Encontrado' }}
                             </li>
 
                             @if ($requisition->pdf_path)
@@ -41,7 +41,7 @@
 
                             <li class="px-2 sm:px-6 pb-2 leading-none">
                                 <b class="font-bold">{{ __('requisition.to_be_used') }}: </b>
-                                {{ $requisition->to_be_used }}
+                                {{ $requisition->to_be_used ?? '' }}
                             </li>
                         </ul>
                         <div class="sm:ml-6 ml-0 mb-2 min-w-fit flex md:flex-col justify-between">

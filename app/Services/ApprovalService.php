@@ -93,8 +93,7 @@ class ApprovalService
         // Special case for when the user is an auxiliary.
         if($user->role == 'auxiliary'){
             $userSupervisorSupervisor = $user->supervisor->supervisor;
-            $userSupervisorSupervisorSupervisor = $user->supervisor->supervisor->supervisor;
-            $approvers = [$supervisor,$userSupervisorSupervisor,$userSupervisorSupervisorSupervisor, $userRequisition, $accountant, $planning, $userRequisition];
+            $approvers = [$supervisor,$userSupervisorSupervisor, $userRequisition, $accountant, $planning, $userRequisition];
         }
         return $approvers;
     }

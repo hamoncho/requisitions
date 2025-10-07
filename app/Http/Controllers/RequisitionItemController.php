@@ -24,11 +24,6 @@ class RequisitionItemController extends Controller
             return back()->with('warning',trans('requisition.your_boss_dont_have_boss_assigned'));
         }
 
-        // Return back if there is an unassigned immediate supervisor in the approval chain.
-        if(auth()->user()->supervisor->supervisor->supervisor === null && auth()->user()->role === 'auxiliary'){
-            return back()->with('warning',trans('requisition.boss_boss_dont_have_boss_assigned'));
-        }
-
         // redirect to view index if all is ok
         $requisitionItems = $requisition->requisitionItems()->get();
         if ($requisition->user->id == auth()->user()->id) {

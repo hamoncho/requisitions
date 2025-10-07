@@ -231,18 +231,6 @@
             z-index: 1;
         }
 
-        .timeline-progress-aux {
-            position: absolute;
-            top: 20px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            width: 75%;
-            background-color: #d1d5db;
-            z-index: 1;
-
-        }
-
         .timeline-steps {
             display: table;
             width: 100%;
@@ -483,16 +471,16 @@
             <h3>Historial De Aprobación</h3>
 
             <div class="timeline-container">
-
-                <!-- Change the length of the progress line depending on the number of items there are. -->
-                @if ($requisition->approvals->count() > 5 )
-                    <div class="timeline-progress-aux"></div>
-                @else
-                    <div class="timeline-progress"></div>
-                @endif
-
+                <div class="timeline-progress"></div>
                 <div class="timeline-steps">
                     @foreach ($requisition->approvals as $approval)
+
+                        <!-- Don't print supervisor of auxiliary user -->
+                        @if($requisition->user->role == 'auxiliary' && $requisition->user->supervisor == $approval->approver)
+                            @continue
+                        @endif
+
+                        <!-- Don't print user with role requisition -->
                         @if($approval->approver->role != 'requisition')
                             <div class="step">
                                 @php
